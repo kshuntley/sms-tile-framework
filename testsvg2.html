@@ -1,0 +1,244 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Circle Diagram Tool</title>
+	<link href="sms-styles.css" type="text/css" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" type="text/css" rel="stylesheet">	
+		<style>
+
+			.sms-svg-circle .sms-color-azure-blue,
+			.sms-svg-circle .sms-color-aa-blue,
+			.sms-svg-circle .sms-color-aa-azure-blue,
+			.sms-svg-circle .sms-color-blue,
+			.sms-svg-circle .sms-color-azure { fill: #4596ca;}
+
+			.sms-svg-circle .sms-color-white { fill: #fff;}
+
+			.sms-svg-circle .sms-color-sunshine-yellow { fill: #f7e442;}
+			.sms-svg-circle .sms-color-goldie { fill: #f6b220;}			
+
+			.littlecircle:hover, .bubbleoverlay:hover, .overlay-text:hover {
+				cursor: pointer; 
+			}
+
+			.bubbleoverlay, .overlay-text {
+				position: absolute; 
+				z-index: 1;
+				top: 0;
+				left: 0;
+			}
+			
+			.overlay-text {
+				font-size: 3.5em;
+				font-weight: 700;
+				vertical-align: middle;
+				text-align: center;
+				
+			}
+		</style>
+</head>
+
+<body>
+<div style="position: relative;" id="wrapper">
+
+
+<div id="pic-overlays">
+	<!-- <span id="overlay1-text">Overview of Managing Enquiries</span>
+	<span id="overlay1-text">Introduction to CRM</span>	
+	<span id="overlay1-text">Searching in CRM</span>
+	<span id="overlay1-text">Create and Action Incidents</span>
+	<span id="overlay1-text">Create and Action Enquiries</span>
+	<span id="overlay1-text">Nurturing Leads</span>
+	<span id="overlay1-text">Create and Action Tasks</span>
+	<span id="overlay1-text">Reports</span>-->
+</div>
+	
+
+</div>
+
+<p id="output"></p>
+
+<script
+  src="https://code.jquery.com/jquery-1.11.0.min.js"
+  integrity="sha256-spTpc4lvj4dOkKjrGokIrHkJgNA0xMS98Pw9N7ir9oI="
+  crossorigin="anonymous"></script>
+<script 
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" 
+	integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" 
+	crossorigin="anonymous"></script>
+
+<script type="text/javascript">
+	
+	function createFlipOverlays(n, r, width) {
+		var square = (r - width) * 2;
+		var top = 0;
+		var left = 0;
+		
+		for (var i = 0; i < n; i++) {
+			var correspond = "#bubble" + i;
+			var overlayText = "overlay" + i + "-text";
+			//var overlayIcon = "overlay" + i + "-icon"; 
+			
+			var overlayTextHTML = '<div id="' + overlayText + '" class="overlay-text"><span class="step-number">' + (i+1) + '</span></div>';
+			
+			overlayText = "#" + overlayText;
+			
+			$("#pic-overlays").prepend(overlayTextHTML);
+			top = ($(correspond).attr("cy")) - r + width;
+			left = ($(correspond).attr("cx")) - r + width;
+			$(overlayText).css("height", square + "px");
+			$(overlayText).css("width", square + "px");	
+			$(overlayText).css("top", (top + "px"));
+			$(overlayText).css("left", (left + "px"));
+			$(overlayText).css("line-height", square + "px");
+		}
+	}
+	
+	
+	
+	// Draw sample overlay images in the bubbles
+	function positionOverlays(n, r, width = 5) {
+		var keywords = ["cats", "business", "abstract", "city", "animals", "sports", "nature", "food", "people", "technics", "transport"];
+		var square = (r - width) * 2;
+		var top = 0;
+		var left = 0;
+		
+		
+		for (var i = 0; i < n; i++) {
+			var rankey = keywords[Math.floor(Math.random()*keywords.length)]
+			var source = "http://lorempixel.com/" + square + "/" + square + "/" + rankey;
+			var correspond = "#bubble" + i;
+			var overlay = "overlay" + i;
+			var overlayHTML = '<img class="img-circle bubbleoverlay" id="' + overlay + '" src="' + source + '" />';
+			
+			overlay = "#" + overlay;
+			
+			$("#pic-overlays").prepend(overlayHTML);
+			top = ($(correspond).attr("cy")) - r + width;
+			left = ($(correspond).attr("cx")) - r + width;
+			$(overlay).css("top", (top + "px"));
+			$(overlay).css("left", (left + "px"));
+		}
+	}
+	
+	// Create the circle/ring for the bubbles to hang off (SVG object)
+	function createBigCircle(r, ring, width) {
+		var bigCircleHTML = '<circle cx="0" cy="0" r="' + r + '" id="bigcircle" />';
+		
+		if (ring) {
+			bigCircleHTML += '<circle cx="0" cy="0" r="' + (r-width) + '" id="bigring" />'
+		}
+		$("#bubblecanvas").append(bigCircleHTML);
+	}
+	
+	// Position the circle/ring
+	function positionBigCircle(ox, oy) {
+		$('#bigcircle').attr("cx", ox);
+		$('#bigcircle').attr("cy", oy);
+		$('#bigring').attr("cx", ox);
+		$('#bigring').attr("cy", oy);		
+	}
+
+	// Create all the bubbles required (SVG objects)
+	function createBubbles(n, r, ring = false, width = 10) {
+		for (var i = 0; i < n; i++) {
+			var bubbleHTML = '<circle cx="0" cy="0" r="' + r + '" class="littlecircle" id="bubble' + i +'"  />';
+			if (ring) {
+				bubbleHTML += '<circle cx="0" cy="0" r="' + (r-width) + '" id="ring' + i + '" />'
+			}			
+			$("#bubblecanvas").append(bubbleHTML);
+		}
+	}
+	
+	// Find where the X should be given a origin, theta, and a hypotenuse
+	function findX(originx, angle, radius) {
+		return (Math.round(originx + Math.sin(angle/180*Math.PI)*radius));
+	}
+	
+	// Find where the Y should be given a origin, theta, and a hypotenuse	
+	function findY(originy, angle, radius) {
+		return (Math.round(originy - Math.cos(angle/180*Math.PI)*radius));
+	}
+	
+	// Position the bubbles around the ring evenly
+	function positionBubbles(n, r, originx, originy) {
+		var gamma = 360/n;   // This is the "target" angle. It's the circle cut up into equal parts.
+		var theta = -1*(gamma/2); // Offset intial theta by half a target angle.
+		
+		for (var i = 0; i < n; i++) {
+			var nx = findX(originx, theta, r); // The hypotenuse is usually the ring's radius + the bubble's radius
+			var ny = findY(originy, theta, r);
+			var targetBubble = '#bubble' + i;
+			var targetRing = '#ring' + i;
+
+			
+			$(targetBubble).attr("cx", nx);
+			$(targetBubble).attr("cy", ny);
+
+			$(targetRing).attr("cx", nx);
+			$(targetRing).attr("cy", ny);
+		
+			theta += gamma;
+		}
+	}
+	
+	function paintBubbles(n, bigcirccolor, ringcolor = "sms-color-white", bubblecolor = "default") {
+		if (bubblecolor == "default") bubblecolor = bigcirccolor;
+		$('#bigcircle').addClass(bigcirccolor);
+		$('#bigring').addClass(ringcolor);
+
+		
+		for (var i = 0; i < n; i++) {
+			var targetBubble = '#bubble' + i;
+			var targetRing = "#ring" + i;
+			$(targetBubble).addClass(bubblecolor);
+			$(targetRing).addClass(ringcolor);
+		}
+	}
+	
+	function addSVGCanvas(canvasSize = 600) {
+		var outputHTML = '<svg width="' + canvasSize + '" height="' + canvasSize + '" class="sms-svg-circle sms-layout-bubble" id="bubblecanvas"></svg>';
+		$('#wrapper').append(outputHTML);
+	}
+	
+	$(function() {
+		var canvasSize = 800; // Size of the canvas in pixels
+
+		var lcr   = 200;   // Large circle radius in pixels
+		var lring = false; // Is the large circle a ring?
+		var lcrw;   // Width of large circle ring (irrelevant if lring is false)
+
+		var bubbler    = 80;  // Bubble radius in pixels
+		var bubblen    = 3;   // How many bubbles to appear on the large circle.
+		var bubblering = true;
+		
+		canvasSize = (lcr*2) + (bubbler*4);
+		
+		var cx = Math.round(canvasSize / 2);
+		var cy = cx;
+		
+		var colorclass = "sms-color-goldie";
+		
+		lcrw = Math.round(bubbler / 2);
+		
+		
+		
+		
+		addSVGCanvas(canvasSize);
+		createBigCircle(lcr, lring, lcrw);
+		positionBigCircle(cx, cy);
+		createBubbles(bubblen, bubbler, bubblering, 30);
+		positionBubbles(bubblen, ((bubbler/2) + lcr), cx, cy);
+		paintBubbles(bubblen, colorclass);
+		createFlipOverlays(bubblen,bubbler, 30);
+		$('#bubblecanvas').html($('#bubblecanvas').html());
+		
+		$('#output').text($('#wrapper').html());
+    });
+	
+	
+</script>
+
+</body>
+</html>
