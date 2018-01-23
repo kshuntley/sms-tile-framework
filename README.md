@@ -11,3 +11,9 @@ The file sms-style.css (and sms-style.min.css) should be added to the target Moo
 KSH - kenneth.huntley3@tafensw.edu.au
 24/01/18
 @kshuntley
+
+## Did I just put my work online for thw whole world to see?
+
+Ugh.
+
+Forgive me, I need to tidy up the files. I'm pretty happy with the less but the html/js is just ugly right now. Forgive me, I haven't had much time to polish it all.
