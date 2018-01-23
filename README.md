@@ -16,8 +16,7 @@ Forgive me, I need to tidy up the files. I'm pretty happy with the less but the 
 
 ## Contact me
 
-Kenneth Scott Huntley
-WG43 Marcus Clark, Ultimo TAFE, Sydney
-kenneth.huntley3@tafensw.edu.au
-24/01/18
+Kenneth Scott Huntley /
+WG43 Marcus Clark, Ultimo TAFE, Sydney /
+kenneth.huntley3@tafensw.edu.au /
 @kshuntley
