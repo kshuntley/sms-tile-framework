@@ -1,0 +1,254 @@
+/* -------------------------------------------------------*/
+/* Tile Layouts                                           */
+/* Important - must come after colors for the Landscape   */
+/*    Subpanes to work                                    */
+/* -------------------------------------------------------*/
+// @kshuntley - kenneth.huntley@tafensw.edu.au
+// 12/01/2018 10:45
+
+@import (once) "variables.less";
+@import (once) "colors.less";
+@import (once) "mixins.less";
+
+.@{url-prefix} {
+	display: block;
+	position: absolute;
+	top: 0;
+	right: 0;
+	z-index: 1;
+}
+
+.@{layout-prefix} {
+	&-portrait {
+		width: 150px;
+		height: 180px;
+		div {
+			margin: 7px;
+		}
+		.@{url-prefix} {
+			width: 150px;
+			height: 180px;
+		}
+	}
+
+	&-portrait-200 {
+		width: 150px;
+		height: 200px;
+		div {
+			margin: 7px;
+		}
+		.@{url-prefix} {
+			width: 150px;
+			height: 200px;
+		}		
+	}
+	
+	&-portrait-216 {
+		width: 180px;
+		height: 216px;
+		div {
+			margin: 7px;
+		}
+		.@{url-prefix} {
+			width: 180px;
+			height: 216px;
+		}		
+	}	
+	
+	&-portrait-220i {
+		width: 200px;
+		height: 220px;
+		div {
+			margin: 7px;
+		}
+		img {
+			position: absolute;
+			bottom: 0;
+		}
+		.@{url-prefix} {
+			width: 200px;
+			height: 220px;
+		}
+	}	
+
+	&-portrait-220 {
+		width: 150px;
+		height: 220px;
+		div {
+			margin: 7px;
+		}
+		img {
+			position: absolute;
+			bottom: 0;
+		}
+		.@{url-prefix} {
+			width: 150px;
+			height: 220px;
+		}
+	}
+
+	&-large-portrait {
+		width: 180px;
+		height: 270px;
+		div {
+			margin: 7px;
+		}
+		img {
+			position: absolute;
+			bottom: 0;
+		}
+		.@{gobtn-prefix} {
+			bottom: 185px;
+			right: 10px;
+		}
+		.@{url-prefix} {
+			width: 180px;
+			height: 270px;
+		}		
+	}
+
+	&-landscape {
+		width: 95%;
+		min-width: 200px;
+		height: auto;
+		padding: 0;
+		-webkit-box-sizing: border-box;
+		        box-sizing: border-box;
+		float: none;
+		clear: both;
+		margin: 20px auto;
+		font-weight: 600;
+		&-header {
+			padding: .5em;
+		}
+		&-footer {
+			clear: both;
+			padding: 0 .5em .5em;
+		}
+		h3 {
+			margin: 0;
+		}
+		h4 {
+			margin: 0;
+		}
+		h5 {
+			margin: 0;
+		}
+		a {
+			&:link {
+				text-decoration: underline;
+			}
+			&:visited {
+				text-decoration: underline;
+			}
+			&:hover {
+				text-decoration: underline;
+			}
+			&:active {
+				text-decoration: underline;
+			}
+		}
+		.@{ribbon-prefix}-tr {
+			right: 0;
+		}
+		.@{ribbon-prefix}-bl {
+			left: 0;
+		}
+		&-subpane {
+			padding: .5em .25em;
+			margin: 0;
+			-webkit-box-sizing: border-box;
+			        box-sizing: border-box;
+			background-color: @landscape-background;
+			font-weight: 400;
+			position: relative;
+			float: left;
+		}
+		
+		&-config-one {
+			width: 100%;
+			&.@{subpane-prefix} {
+				border-left-width: 10px;
+			}
+		}
+		
+		&-config-two {
+			width: calc(~'50%');
+			&.@{subpane-prefix} {
+				border-left-width: 0;
+			}			
+		}
+		
+		&-config-two:first-of-type.@{subpane-prefix} {
+			border-left-width: 10px;
+		}
+		
+		&-config-three {
+			width: calc(~'33%');
+			&.@{subpane-prefix} {
+				border-left-width: 0;
+			}			
+		}		
+		
+		&-config-three:first-of-type.@{subpane-prefix} {
+			width: calc(~'34%');
+			border-left-width: 10px;
+		}	
+		
+		&-config-four {
+			width: calc(~'25%');
+			&.@{subpane-prefix} {
+				border-left-width: 0;
+			}			
+		}		
+		
+		&-config-four:first-of-type.@{subpane-prefix} {
+			border-left-width: 10px;
+		}
+		
+		&-config-table {
+			vertical-align: top;
+			width: 100%;
+			td, th {
+				padding: .2em .5em;
+				width: 67%;
+				background-color: #fff;
+				&.shaded {
+					background-color: rgba(255, 255, 255, .7);
+					width: 33%;
+				}
+			}
+			&.@{subpane-prefix} {
+				background-color: transparent;
+			}
+		}
+	}
+
+	&-pathway {
+		height: 159px;
+		font-size: .8em;
+		img {
+			float: left;
+			margin: 0 .5em 0 0;
+		}
+		a {
+			&:link {
+				text-decoration: none;
+			}
+			&:visited {
+				text-decoration: none;
+			}
+			&:hover {
+				text-decoration: none;
+			}
+			&:active {
+				text-decoration: none;
+			}
+		}
+		h5 {
+			padding: 1em;
+			text-shadow: none;
+			text-decoration: none;
+		}
+	}
+}

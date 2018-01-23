@@ -1,0 +1,110 @@
+/* -------------------------------------------------------*/
+/* Text                                                   */
+/* Change the text size or color                          */
+/* -------------------------------------------------------*/
+// @kshuntley - kenneth.huntley@tafensw.edu.au
+// 12/01/2018 11:15
+
+@import (once) "variables.less";
+@import (once) "colors.less";
+@import (once) "mixins.less";
+
+.@{text-prefix} {
+	&-htmlblock {
+		.content {
+			p {
+				text-align: center;
+			}
+			p:first-child {
+				padding-top: 10px;
+			}
+		}
+	}
+	&-small {
+		font-size: .8em;
+	}
+
+	&-very-small {
+		font-size: .65em;
+	}
+
+	&-big {
+		font-size: 1.2em;
+	}
+	
+	&-very-big {
+		font-size: 1.5em;
+	}	
+
+	&-light {
+		color: @light-text;
+		a {
+			&:link {
+				color: @light-text;
+			}
+			&:visited {
+				color: @light-text;
+			}
+			&:hover {
+				color: @light-text;
+			}
+			&:active {
+				color: @light-text;
+			}
+		}
+	}
+
+	&-dark {
+		color: @dark-text;
+		a {
+			&:link {
+				color: @dark-text;
+			}
+			&:visited {
+				color: @dark-text;
+			}
+			&:hover {
+				color: @dark-text;
+			}
+			&:active {
+				color: @dark-text;
+			}
+		}
+	}
+	
+	&-purple {
+		color: @intranet-dark-purple;
+		a {
+			&:link {
+				color: @intranet-dark-purple;
+			}
+			&:visited {
+				color: @intranet-dark-purple;
+			}
+			&:hover {
+				color: @intranet-dark-purple;
+			}
+			&:active {
+				color: @intranet-dark-purple;
+			}
+		}
+	}
+	
+	&-blue {
+		color: @intranet-dark-blue;
+		a {
+			&:link {
+				color: @intranet-dark-blue;
+			}
+			&:visited {
+				color: @intranet-dark-blue;
+			}
+			&:hover {
+				color: @intranet-dark-blue;
+			}
+			&:active {
+				color: @intranet-dark-blue;
+			}
+		}
+	}	
+}

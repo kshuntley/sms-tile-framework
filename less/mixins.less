@@ -1,0 +1,80 @@
+// -------------------------------------------------------*/
+// Mixins                                                 */
+// -------------------------------------------------------*/
+// @kshuntley - kenneth.huntley@tafensw.edu.au
+// 12/01/2018 10:45
+
+@import (once) "variables.less";
+
+// Border radius mixin
+.border-radius(@radius: 2px) {
+	-webkit-border-radius: @radius;
+	   -moz-border-radius: @radius;
+	        border-radius: @radius;
+}
+
+// Rotate Mixin
+.rotate(@degrees: 90deg) {
+	-webkit-transform: rotate(@degrees);
+	   -moz-transform: rotate(@degrees);	
+		-ms-transform: rotate(@degrees);
+		 -o-transform: rotate(@degrees);	
+		    transform: rotate(@degrees);
+}
+
+// sms-layout-landscape-subpane Border Color Mixin 
+//    - Hack to get the subpanes looking nice. */
+//.subpane-border-color(@bordercolor, @borderwidth: 10px) {
+//	border: @borderwidth solid @bordercolor;
+//}
+
+
+.color-mixin(@acolor) {
+	background-color: @acolor;
+	.@{subpane-prefix} {
+		border: @acolor solid 10px;
+	}
+}
+
+.triangle-background-color(@bgcolor) {	
+	
+/* -------------------------------------------------------*/
+/* 
+	Only needed if we have triangles on tiles on sms-color backgrounds. 
+	i.e. if using sms-color css classes for html blocks 
+
+	Fakes a transparency by setting the triangle's bg color to
+	match the parent's color.
+
+	Adds about 40k to the css size.
+*/
+/* -------------------------------------------------------*/	
+	
+	/*
+	.sms-tri::after {
+		border-color: @bgcolor;
+	}
+	.sms-tri-bgcolor-white::after, .sms-tri-bg-fff::after {
+		border-color: @white;
+	}
+	.sms-tri-bgcolor-offwhite::after {
+		border-color: @offwhite;
+	}	
+	.sms-tri-bl::after {
+			border-top-color: transparent;
+			border-right-color: transparent;			
+	}
+	.sms-tri-br::after {
+			border-top-color: transparent;
+			border-left-color: transparent;			
+	}
+	.sms-tri-tl::after {
+			border-bottom-color: transparent;
+			border-right-color: transparent;			
+	}
+	.sms-tri-tr::after {
+			border-bottom-color: transparent;
+			border-left-color: transparent;			
+	}	
+	*/
+}

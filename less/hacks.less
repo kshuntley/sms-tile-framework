@@ -1,0 +1,133 @@
+/* -------------------------------------------------------*/
+/* Hacks                                                  */
+/* Mostly to get the tile builder to work                 */
+/* -------------------------------------------------------*/
+// @kshuntley - kenneth.huntley@tafensw.edu.au
+// 12/01/2018 10:45
+
+@import (once) "variables.less";
+@import (once) "colors.less";
+@import (once) "mixins.less";
+
+// Hide Page Modified stuff */
+.path-mod-page .modified {
+	display:none;
+}
+
+/* -------------------------------------------------------*/
+/* CSS for the Tile Builder page itself                   */
+/* Can be cut from Moodle CSS                             */
+/* -------------------------------------------------------*/
+// Hack for the Ribbon Colors to show up in the tile builder
+#sms-form-tile-ribbon-color {
+	color: @dark-text;
+	.@{color-prefix} {
+		&-red 		{ background-color: @ribbon-red; color: @light-text; }
+		&-pink 		{ background-color: @aa-pink; color: @light-text; }
+		&-purple 	{ background-color: @ribbon-purple; color: @light-text; }
+		&-blue 		{ background-color: @ribbon-blue; color: @light-text; }
+		&-salmon 	{ background-color: @ribbon-salmon; color: @light-text; }
+		&-aqua 		{ background-color: @ribbon-turquoise; color: @light-text; }
+		&-gold 		{ background-color: @ribbon-goldie; }
+		&-sunshine 	{ background-color: @ribbon-sunshine-yellow; }
+		&-green 	{ background-color: @ribbon-green; color: @light-text;}
+		&-teal 		{ background-color: @ribbon-teal; color: @light-text; }
+		&-azure 	{ background-color: @ribbon-azure; color: @light-text; }
+		&-lavendar 	{ background-color: @ribbon-lavendar; color: @light-text; }
+		&-peach 	{ background-color: @ribbon-peach; color: @light-text; }
+		&-mint 		{ background-color: @ribbon-mint; }
+	}
+}
+
+#tile-builder {
+	.preview {
+		float: right; 
+		width: 50%; 
+		-webkit-box-sizing: border-box;
+		        box-sizing: border-box; 
+		margin-top: 20px;
+		font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+		.@{tile-prefix}-tile-code {
+			border: 1px dotted #ccc;
+			width: 600px;
+			min-height: 600px;
+			position: relative;
+			border-radius: 2px;
+		}
+		h3 {
+			margin: 0;
+			margin-bottom: 20px;
+			border-bottom: 1px solid #e5e5e5;
+			letter-spacing: 0;
+			font-size: 21px;
+			line-height: 30px;
+		}
+	}
+	.options {
+		float: left; 
+		width: 50%; 
+		box-sizing: border-box; 
+		margin-top: 20px;
+		form {
+			margin: 0 100px;
+		}
+	}
+
+	
+	#wrapper {
+		position: absolute;
+		.@{tile-prefix}-tile {
+			margin: 0;
+		}
+		.@{layout-prefix} {
+			&-portrait {
+				top: 210px;
+				left: 225px;
+			}
+			&-portrait-200 {
+				top: 200px;
+				left: 225px;
+			}
+			&-portrait-220 {
+				top: 190px;
+				left: 225px;
+			}
+			&-portrait-220i {
+				top: 190px;
+				left: 200px;
+			}			
+			&-portrait-216 {
+				top: 192px;
+				left: 210px;
+			}			
+			&-large-portrait {
+				top: 165px;
+				left: 210px;
+			}
+			&-landscape {
+				width: 550px;
+				top: 100px;
+				left: 25px;
+			}
+		}
+	}
+
+	.outputcode {
+		padding: 1em;
+	}
+	
+	#output {
+		display: block;
+		margin: 1em;
+		font-family: Consolas, 
+			Andale Mono, 
+			"Lucida Console", 
+			"Lucida Sans Typewriter", 
+			Monaco, 
+			Courier New, 
+			monospace;
+		font-size: 1.5em;
+	}
+}
+/* End Tile Builder Hack Code                             */
+/* -------------------------------------------------------*/

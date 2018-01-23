@@ -1,0 +1,23 @@
+/* -------------------------------------------------------*/
+/* Tile Go Button                                         */
+/* -------------------------------------------------------*/
+// @kshuntley - kenneth.huntley@tafensw.edu.au
+// 12/01/2018 10:45
+
+@import (once) "variables.less";
+@import (once) "colors.less";
+@import (once) "mixins.less";
+
+span.@{gobtn-prefix} {
+	background-color: @go-btn-color;
+	color: @go-btn-text;
+	padding: .1em .2em;
+	text-align: right;
+	content: "...";
+	display: inline-block;
+	bottom: 10px;
+	right: 10px;
+	position: absolute;
+	font-weight: 400;
+	font-size: 14px;
+}

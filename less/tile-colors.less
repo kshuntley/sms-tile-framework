@@ -1,0 +1,150 @@
+/* -------------------------------------------------------*/
+/* Tile Colors                                            */
+/* Change the background color of a tile.                 */
+/* See also color.less for color definitions.             */
+/* -------------------------------------------------------*/
+// @kshuntley - kenneth.huntley@tafensw.edu.au
+// 12/01/2018 11:15
+
+@import (once) "variables.less";
+@import (once) "colors.less";
+@import (once) "mixins.less";
+
+/* Colors include aliases which should help forgetful people */
+
+/* Teals */
+.@{color-prefix}-teal      		{ .color-mixin(@teal) }
+.@{color-prefix}-dark-teal 		{ .color-mixin(@dark-teal) }
+.@{color-prefix}-aa-dark-teal, 
+.@{color-prefix}-aa-teal 		{ .color-mixin(@aa-dark-teal) }
+
+/* Blues */
+.@{color-prefix}-denim-blue,
+.@{color-prefix}-denim 			{ .color-mixin(@denim-blue) }
+.@{color-prefix}-azure-blue,
+.@{color-prefix}-aa-blue, 
+.@{color-prefix}-aa-azure-blue,
+.@{color-prefix}-blue,
+.@{color-prefix}-azure 			{ .color-mixin(@azure-blue) }
+
+/* Lavendars */
+.@{color-prefix}-lavendar 			{ .color-mixin(@lavendar) }
+.@{color-prefix}-dark-lavendar,
+.@{color-prefix}-aa-lavendar, 
+.@{color-prefix}-aa-dark-lavendar 	{ .color-mixin(@dark-lavendar) }
+
+/* Peaches */
+.@{color-prefix}-fresh-peach 	{ .color-mixin(@fresh-peach) }
+.@{color-prefix}-ripe-peach 	{ .color-mixin(@ripe-peach) }
+.@{color-prefix}-aa-dark-peach,
+.@{color-prefix}-aa-peach,
+.@{color-prefix}-dark-peach,
+.@{color-prefix}-peach 			{ .color-mixin(@aa-dark-peach) }
+
+/* Yellows */
+.@{color-prefix}-lemonade-yellow,
+.@{color-prefix}-lemonade,
+.@{color-prefix}-lemon-yellow,
+.@{color-prefix}-yellow,
+.@{color-prefix}-lemon 				{ .color-mixin(@lemonade-yellow) }
+.@{color-prefix}-sunshine-yellow, 
+.@{color-prefix}-sunshine 			{ .color-mixin(@sunshine-yellow) }
+
+
+/* Greens */
+.@{color-prefix}-minty-green 		{ .color-mixin(@minty-green) }
+.@{color-prefix}-spearmint,
+.@{color-prefix}-spearmint-green 	{ .color-mixin(@spearmint) }
+.@{color-prefix}-green,
+.@{color-prefix}-aa-green 			{ .color-mixin(@aa-green) }
+
+/* Aquas */
+.@{color-prefix}-aqua 		{ .color-mixin(@aqua) }
+.@{color-prefix}-deep-aqua 	{ .color-mixin(@deep-aqua) }
+.@{color-prefix}-aa-aqua 	{ .color-mixin(@aa-aqua) }
+
+/* Mauves */
+.@{color-prefix}-powder-mauve 		{ .color-mixin(@powder-mauve) }
+.@{color-prefix}-mauve, 
+.@{color-prefix}-aa-mauve,
+.@{color-prefix}-purple,
+.@{color-prefix}-smsmock-purple,
+.@{color-prefix}-sms-mock-purple 	{ .color-mixin(@mauve) }
+
+/* Pinks */
+.@{color-prefix}-flamingo,
+.@{color-prefix}-flamingo-pink 	{ .color-mixin(@flamingo) }
+.@{color-prefix}-bubblegum,
+.@{color-prefix}-pink,
+.@{color-prefix}-bubblegum-pink { .color-mixin(@bubblegum) }
+.@{color-prefix}-aa-pink,
+.@{color-prefix}-smsmock-pink,
+.@{color-prefix}-sms-mock-pink 	{ .color-mixin(@aa-pink) }
+
+/* Golds */
+.@{color-prefix}-apricot 	{ .color-mixin(@apricot) }
+.@{color-prefix}-goldie, 
+.@{color-prefix}-gold 		{ .color-mixin(@goldie) }
+
+/* Blacks, Whites and Greys */
+.@{color-prefix}-black 		{ .color-mixin(@black) }
+.@{color-prefix}-charcoal,
+.@{color-prefix}-grey0,
+.@{color-prefix}-gray0  	{ .color-mixin(@charcoal) }
+.@{color-prefix}-grey1,
+.@{color-prefix}-gray1  	{ .color-mixin(@grey1) }
+.@{color-prefix}-grey2,
+.@{color-prefix}-gray2 		{ .color-mixin(@grey2) }
+.@{color-prefix}-grey3,
+.@{color-prefix}-gray3 		{ .color-mixin(@grey3) }
+.@{color-prefix}-grey4,
+.@{color-prefix}-gray4 		{ .color-mixin(@grey4) }
+.@{color-prefix}-grey5,
+.@{color-prefix}-gray5 		{ .color-mixin(@grey5) }
+.@{color-prefix}-offwhite 	{ .color-mixin(@offwhite) }
+.@{color-prefix}-white  	{ .color-mixin(@white) }
+
+/* TAFE Intranet Colors - Taken from the TAFE NSW website's scss */
+.@{color-prefix}-intranet-blue  		{ .color-mixin(@intranet-blue) }
+.@{color-prefix}-intranet-darkblue,
+.@{color-prefix}-intranet-dark-blue 	{ .color-mixin(@intranet-dark-blue) }
+.@{color-prefix}-intranet-navy 			{ .color-mixin(@intranet-navy) }
+.@{color-prefix}-intranet-purple 		{ .color-mixin(@intranet-purple) }
+.@{color-prefix}-intranet-dark-purple,
+.@{color-prefix}-intranet-darkpurple 	{ .color-mixin(@intranet-dark-purple) }
+.@{color-prefix}-intranet-turquoise,
+.@{color-prefix}-intranet-teal,
+.@{color-prefix}-intranet-aqua 			{ .color-mixin(@intranet-turquoise) }
+.@{color-prefix}-intranet-dark-turquoise,
+.@{color-prefix}-intranet-darkturquoise,
+.@{color-prefix}-intranet-dark-teal,
+.@{color-prefix}-intranet-darkteal,
+.@{color-prefix}-intranet-dark-aqua, 
+.@{color-prefix}-intranet-darkaqua 		{ .color-mixin(@intranet-dark-turquoise) }
+.@{color-prefix}-intranet-ochre 		{ .color-mixin(@intranet-ochre) }
+.@{color-prefix}-intranet-dark-ochre,
+.@{color-prefix}-intranet-darkochre 	{ .color-mixin(@intranet-dark-ochre) }
+
+/* SMS Mockup Colors - Used for some of our Pathways Mockups */
+.@{color-prefix}-smsmock-turquoise,
+.@{color-prefix}-smsmock-teal,
+.@{color-prefix}-smsmock-aqua,
+.@{color-prefix}-sms-mock-turquoise,
+.@{color-prefix}-sms-mock-teal,
+.@{color-prefix}-sms-mock-aqua 		{ .color-mixin(@smsmock-turquoise) }
+.@{color-prefix}-smsmock-blue,
+.@{color-prefix}-sms-mock-blue 		{ .color-mixin(@smsmock-blue) }
+.@{color-prefix}-smsmock-yellow,
+.@{color-prefix}-sms-mock-yellow 	{ .color-mixin(@smsmock-yellow) }
+.@{color-prefix}-smsmock-green,
+.@{color-prefix}-sms-mock-green 	{ .color-mixin(@smsmock-green) }
+.@{color-prefix}-smsmock-orange,
+.@{color-prefix}-sms-mock-orange 	{ .color-mixin(@smsmock-orange) }
+.@{color-prefix}-smsmock-grey,
+.@{color-prefix}-sms-mock-grey,
+.@{color-prefix}-smsmock-gray,
+.@{color-prefix}-sms-mock-gray 		{ .color-mixin(@smsmock-grey) }
+.@{color-prefix}-rebeccapurple,
+.@{color-prefix}-rebecca-purple,
+.@{color-prefix}-beccapurple, 
+.@{color-prefix}-becca-purple 		{ .color-mixin(@rebeccapurple) }

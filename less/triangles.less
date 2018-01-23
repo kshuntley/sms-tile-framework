@@ -1,0 +1,75 @@
+/* -------------------------------------------------------*/
+/* Trianles                                               */
+/* This provides that notched out effect of the tiles.    */
+/* 	Assumes you'll have an @offwhite background.          */
+/* 	Use .sms-tri-bgcolor-white for a @white background.   */
+/* -------------------------------------------------------*/
+// @kshuntley - kenneth.huntley@tafensw.edu.au
+// 12/01/2018 11:15
+
+@import (once) "variables.less";
+@import (once) "colors.less";
+@import (once) "mixins.less";
+
+.@{tri-prefix} {
+	&::after {
+		border: 12px solid @offwhite; /* Off white by default */		
+		content: '';
+		position: absolute;
+	}
+
+	&-bgcolor-white, &-bg-fff {
+		&::after {
+			border-color: @white;
+		}
+	}
+	
+	&-bgcolor-offwhite {
+		&::after {
+			border-color: @offwhite;
+		}
+	}	
+
+	&-bl {
+		&::after {
+			border-top-color: transparent;
+			border-right-color: transparent;			
+			bottom: 0;
+			left: 0;
+		}
+	}
+
+	&-br {
+		&::after {
+			border-top-color: transparent;
+			border-left-color: transparent;			
+			bottom: 0;
+			right: 0;
+		}
+		.@{gobtn-prefix} {
+			right: 30px;
+		}
+	}
+
+	&-br.@{layout-prefix}-large-portrait .@{gobtn-prefix} {
+		right: 10px;
+	}
+
+	&-tl {
+		&::after {
+			border-bottom-color: transparent;
+			border-right-color: transparent;			
+			top: 0;
+			left: 0;
+		}
+	}
+
+	&-tr {
+		&::after {
+			border-bottom-color: transparent;
+			border-left-color: transparent;			
+			top: 0;
+			right: 0;
+		}
+	}
+}
