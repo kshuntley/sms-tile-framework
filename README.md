@@ -8,12 +8,16 @@ The file custom.css contains CSS from the Marcus Clark theme.
 
 The file sms-style.css (and sms-style.min.css) should be added to the target Moodle. It is generated from the LESS files in the less folder. Changes to variables (such as colours, etc) should be made to the respective LESS file.
 
-KSH - kenneth.huntley3@tafensw.edu.au
-24/01/18
-@kshuntley
-
 ## Did I just put my work online for thw whole world to see?
 
 Ugh.
 
 Forgive me, I need to tidy up the files. I'm pretty happy with the less but the html/js is just ugly right now. Forgive me, I haven't had much time to polish it all.
+
+## Contact me
+
+Kenneth Scott Huntley
+WG43 Marcus Clark, Ultimo TAFE, Sydney
+kenneth.huntley3@tafensw.edu.au
+24/01/18
+@kshuntley
