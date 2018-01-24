@@ -8,7 +8,7 @@ The file custom.css contains CSS from the Marcus Clark theme.
 
 The file sms-style.css (and sms-style.min.css) should be added to the target Moodle. It is generated from the LESS files in the less folder. Changes to variables (such as colours, etc) should be made to the respective LESS file.
 
-## How do I use the Tile Builder? (Or this framework)
+## How do I use the Tile Builder? (Or this framework?)
 
 All the styles are accomplished by just adding CSS classes to HTML elements. That said, knowing which class to add where is tricky. That's why I built the *Tile Builder*. The Tile Builder will automatically write the HTML for you.
 
@@ -19,7 +19,7 @@ All the styles are accomplished by just adding CSS classes to HTML elements. Tha
 4. Copy the code from the tile builder and paste into the label.
 5. Save, rinse, repeat.
 
-### This still isn't working
+### This still isn't working!
 
 Are you trying it on the live Staff Moodle? This framework requires the addition of the CSS to the theme (be it Clean, Essential or Marcus Clark or any other Moodle theme). It works in my Dev Moodle because I have added the CSS to my Moodle.
 
@@ -31,11 +31,11 @@ How we get this into STAFF Moodle? Well, I hope to win you all over with charm a
 
 The CSS is pretty small when minimised. The CSS will be cached. The CSS means we won't have to use large JPGs or PNGs with text in them. The CSS will actually reduce page sizes. Significantly. I can work it out for you, but I haven't yet. But trust me, the overall page size is much smaller.
 
-### The CSS has refernece to SMS through out it.
+### The CSS has references to SMS through out it?
 
 Don't sweat it. I'm rewritting the Tile Builder in my spare time to accommodate for a variable set prefix. And the LESS already takes it into account.
 
-### What's this SVG thing.
+### What's this SVG thing?
 
 Something I was working on; another design where we had a circle with the steps of the process as small circles (or "bubbles") around it. I was trying to do this all with SVG. It's... well, it's undone. But it's still pretty awesome. You can define how many bubbles you want, the radii of circle and the bubbles, if the circles are rings, and the whole thing builds it for you.
 
