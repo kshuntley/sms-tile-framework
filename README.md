@@ -23,7 +23,7 @@ All the styles are accomplished by just adding CSS classes to HTML elements. Tha
 
 Are you trying it on the live Staff Moodle? This framework requires the addition of the CSS to the theme (be it Clean, Essential or Marcus Clark or any other Moodle theme). It works in my Dev Moodle because I have added the CSS to my Moodle.
 
-Take a look at http://http://54.66.160.31 to see it in action.
+Take a look at http://54.66.160.31 to see it in action.
 
 How we get this into STAFF Moodle? Well, I hope to win you all over with charm and cookies. *Please come to WG43 for your cookie.*
 
