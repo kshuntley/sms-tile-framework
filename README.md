@@ -8,7 +8,16 @@ The file custom.css contains CSS from the Marcus Clark theme.
 
 The file sms-style.css (and sms-style.min.css) should be added to the target Moodle. It is generated from the LESS files in the less folder. Changes to variables (such as colours, etc) should be made to the respective LESS file.
 
-## Did I just put my work online for thw whole world to see?
+## How do I use the Tile Builder? (Or this framework)
+
+1. Build your tile.
+1. Create a label in Moodle.
+2. In the label editor, click on the "kitchen sink" button to show the next level of buttons.
+3. Click on the HTML button.
+4. Copy the code from the tile builder and paste into the label.
+5. Save, rinse, repeat.
+
+## Did I just put my work online for the whole world to see?
 
 Ugh.
 
