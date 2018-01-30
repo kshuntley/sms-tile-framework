@@ -21,18 +21,18 @@
 
         <!-- Select Basic: Tile Layout -->
         <div class="form-group ">
-          <label class="col-md-6 control-label" for="sms-form-tile-layout">Tile Type</label>
+          <label class="col-md-6 control-label" for="tb-form-tile-layout">Tile Type</label>
           <div class="col-md-6">
-            <select id="sms-form-tile-layout" name="sms-form-tile-layout" class="form-control">
-              <option value="sms-layout-portrait">Portrait Original (150px by 180px)</option>
-              <option value="sms-layout-portrait-200">Portrait Taller (150px by 200px)</option>
-              <option value="sms-layout-portrait-216">Internal Tile Style 1 (180px by 216px)</option>  
-              <option value="sms-layout-portrait-220i">Internal Tile Style 2 (200px by 220px)</option>                           
-              <option value="sms-layout-portrait-220">SMS Tile (150px by 220px)</option>
-              <option value="sms-layout-large-portrait">Improved SMS Tile (180px by 270px)</option>
-              <option value="sms-layout-landscape">Landscape</option>
-              <option value="sms-layout-pathway" disabled="disabled">Pathway</option>
-              <option value="sms-layout-header" disabled="disabled">Course Header</option>                            
+            <select id="tb-form-tile-layout" name="tb-form-tile-layout" class="form-control">
+              <option value="tb-layout-portrait">Portrait Original (150px by 180px)</option>
+              <option value="tb-layout-portrait-200">Portrait Taller (150px by 200px)</option>
+              <option value="tb-layout-portrait-216">Internal Tile Style 1 (180px by 216px)</option>  
+              <option value="tb-layout-portrait-220i">Internal Tile Style 2 (200px by 220px)</option>                           
+              <option value="tb-layout-portrait-220">SMS Tile (150px by 220px)</option>
+              <option value="tb-layout-large-portrait">Improved SMS Tile (180px by 270px)</option>
+              <option value="tb-layout-landscape">Landscape</option>
+              <option value="tb-layout-pathway" disabled="disabled">Pathway</option>
+              <option value="tb-layout-header" disabled="disabled">Course Header</option>                            
             </select>
           </div>
         </div>
@@ -42,35 +42,35 @@
            
            <!-- Multiple Radios: Layout Config -->
             <div class="form-group landscape-related">
-                <label class="col-md-6 control-label" for="sms-form-landscape-config">Landscape Configuration</label>
+                <label class="col-md-6 control-label" for="tb-form-landscape-config">Landscape Configuration</label>
                 <div class="col-md-6">
                     <div class="radio">
-                        <label for="sms-form-landscape-config-0">
-                            <input type="radio" name="sms-form-landscape-config" id="sms-form-landscape-config-0" value="config-one" checked="checked">
+                        <label for="tb-form-landscape-config-0">
+                            <input type="radio" name="tb-form-landscape-config" id="tb-form-landscape-config-0" value="config-one" checked="checked">
                             One Column
                         </label>
                     </div>
                     <div class="radio">
-                        <label for="sms-form-landscape-config-1">
-                            <input type="radio" name="sms-form-landscape-config" id="sms-form-landscape-config-1" value="config-two">
+                        <label for="tb-form-landscape-config-1">
+                            <input type="radio" name="tb-form-landscape-config" id="tb-form-landscape-config-1" value="config-two">
                             Two Columns
                         </label>
                     </div>
                     <div class="radio">
-                        <label for="sms-form-landscape-config-2">
-                            <input type="radio" name="sms-form-landscape-config" id="sms-form-landscape-config-2" value="config-three">
+                        <label for="tb-form-landscape-config-2">
+                            <input type="radio" name="tb-form-landscape-config" id="tb-form-landscape-config-2" value="config-three">
                             Three Columns
                         </label>
                     </div>
                     <div class="radio">
-                        <label for="sms-form-landscape-config-3">
-                            <input type="radio" name="sms-form-landscape-config" id="sms-form-landscape-config-3" value="config-four">
+                        <label for="tb-form-landscape-config-3">
+                            <input type="radio" name="tb-form-landscape-config" id="tb-form-landscape-config-3" value="config-four">
                             Four Columns
                         </label>
                     </div>
                     <div class="radio">
-                        <label for="sms-form-landscape-config-4">
-                            <input type="radio" name="sms-form-landscape-config" id="sms-form-landscape-config-4" value="config-five">
+                        <label for="tb-form-landscape-config-4">
+                            <input type="radio" name="tb-form-landscape-config" id="tb-form-landscape-config-4" value="config-five">
                             Table Layout
                         </label>
                     </div>                    
@@ -79,20 +79,20 @@
             
             <!-- Button (Double) -->
 			<div class="form-group table-related landscape-related">
-			  <label class="col-md-6 control-label" for="sms-table-add-row">Table Rows</label>
+			  <label class="col-md-6 control-label" for="tb-table-add-row">Table Rows</label>
 			  <div class="col-md-6">
-				<button id="sms-table-add-row" name="sms-table-add-row" class="btn btn-default btn-sm" type="button"><i class="fa fa-plus" aria-hidden="true"></i></button>
-				<button id="sms-table-remove-row" name="sms-table-remove-row" class="btn btn-default btn-sm disabled" type="button"><i class="fa fa-minus" aria-hidden="true"></i></button>
+				<button id="tb-table-add-row" name="tb-table-add-row" class="btn btn-default btn-sm" type="button"><i class="fa fa-plus" aria-hidden="true"></i></button>
+				<button id="tb-table-remove-row" name="tb-table-remove-row" class="btn btn-default btn-sm disabled" type="button"><i class="fa fa-minus" aria-hidden="true"></i></button>
 			  </div>
 			</div>
             
 			<!-- Multiple Checkboxes: Fix for Older Moodle -->
 			<div class="form-group">
-				<label class="col-md-6 control-label" for="sms-form-fix-for-older-moodle">Fix For Older Moodle?</label>
+				<label class="col-md-6 control-label" for="tb-form-fix-for-older-moodle">Fix For Older Moodle?</label>
 				<div class="col-md-6">
 					<div class="checkbox">
-						<label for="sms-form-fix-for-older-moodle-0">
-							<input type="checkbox" name="sms-form-fix-for-older-moodle" id="sms-form-fix-for-older-moodle-0" value="yes">
+						<label for="tb-form-fix-for-older-moodle-0">
+							<input type="checkbox" name="tb-form-fix-for-older-moodle" id="tb-form-fix-for-older-moodle-0" value="yes">
 							Yes
 						</label>
 					</div>
@@ -101,33 +101,33 @@
             
 			<!-- Text input: Landscape Header -->
 			<div class="form-group landscape-related">
-				<label class="col-md-6 control-label" for="sms-form-tile-header-value">Header</label>
+				<label class="col-md-6 control-label" for="tb-form-tile-header-value">Header</label>
 				<div class="col-md-6">
-					<input id="sms-form-tile-header-value" name="sms-form-tile-header-value" type="text" placeholder="Header" class="form-control input-md">
+					<input id="tb-form-tile-header-value" name="tb-form-tile-header-value" type="text" placeholder="Header" class="form-control input-md">
 					<span class="help-block">What do you want the header to say?</span>
 				</div>
 			</div>
           
 			<!-- Multiple Checkboxes: Header Title Case -->
 			<div class="form-group">
-				<label class="col-md-6 control-label" for="sms-form-header-title-case">Title Case</label>
+				<label class="col-md-6 control-label" for="tb-form-header-title-case">Title Case</label>
 				<div class="col-md-6">
 					<div class="checkbox">
-						<label for="sms-form-header-title-case-0">
-							<input type="checkbox" name="sms-form-header-title-case" id="sms-form-header-title-case-0" value="yes">
+						<label for="tb-form-header-title-case-0">
+							<input type="checkbox" name="tb-form-header-title-case" id="tb-form-header-title-case-0" value="yes">
 							Yes
 						</label>
 					</div>
 				</div>
 			</div>          
            
-            <!-- Multiple Checkboxes: Include Go Button toggle -->
+            <!-- Multiple Checkboxes: Include Footer toggle -->
 			<div class="form-group landscape-related">
-				<label class="col-md-6 control-label" for="sms-form-tile-footer">Add a Footer</label>
+				<label class="col-md-6 control-label" for="tb-form-tile-footer">Add a Footer</label>
 				<div class="col-md-6">
 					<div class="checkbox">
-						<label for="sms-form-tile-footer-0">
-							<input type="checkbox" name="sms-form-tile-footer" id="sms-form-tile-footer-0" value="true">
+						<label for="tb-form-tile-footer-0">
+							<input type="checkbox" name="tb-form-tile-footer" id="tb-form-tile-footer-0" value="true">
 							Yes
 						</label>
 					</div>
@@ -137,23 +137,23 @@
            <div class="configurable" id="footerConfigurables">
 				<!-- Text input: Landscape Footer -->
 				<div class="form-group landscape-related">
-					<label class="col-md-6 control-label" for="sms-form-tile-footer-value">Footer</label>
+					<label class="col-md-6 control-label" for="tb-form-tile-footer-value">Footer</label>
 					<div class="col-md-6">
-						<input id="sms-form-tile-footer-value" name="sms-form-tile-footer-value" type="text" placeholder="Footer" class="form-control input-md">
+						<input id="tb-form-tile-footer-value" name="tb-form-tile-footer-value" type="text" placeholder="Footer" class="form-control input-md">
 						<span class="help-block">What do you want the footer to say?</span>
 					</div>
 				</div>
          	
 				<!-- Multiple Radios (inline): Footer Alignment -->
 				<div class="form-group landscape-related">
-				  <label class="col-md-6 control-label" for="sms-form-footer-text-align">Footer Align</label>
+				  <label class="col-md-6 control-label" for="tb-form-tile-footer-align">Footer Align</label>
 				  <div class="col-md-6">
-					<label class="radio-inline" for="sms-form-footer-text-align-0">
-					  <input type="radio" name="sms-form-tile-footer-align" id="sms-form-tile-footer-align-0" value="text-left" checked="checked">
+					<label class="radio-inline" for="tb-form-tile-footer-align-0">
+					  <input type="radio" name="tb-form-tile-footer-align" id="tb-form-tile-footer-align-0" value="text-left" checked="checked">
 					  Left
 					</label>
-					<label class="radio-inline" for="sms-form-tile-footer-align-1">
-					  <input type="radio" name="sms-form-tile-footer-align" id="sms-form-tile-footer-align-1" value="text-right">
+					<label class="radio-inline" for="tb-form-tile-footer-align-1">
+					  <input type="radio" name="tb-form-tile-footer-align" id="tb-form-tile-footer-align-1" value="text-right">
 					  Right
 					</label>
 				  </div>
@@ -161,23 +161,23 @@
 				
 				<!-- Multiple Radios: Footer Text Size -->
 				<div class="form-group landscape-related">
-					<label class="col-md-6 control-label" for="sms-form-footer-text-size">Footer Size</label>
+					<label class="col-md-6 control-label" for="tb-form-footer-text-size">Footer Size</label>
 					<div class="col-md-6">
 						<div class="radio">
-							<label for="sms-form-footer-text-size-0">
-								<input type="radio" name="sms-form-footer-text-size" id="sms-form-footer-text-size-0" value="sms-text-size" checked="checked">
+							<label for="tb-form-footer-text-size-0">
+								<input type="radio" name="tb-form-footer-text-size" id="tb-form-footer-text-size-0" value="tb-text-size" checked="checked">
 								Normal
 							</label>
 						</div>
 						<div class="radio">
-							<label for="sms-form-footer-text-size-1">
-								<input type="radio" name="sms-form-footer-text-size" id="sms-form-footer-text-size-1" value="sms-text-small">
+							<label for="tb-form-footer-text-size-1">
+								<input type="radio" name="tb-form-footer-text-size" id="tb-form-footer-text-size-1" value="tb-text-small">
 								Smaller
 							</label>
 						</div>
 						<div class="radio">
-							<label for="sms-form-footer-text-size-2">
-								<input type="radio" name="sms-form-footer-text-size" id="sms-form-footer-text-size-2" value="sms-text-very-small">
+							<label for="tb-form-footer-text-size-2">
+								<input type="radio" name="tb-form-footer-text-size" id="tb-form-footer-text-size-2" value="tb-text-very-small">
 								Smallest
 							</label>
 						</div>
@@ -188,17 +188,17 @@
            
 			<!-- Multiple Radios: Header Text Colors -->
 			<div class="form-group landscape-related">
-				<label class="col-md-6 control-label" for="sms-form-header-text-color">Header &amp; Footer Text Color</label>
+				<label class="col-md-6 control-label" for="tb-form-header-text-color">Header &amp; Footer Text Color</label>
 				<div class="col-md-6">
 					<div class="radio">
-						<label for="sms-form-header-text-color-0">
-							<input type="radio" name="sms-form-header-text-color" id="sms-form-header-text-color-0" value="sms-text-light">
+						<label for="tb-form-header-text-color-0">
+							<input type="radio" name="tb-form-header-text-color" id="tb-form-header-text-color-0" value="tb-text-light">
 							Light
 						</label>
 					</div>
 					<div class="radio">
-						<label for="sms-form-header-text-color-1">
-							<input type="radio" name="sms-form-header-text-color" id="sms-form-header-text-color-1" value="sms-text-dark" checked="checked">
+						<label for="tb-form-header-text-color-1">
+							<input type="radio" name="tb-form-header-text-color" id="tb-form-header-text-color-1" value="tb-text-dark" checked="checked">
 							Dark
 						</label>
 					</div>
@@ -209,26 +209,26 @@
 
         <!-- Text input: Tile Text -->
         <div class="form-group portrait-related">
-            <label class="col-md-6 control-label" for="sms-form-tile-text-value">Tile Text</label>
+            <label class="col-md-6 control-label" for="tb-form-tile-text-value">Tile Text</label>
             <div class="col-md-6">
-                <textarea class="form-control" id="sms-form-tile-text-value" name="sms-form-tile-text-value">This is your tile text.</textarea>
+                <textarea class="form-control" id="tb-form-tile-text-value" name="tb-form-tile-text-value">This is your tile text.</textarea>
             </div>
         </div>
 
         <!-- Multiple Radios (inline): Alignment -->
         <div class="form-group portrait-related">
-          <label class="col-md-6 control-label" for="sms-form-tile-text-align">Align</label>
+          <label class="col-md-6 control-label" for="tb-form-tile-text-align">Align</label>
           <div class="col-md-6">
-            <label class="radio-inline" for="sms-form-tile-text-align-0">
-              <input type="radio" name="sms-form-tile-text-align" id="sms-form-tile-text-align-0" value="text-left" checked="checked">
+            <label class="radio-inline" for="tb-form-tile-text-align-0">
+              <input type="radio" name="tb-form-tile-text-align" id="tb-form-tile-text-align-0" value="text-left" checked="checked">
               Left
             </label>
-            <label class="radio-inline" for="sms-form-tile-text-align-1">
-              <input type="radio" name="sms-form-tile-text-align" id="sms-form-tile-text-align-1" value="text-center">
+            <label class="radio-inline" for="tb-form-tile-text-align-1">
+              <input type="radio" name="tb-form-tile-text-align" id="tb-form-tile-text-align-1" value="text-center">
               Center
             </label>
-            <label class="radio-inline" for="sms-form-tile-text-align-2">
-              <input type="radio" name="sms-form-tile-text-align" id="sms-form-tile-text-align-2" value="text-right">
+            <label class="radio-inline" for="tb-form-tile-text-align-2">
+              <input type="radio" name="tb-form-tile-text-align" id="tb-form-tile-text-align-2" value="text-right">
               Right
             </label>
           </div>
@@ -236,20 +236,20 @@
 
         <!-- Text input: URL -->
         <div class="form-group portrait-related">
-            <label class="col-md-6 control-label" for="sms-form-tile-url-value">URL</label>
+            <label class="col-md-6 control-label" for="tb-form-tile-url-value">URL</label>
             <div class="col-md-6">
-                <input id="sms-form-tile-url-value" name="sms-form-tile-url-value" type="text" placeholder="http://tafensw.edu.au" class="form-control input-md">
+                <input id="tb-form-tile-url-value" name="tb-form-tile-url-value" type="text" placeholder="http://tafensw.edu.au" class="form-control input-md">
                 <span class="help-block">Where do you want this tile to link to? (Copy and paste a course location.)</span>
             </div>
         </div>
 
         <!-- Multiple Checkboxes: Include Image toggle -->
         <div class="form-group portrait-related">
-            <label class="col-md-6 control-label" for="sms-form-tile-image">Include an Image</label>
+            <label class="col-md-6 control-label" for="tb-form-tile-image">Include an Image</label>
             <div class="col-md-6">
                 <div class="checkbox">
-                    <label for="sms-form-tile-image-0">
-                        <input type="checkbox" name="sms-form-tile-image" id="sms-form-tile-image-0" value="yes">
+                    <label for="tb-form-tile-image-0">
+                        <input type="checkbox" name="tb-form-tile-image" id="tb-form-tile-image-0" value="yes">
                         Yes
                     </label>
                 </div>
@@ -260,18 +260,18 @@
         <div id="imageConfigurables" class="configuable">
             <!-- Text input: Image URL -->
             <div class="form-group">
-                <label class="col-md-6 control-label" for="sms-form-tile-image-url">Image URL</label>
+                <label class="col-md-6 control-label" for="tb-form-tile-image-url">Image URL</label>
                 <div class="col-md-6">
-                    <input id="sms-form-tile-image-url" name="sms-form-tile-image-url" type="text" placeholder="http://lorempixel.com/150/100/business/" class="form-control input-md">
+                    <input id="tb-form-tile-image-url" name="tb-form-tile-image-url" type="text" placeholder="http://lorempixel.com/150/100/business/" class="form-control input-md">
                     <span class="help-block">What is the image's URL? (Copy and paste the src of an image you uploaded to Moodle.)</span>
                 </div>
             </div>
 
             <!-- Text input: Image ALT-->
             <div class="form-group">
-                <label class="col-md-6 control-label" for="sms-form-tile-image-alt">Alt Text</label>
+                <label class="col-md-6 control-label" for="tb-form-tile-image-alt">Alt Text</label>
                 <div class="col-md-6">
-                    <input id="sms-form-tile-image-alt" name="sms-form-tile-image-alt" type="text" placeholder="A generic picture" class="form-control input-md">
+                    <input id="tb-form-tile-image-alt" name="tb-form-tile-image-alt" type="text" placeholder="A generic picture" class="form-control input-md">
                     <span class="help-block">What is the image's alternate text? Describe the picture in about 70 characters.</span>
                 </div>
             </div>
@@ -279,35 +279,35 @@
 
         <!-- Multiple Radios: Triangles -->
         <div class="form-group">
-            <label class="col-md-6 control-label" for="sms-form-tile-triangle">Tile Triangles</label>
+            <label class="col-md-6 control-label" for="tb-form-tile-triangle">Tile Triangles</label>
             <div class="col-md-6">
                 <div class="radio">
-                    <label for="sms-form-tile-triangle-0">
-                        <input type="radio" name="sms-form-tile-triangle" id="sms-form-tile-triangle-0" value="sms-tri-none" checked="checked">
+                    <label for="tb-form-tile-triangle-0">
+                        <input type="radio" name="tb-form-tile-triangle" id="tb-form-tile-triangle-0" value="tb-tri-none" checked="checked">
                         None
                     </label>
                 </div>
                 <div class="radio">
-                    <label for="sms-form-tile-triangle-1">
-                        <input type="radio" name="sms-form-tile-triangle" id="sms-form-tile-triangle-1" value="sms-tri-tl">
+                    <label for="tb-form-tile-triangle-1">
+                        <input type="radio" name="tb-form-tile-triangle" id="tb-form-tile-triangle-1" value="tb-tri-tl">
                         Top Left
                     </label>
                 </div>
                 <div class="radio">
-                    <label for="sms-form-tile-triangle-2">
-                        <input type="radio" name="sms-form-tile-triangle" id="sms-form-tile-triangle-2" value="sms-tri-tr">
+                    <label for="tb-form-tile-triangle-2">
+                        <input type="radio" name="tb-form-tile-triangle" id="tb-form-tile-triangle-2" value="tb-tri-tr">
                         Top Right
                     </label>
                 </div>
                 <div class="radio">
-                    <label for="sms-form-tile-triangle-3">
-                        <input type="radio" name="sms-form-tile-triangle" id="sms-form-tile-triangle-3" value="sms-tri-bl">
+                    <label for="tb-form-tile-triangle-3">
+                        <input type="radio" name="tb-form-tile-triangle" id="tb-form-tile-triangle-3" value="tb-tri-bl">
                         Bottom Left
                     </label>
                 </div>
                 <div class="radio">
-                    <label for="sms-form-tile-triangle-4">
-                        <input type="radio" name="sms-form-tile-triangle" id="sms-form-tile-triangle-4" value="sms-tri-br">
+                    <label for="tb-form-tile-triangle-4">
+                        <input type="radio" name="tb-form-tile-triangle" id="tb-form-tile-triangle-4" value="tb-tri-br">
                         Bottom Right
                     </label>
                 </div>
@@ -316,18 +316,18 @@
         
         <!-- Multiple Radios (inline): Alignment -->
         <div class="form-group">
-          <label class="col-md-6 control-label" for="sms-form-tile-tri-color">Force Triangle Colour</label>
+          <label class="col-md-6 control-label" for="tb-form-tile-tri-color">Force Triangle Colour</label>
           <div class="col-md-6">
-            <label class="radio-inline" for="sms-form-tile-tri-color-0">
-              <input type="radio" name="sms-form-tile-tri-color" id="sms-form-tile-tri-color-0" value="sms-tri-bgcolor-natural" checked="checked">
+            <label class="radio-inline" for="tb-form-tile-tri-color-0">
+              <input type="radio" name="tb-form-tile-tri-color" id="tb-form-tile-tri-color-0" value="tb-tri-bgcolor-natural" checked="checked">
               Don't Force
             </label>           
-            <label class="radio-inline" for="sms-form-tile-tri-color-1">
-              <input type="radio" name="sms-form-tile-tri-color" id="sms-form-tile-tri-color-1" value="sms-tri-bgcolor-white">
+            <label class="radio-inline" for="tb-form-tile-tri-color-1">
+              <input type="radio" name="tb-form-tile-tri-color" id="tb-form-tile-tri-color-1" value="tb-tri-bgcolor-white">
               White
             </label>
-            <label class="radio-inline" for="sms-form-tile-tri-color-2">
-              <input type="radio" name="sms-form-tile-tri-color" id="sms-form-tile-tri-color-2" value="sms-tri-bgcolor-offwhite">
+            <label class="radio-inline" for="tb-form-tile-tri-color-2">
+              <input type="radio" name="tb-form-tile-tri-color" id="tb-form-tile-tri-color-2" value="tb-tri-bgcolor-offwhite">
               Off White (#fbf9fb)
             </label>
           </div>
@@ -335,63 +335,63 @@
 
         <!-- Select Basic: Tile Colors -->
         <div class="form-group ">
-            <label class="col-md-6 control-label" for="sms-form-tile-color">Tile Colour</label>
+            <label class="col-md-6 control-label" for="tb-form-tile-color">Tile Colour</label>
             <div class="col-md-6">
-                <select id="sms-form-tile-color" name="sms-form-tile-color" class="form-control">
-                    <optgroup label="Brand Book Colour Palette" class="sms-text-dark">
-                        <option value="sms-color-teal" class="sms-color-teal sms-text-light">Teal</option>
-                        <option value="sms-color-dark-teal" class="sms-color-dark-teal sms-text-light" selected>Dark Teal</option>
-                        <option value="sms-color-aa-teal" class="sms-color-aa-teal sms-text-light">AA Dark Teal</option>
-                        <option value="sms-color-denim-blue" class="sms-color-denim-blue sms-text-light">Denim Blue</option>
-                        <option value="sms-color-azure-blue" class="sms-color-azure-blue sms-text-light">Azure Blue</option>
-                        <option value="sms-color-aa-azure-blue" class="sms-color-aa-azure-blue sms-text-light">AA Azure Blue</option>
-                        <option value="sms-color-lavendar" class="sms-color-lavendar sms-text-light">Lavendar</option>
-                        <option value="sms-color-dark-lavendar" class="sms-color-dark-lavendar sms-text-light">Dark Lavendar</option>
-                        <option value="sms-color-aa-dark-lavendar" class="sms-color-aa-dark-lavendar sms-text-light">AA Dark Lavendar</option>
-                        <option value="sms-color-fresh-peach" class="sms-color-fresh-peach sms-text-light">Fresh Peach</option>
-                        <option value="sms-color-ripe-peach" class="sms-color-ripe-peach sms-text-light">Ripe Peach</option>
-                        <option value="sms-color-aa-dark-peach" class="sms-color-aa-dark-peach sms-text-light">AA Dark Peach</option>
-                        <option value="sms-color-lemonade-yellow" class="sms-color-lemonade-yellow sms-text-dark">Lemonade Yellow</option>
-                        <option value="sms-color-sunshine-yellow" class="sms-color-sunshine-yellow sms-text-dark">Sunshine Yellow</option>
-                        <option value="sms-color-minty-green" class="sms-color-minty-green sms-text-dark">Minty Green</option>
-                        <option value="sms-color-spearmint" class="sms-color-spearmint sms-text-light">Spearmint</option>
-                        <option value="sms-color-aa-green" class="sms-color-aa-green sms-text-light">AA Green</option>
-                        <option value="sms-color-aqua" class="sms-color-aqua sms-text-light">Aqua</option>
-                        <option value="sms-color-deep-aqua" class="sms-color-deep-aqua sms-text-light">Deep Aqua</option>
-                        <option value="sms-color-aa-aqua" class="sms-color-aa-aqua sms-text-light">AA Aqua</option>
-                        <option value="sms-color-powder-mauve" class="sms-color-powder-mauve sms-text-light">Powder Mauve</option>
-                        <option value="sms-color-mauve" class="sms-color-mauve sms-text-light">Mauve</option>
-                        <option value="sms-color-aa-mauve" class="sms-color-aa-mauve sms-text-light">AA Mauve</option>
-                        <option value="sms-color-flamingo" class="sms-text-light sms-color-flamingo">Flamingo</option>
-                        <option value="sms-color-bubblegum" class="sms-text-light sms-color-bubblegum">Bubblegum</option>
-                        <option value="sms-color-aa-pink" class="sms-color-aa-pink sms-text-light">AA Pink</option>
-                        <option value="sms-color-apricot" class="sms-text-light sms-color-apricot">Apricot</option>
-                        <option value="sms-color-goldie" class="sms-text-light sms-color-goldie">Goldie</option>
+                <select id="tb-form-tile-color" name="tb-form-tile-color" class="form-control">
+                    <optgroup label="Brand Book Colour Palette" class="tb-text-dark">
+                        <option value="tb-color-teal" class="tb-color-teal tb-text-light">Teal</option>
+                        <option value="tb-color-dark-teal" class="tb-color-dark-teal tb-text-light" selected>Dark Teal</option>
+                        <option value="tb-color-aa-teal" class="tb-color-aa-teal tb-text-light">AA Dark Teal</option>
+                        <option value="tb-color-denim-blue" class="tb-color-denim-blue tb-text-light">Denim Blue</option>
+                        <option value="tb-color-azure-blue" class="tb-color-azure-blue tb-text-light">Azure Blue</option>
+                        <option value="tb-color-aa-azure-blue" class="tb-color-aa-azure-blue tb-text-light">AA Azure Blue</option>
+                        <option value="tb-color-lavendar" class="tb-color-lavendar tb-text-light">Lavendar</option>
+                        <option value="tb-color-dark-lavendar" class="tb-color-dark-lavendar tb-text-light">Dark Lavendar</option>
+                        <option value="tb-color-aa-dark-lavendar" class="tb-color-aa-dark-lavendar tb-text-light">AA Dark Lavendar</option>
+                        <option value="tb-color-fresh-peach" class="tb-color-fresh-peach tb-text-light">Fresh Peach</option>
+                        <option value="tb-color-ripe-peach" class="tb-color-ripe-peach tb-text-light">Ripe Peach</option>
+                        <option value="tb-color-aa-dark-peach" class="tb-color-aa-dark-peach tb-text-light">AA Dark Peach</option>
+                        <option value="tb-color-lemonade-yellow" class="tb-color-lemonade-yellow tb-text-dark">Lemonade Yellow</option>
+                        <option value="tb-color-sunshine-yellow" class="tb-color-sunshine-yellow tb-text-dark">Sunshine Yellow</option>
+                        <option value="tb-color-minty-green" class="tb-color-minty-green tb-text-dark">Minty Green</option>
+                        <option value="tb-color-spearmint" class="tb-color-spearmint tb-text-light">Spearmint</option>
+                        <option value="tb-color-aa-green" class="tb-color-aa-green tb-text-light">AA Green</option>
+                        <option value="tb-color-aqua" class="tb-color-aqua tb-text-light">Aqua</option>
+                        <option value="tb-color-deep-aqua" class="tb-color-deep-aqua tb-text-light">Deep Aqua</option>
+                        <option value="tb-color-aa-aqua" class="tb-color-aa-aqua tb-text-light">AA Aqua</option>
+                        <option value="tb-color-powder-mauve" class="tb-color-powder-mauve tb-text-light">Powder Mauve</option>
+                        <option value="tb-color-mauve" class="tb-color-mauve tb-text-light">Mauve</option>
+                        <option value="tb-color-aa-mauve" class="tb-color-aa-mauve tb-text-light">AA Mauve</option>
+                        <option value="tb-color-flamingo" class="tb-text-light tb-color-flamingo">Flamingo</option>
+                        <option value="tb-color-bubblegum" class="tb-text-light tb-color-bubblegum">Bubblegum</option>
+                        <option value="tb-color-aa-pink" class="tb-color-aa-pink tb-text-light">AA Pink</option>
+                        <option value="tb-color-apricot" class="tb-text-light tb-color-apricot">Apricot</option>
+                        <option value="tb-color-goldie" class="tb-text-light tb-color-goldie">Goldie</option>
                     </optgroup>
-                    <optgroup label="Brand Book B&W" class="sms-text-dark">
-                        <option value="sms-color-black" class="sms-text-light sms-color-black">Black</option>
-                        <option value="sms-color-charcoal" class="sms-text-light sms-color-charcoal">Charcoal</option>
-                        <option value="sms-color-grey1" class="sms-text-light sms-color-grey1">Grey 1</option>
-                        <option value="sms-color-grey2" class="sms-text-light sms-color-grey2">Grey 2</option>
-                        <option value="sms-color-grey3" class="sms-text-light sms-color-grey3">Grey 3</option>
-                        <option value="sms-color-grey4" class="sms-text-dark sms-color-grey2">Grey 4</option>
-                        <option value="sms-color-grey5" class="sms-text-dark sms-color-grey5">Grey 5</option>
+                    <optgroup label="Brand Book B&W" class="tb-text-dark">
+                        <option value="tb-color-black" class="tb-text-light tb-color-black">Black</option>
+                        <option value="tb-color-charcoal" class="tb-text-light tb-color-charcoal">Charcoal</option>
+                        <option value="tb-color-grey1" class="tb-text-light tb-color-grey1">Grey 1</option>
+                        <option value="tb-color-grey2" class="tb-text-light tb-color-grey2">Grey 2</option>
+                        <option value="tb-color-grey3" class="tb-text-light tb-color-grey3">Grey 3</option>
+                        <option value="tb-color-grey4" class="tb-text-dark tb-color-grey2">Grey 4</option>
+                        <option value="tb-color-grey5" class="tb-text-dark tb-color-grey5">Grey 5</option>
                     </optgroup>
-                    <optgroup label="TAFE Intranet Colours" class="sms-text-dark">
-                        <option value="sms-color-intranet-blue" class="sms-text-light sms-color-intranet-blue">Intranet Blue</option>
-                        <option value="sms-color-intranet-purple" class="sms-text-light sms-color-intranet-purple">Intranet Purple</option>
-                        <option value="sms-color-intranet-turquoise" class="sms-text-light sms-color-intranet-turquoise">Intranet Turquoise</option>
-                        <option value="sms-color-intranet-ochre" class="sms-text-light sms-color-intranet-ochre">Intranet Ochre</option>
+                    <optgroup label="TAFE Intranet Colours" class="tb-text-dark">
+                        <option value="tb-color-intranet-blue" class="tb-text-light tb-color-intranet-blue">Intranet Blue</option>
+                        <option value="tb-color-intranet-purple" class="tb-text-light tb-color-intranet-purple">Intranet Purple</option>
+                        <option value="tb-color-intranet-turquoise" class="tb-text-light tb-color-intranet-turquoise">Intranet Turquoise</option>
+                        <option value="tb-color-intranet-ochre" class="tb-text-light tb-color-intranet-ochre">Intranet Ochre</option>
                     </optgroup>
-                    <optgroup label="SMS R2 Mockup Colours" class="sms-text-dark">
-                        <option value="sms-color-smsmock-blue" class="sms-text-light sms-color-smsmock-blue">SMS Blue</option>
-                        <option value="sms-color-smsmock-green" class="sms-text-light sms-color-smsmock-green">SMS Green</option>
-                        <option value="sms-color-smsmock-grey" class="sms-text-light sms-color-smsmock-grey">SMS Grey</option>
-                        <option value="sms-color-smsmock-orange" class="sms-text-light sms-color-smsmock-orange">SMS Orange</option>
-                        <option value="sms-color-smsmock-pink" class="sms-text-light sms-color-smsmock-pink">SMS Pink</option>
-                        <option value="sms-color-smsmock-purple" class="sms-text-light sms-color-smsmock-purple">SMS Purple</option>
-                        <option value="sms-color-smsmock-turquoise" class="sms-text-light sms-color-smsmock-turquoise">SMS Turquoise</option>
-                        <option value="sms-color-smsmock-yellow" class="sms-text-dark sms-color-smsmock-yellow">SMS Yellow</option>
+                    <optgroup label="SMS R2 Mockup Colours" class="tb-text-dark">
+                        <option value="tb-color-smsmock-blue" class="tb-text-light tb-color-smsmock-blue">SMS Blue</option>
+                        <option value="tb-color-smsmock-green" class="tb-text-light tb-color-smsmock-green">SMS Green</option>
+                        <option value="tb-color-smsmock-grey" class="tb-text-light tb-color-smsmock-grey">SMS Grey</option>
+                        <option value="tb-color-smsmock-orange" class="tb-text-light tb-color-smsmock-orange">SMS Orange</option>
+                        <option value="tb-color-smsmock-pink" class="tb-text-light tb-color-smsmock-pink">SMS Pink</option>
+                        <option value="tb-color-smsmock-purple" class="tb-text-light tb-color-smsmock-purple">SMS Purple</option>
+                        <option value="tb-color-smsmock-turquoise" class="tb-text-light tb-color-smsmock-turquoise">SMS Turquoise</option>
+                        <option value="tb-color-smsmock-yellow" class="tb-text-dark tb-color-smsmock-yellow">SMS Yellow</option>
                     </optgroup>
                 </select>
             </div>
@@ -399,17 +399,17 @@
 
         <!-- Multiple Radios: Text Colors -->
         <div class="form-group portrait-related">
-            <label class="col-md-6 control-label" for="sms-form-tile-text-color">Text Color</label>
+            <label class="col-md-6 control-label" for="tb-form-tile-text-color">Text Color</label>
             <div class="col-md-6">
                 <div class="radio">
-                    <label for="sms-form-tile-text-color-0">
-                        <input type="radio" name="sms-form-tile-text-color" id="sms-form-tile-text-color-0" value="sms-text-light" checked="checked">
+                    <label for="tb-form-tile-text-color-0">
+                        <input type="radio" name="tb-form-tile-text-color" id="tb-form-tile-text-color-0" value="tb-text-light" checked="checked">
                         Light
                     </label>
                 </div>
                 <div class="radio">
-                    <label for="sms-form-tile-text-color-1">
-                        <input type="radio" name="sms-form-tile-text-color" id="sms-form-tile-text-color-1" value="sms-text-dark">
+                    <label for="tb-form-tile-text-color-1">
+                        <input type="radio" name="tb-form-tile-text-color" id="tb-form-tile-text-color-1" value="tb-text-dark">
                         Dark
                     </label>
                 </div>
@@ -418,35 +418,35 @@
 
         <!-- Multiple Radios: Text Size -->
         <div class="form-group portrait-related">
-            <label class="col-md-6 control-label" for="sms-form-tile-text-size">Text Size</label>
+            <label class="col-md-6 control-label" for="tb-form-tile-text-size">Text Size</label>
             <div class="col-md-6">
                 <div class="radio">
-                    <label for="sms-form-tile-text-size-0">
-                        <input type="radio" name="sms-form-tile-text-size" id="sms-form-tile-text-size-0" value="sms-text-size" checked="checked">
+                    <label for="tb-form-tile-text-size-0">
+                        <input type="radio" name="tb-form-tile-text-size" id="tb-form-tile-text-size-0" value="tb-text-size" checked="checked">
                         Normal
                     </label>
                 </div>
                 <div class="radio">
                     <label for="sms-form-tile-size-size-1">
-                        <input type="radio" name="sms-form-tile-text-size" id="sms-form-tile-text-size-1" value="sms-text-big">
+                        <input type="radio" name="tb-form-tile-text-size" id="tb-form-tile-text-size-1" value="tb-text-big">
                         Bigger
                     </label>
                 </div>
                 <div class="radio">
                     <label for="sms-form-tile-size-size-4">
-                        <input type="radio" name="sms-form-tile-text-size" id="sms-form-tile-text-size-4" value="sms-text-very-big">
+                        <input type="radio" name="tb-form-tile-text-size" id="tb-form-tile-text-size-4" value="tb-text-very-big">
                         Biggest
                     </label>
                 </div>                
                 <div class="radio">
-                    <label for="sms-form-tile-text-size-2">
-                        <input type="radio" name="sms-form-tile-text-size" id="sms-form-tile-text-size-2" value="sms-text-small">
+                    <label for="tb-form-tile-text-size-2">
+                        <input type="radio" name="tb-form-tile-text-size" id="tb-form-tile-text-size-2" value="tb-text-small">
                         Smaller <i class="bg-warning">Try to avoid</i>
                     </label>
                 </div>
                 <div class="radio">
-                    <label for="sms-form-tile-text-size-3">
-                        <input type="radio" name="sms-form-tile-text-size" id="sms-form-tile-text-size-3" value="sms-text-very-small">
+                    <label for="tb-form-tile-text-size-3">
+                        <input type="radio" name="tb-form-tile-text-size" id="tb-form-tile-text-size-3" value="tb-text-very-small">
                         Smallest <i class="bg-warning">Try to avoid</i>
                     </label>
                 </div>
@@ -456,11 +456,11 @@
 
         <!-- Multiple Checkboxes: Include Go Button toggle -->
         <div class="form-group portrait-related">
-            <label class="col-md-6 control-label" for="sms-form-tile-gobtn">Add a Go Button</label>
+            <label class="col-md-6 control-label" for="tb-form-tile-gobtn">Add a Go Button</label>
             <div class="col-md-6">
                 <div class="checkbox">
-                    <label for="sms-form-tile-gobtn-0">
-                        <input type="checkbox" name="sms-form-tile-gobtn" id="sms-form-tile-gobtn-0" value="yes">
+                    <label for="tb-form-tile-gobtn-0">
+                        <input type="checkbox" name="tb-form-tile-gobtn" id="tb-form-tile-gobtn-0" value="yes">
                         Yes
                     </label>
                 </div>
@@ -472,20 +472,20 @@
 
             <!-- Text input: Go Button Text -->
             <div class="form-group">
-                <label class="col-md-6 control-label" for="sms-form-tile-gobtn-text">Text</label>
+                <label class="col-md-6 control-label" for="tb-form-tile-gobtn-text">Text</label>
                 <div class="col-md-6">
-                    <input id="sms-form-tile-gobtn-text" name="sms-form-tile-gobtn-text" type="text" placeholder="Go..." class="form-control input-md">
+                    <input id="tb-form-tile-gobtn-text" name="tb-form-tile-gobtn-text" type="text" placeholder="Go..." class="form-control input-md">
                 </div>
             </div>
         </div>
 
         <!-- Multiple Checkboxes: Include Ribbon toggle -->
         <div class="form-group">
-            <label class="col-md-6 control-label" for="sms-form-tile-ribbon">Add a Ribbon</label>
+            <label class="col-md-6 control-label" for="tb-form-tile-ribbon">Add a Ribbon</label>
             <div class="col-md-6">
                 <div class="checkbox">
-                    <label for="sms-form-tile-ribbon-0">
-                        <input type="checkbox" name="sms-form-tile-ribbon" id="sms-form-tile-ribbon-0" value="yes">
+                    <label for="tb-form-tile-ribbon-0">
+                        <input type="checkbox" name="tb-form-tile-ribbon" id="tb-form-tile-ribbon-0" value="yes">
                         Yes
                     </label>
                 </div>
@@ -497,49 +497,49 @@
         <div id="ribbonConfigurables" class="configurable">
             <!-- Text input: Ribbon Text-->
             <div class="form-group">
-                <label class="col-md-6 control-label" for="sms-form-tile-ribbon-text">Ribbon Text</label>
+                <label class="col-md-6 control-label" for="tb-form-tile-ribbon-text">Ribbon Text</label>
                 <div class="col-md-6">
-                    <input id="sms-form-tile-ribbon-text" name="sms-form-tile-ribbon-text" type="text" placeholder="New!" class="form-control input-md">
+                    <input id="tb-form-tile-ribbon-text" name="tb-form-tile-ribbon-text" type="text" placeholder="New!" class="form-control input-md">
                     <span class="help-block">What do you want the ribbon to say?</span>
                 </div>
             </div>
 
             <!-- Select Basic: Ribbon Color -->
             <div class="form-group">
-                <label class="col-md-6 control-label" for="sms-form-tile-ribbon-color">Ribbon Colour</label>
+                <label class="col-md-6 control-label" for="tb-form-tile-ribbon-color">Ribbon Colour</label>
                 <div class="col-md-6">
-                    <select id="sms-form-tile-ribbon-color" name="sms-form-tile-ribbon-color" class="form-control">
-                        <option value="sms-ribbon-color-red" class="sms-ribbon-color-red">Red</option>
-                        <option value="sms-ribbon-color-pink" class="sms-ribbon-color-pink">Pink</option>
-                        <option value="sms-ribbon-color-purple" class="sms-ribbon-color-purple">Purple</option>
-                        <option value="sms-ribbon-color-blue" class="sms-ribbon-color-blue">Blue</option>
-                        <option value="sms-ribbon-color-salmon" class="sms-ribbon-color-salmon">Salmon</option>
-                        <option value="sms-ribbon-color-aqua" class="sms-ribbon-color-aqua">Aqua</option>
-                        <option value="sms-ribbon-color-gold" class="sms-ribbon-color-gold">Gold</option>
-                        <option value="sms-ribbon-color-sunshine" class="sms-ribbon-color-sunshine">Sunshine</option>
-                        <option value="sms-ribbon-color-green" class="sms-ribbon-color-green">Green</option>
-                        <option value="sms-ribbon-color-teal" class="sms-ribbon-color-teal">Teal</option>
-                        <option value="sms-ribbon-color-azure" class="sms-ribbon-color-azure">Azure</option>
-                        <option value="sms-ribbon-color-lavendar" class="sms-ribbon-color-lavendar">Lavendar</option>
-                        <option value="sms-ribbon-color-peach" class="sms-ribbon-color-peach">Peach</option>
-                        <option value="sms-ribbon-color-mint" class="sms-ribbon-color-mint">Mint</option>
+                    <select id="tb-form-tile-ribbon-color" name="tb-form-tile-ribbon-color" class="form-control">
+                        <option value="tb-ribbon-color-red" class="tb-ribbon-color-red">Red</option>
+                        <option value="tb-ribbon-color-pink" class="tb-ribbon-color-pink">Pink</option>
+                        <option value="tb-ribbon-color-purple" class="tb-ribbon-color-purple">Purple</option>
+                        <option value="tb-ribbon-color-blue" class="tb-ribbon-color-blue">Blue</option>
+                        <option value="tb-ribbon-color-salmon" class="tb-ribbon-color-salmon">Salmon</option>
+                        <option value="tb-ribbon-color-aqua" class="tb-ribbon-color-aqua">Aqua</option>
+                        <option value="tb-ribbon-color-gold" class="tb-ribbon-color-gold">Gold</option>
+                        <option value="tb-ribbon-color-sunshine" class="tb-ribbon-color-sunshine">Sunshine</option>
+                        <option value="tb-ribbon-color-green" class="tb-ribbon-color-green">Green</option>
+                        <option value="tb-ribbon-color-teal" class="tb-ribbon-color-teal">Teal</option>
+                        <option value="tb-ribbon-color-azure" class="tb-ribbon-color-azure">Azure</option>
+                        <option value="tb-ribbon-color-lavendar" class="tb-ribbon-color-lavendar">Lavendar</option>
+                        <option value="tb-ribbon-color-peach" class="tb-ribbon-color-peach">Peach</option>
+                        <option value="tb-ribbon-color-mint" class="tb-ribbon-color-mint">Mint</option>
                     </select>
                 </div>
             </div>
 
             <!-- Multiple Radios: Ribbon Location -->
             <div class="form-group">
-                <label class="col-md-6 control-label" for="sms-form-tile-ribbon-location">Location</label>
+                <label class="col-md-6 control-label" for="tb-form-tile-ribbon-location">Location</label>
                 <div class="col-md-6">
                     <div class="radio">
-                        <label for="sms-form-tile-ribbon-location-0">
-                            <input type="radio" name="sms-form-tile-ribbon-location" id="sms-form-tile-ribbon-location-0" value="sms-ribbon-tr" checked="checked">
+                        <label for="tb-form-tile-ribbon-location-0">
+                            <input type="radio" name="tb-form-tile-ribbon-location" id="tb-form-tile-ribbon-location-0" value="tb-ribbon-tr" checked="checked">
                             Top Right
                         </label>
                     </div>
                     <div class="radio">
-                        <label for="sms-form-tile-ribbon-location-1">
-                            <input type="radio" name="sms-form-tile-ribbon-location" id="sms-form-tile-ribbon-location-1" value="sms-ribbon-bl">
+                        <label for="tb-form-tile-ribbon-location-1">
+                            <input type="radio" name="tb-form-tile-ribbon-location" id="tb-form-tile-ribbon-location-1" value="tb-ribbon-bl">
                             Bottom Left
                         </label>
                     </div>
@@ -571,16 +571,16 @@
 
 
         </div>
-		<div class="form-group" style="margin-bottom: 4em; display: none;">
+		<!--<div class="form-group" style="margin-bottom: 4em; display: none;">
 			<div class="col-md-6">
 				<div class="checkbox">
-					<label for="sms-form-tile-ribbon-0">
+					<label for="tb-form-tile-ribbon-0">
 						<input type="checkbox" name="wrapper-rnd-bg" id="wrapper-rnd-bg-0" value="yes">
 						<i>Random Background Colour for Testing</i>
 					</label>
 				</div>
 			</div>
-		</div>
+		</div>-->
         <div class="outputcode">
             <h3>Output</h3>
             <p><i>Copy and paste this HTML:</i><br>
@@ -619,13 +619,15 @@
 	var subpaneprefix   = landscapeprefix + '-subpane';
 
 	// Various other prefixes
-	var gobtnprefix  = tileprefix + '-go-btn';
-	var ribbonprefix = tileprefix + '-ribbon';
-	var colorprefix  = tileprefix + '-color';
-	var urlprefix    = tileprefix + '-url';
-	var pageprefix   = tileprefix + '-page';
-	var textprefix   = tileprefix + '-text';
-	var triprefix    = tileprefix + '-tri';
+	var gobtnprefix     = tileprefix + '-go-btn';
+	var ribbonprefix    = tileprefix + '-ribbon';
+	var ribboncolprefix = ribbonprefix + '-color';
+	var ribbonlocprefix = ribbonprefix; 			// Added incase this changes
+	var colorprefix     = tileprefix + '-color';
+	var urlprefix       = tileprefix + '-url';
+	var pageprefix      = tileprefix + '-page';
+	var textprefix      = tileprefix + '-text';
+	var triprefix       = tileprefix + '-tri';
 	
 	
 	// -----------------------------------------------------------------------------/	
@@ -645,6 +647,39 @@
         document.execCommand("copy");
         $temp.remove();
     }	
+	
+	
+	/**
+	 * PRIVATE
+	 * 
+	 * Sets the colors in the color dropdown by swapping classes from 
+	 * tb-color/tb-text to framework prefixes
+	 *
+	 * Only called via docready
+	 *
+	 * @param string curcolorprefix The current color prefix
+	 * @param string curtextprefix The current text prefix
+	 * @param string curribcolprefix The current ribbon-color prefix		 
+	 * @return {void}
+	 */	
+	function setColorDropdownPrefix(curcolorprefix = "tb-color", curtextprefix = "tb-text", curribcolprefix = "tb-ribbon-color-") {
+		$('#tb-form-tile-color optgroup').each(function() {
+			var classes = $(this).attr("class");
+			classes = classes.replace(curtextprefix, textprefix);
+			$(this).addClass(classes);
+		});
+		$('#tb-form-tile-color option').each(function() {
+			var classes = $(this).attr("class");
+			classes = classes.replace(curtextprefix, textprefix);
+			classes = classes.replace(curcolorprefix, colorprefix);
+			$(this).addClass(classes);
+		});	
+		$('#tb-form-tile-ribbon-color option').each(function() {
+			var classes = $(this).attr("class");
+			classes = classes.replace(curribcolprefix, ribboncolprefix);
+			$(this).addClass(classes);
+		});		
+	}
 	
 	
 	// -----------------------------------------------------------------------------/
@@ -738,7 +773,7 @@
 			
 			for (var i = 0; i < n; i++) {
 				subpaneOutput += '<div class="' + subpaneprefix + subpaneClass 
-					+ ' ' + textprefix + '-dark">
+					+ ' ' + textprefix + '-dark">'
 					+ '<h5>Inner Header</h5><p>This is some text</p></div>';
 			}
 			
@@ -790,10 +825,13 @@
 	 * @return {void}
 	 */		
 	function processLayout() {
-		var newLayout = $("#sms-form-tile-layout").val(); // NAMECHANGE // Find the layout configuration selected 
+		var newLayout = $("#tb-form-tile-layout").val(); // NAMECHANGE // Find the layout configuration selected 
 		var tileSelector = "#wrapper ." + tileprefix;
 		var oldPrototype = "";
 		var newPrototype = "";
+		
+		// Change the tb prefix to the framework prefix
+		newLayout = newLayout.replace("tb-layout", layoutprefix);
 		
 		// What were you before?
 		if ($(tileSelector).hasClass(landscapeprefix)) {
@@ -803,7 +841,7 @@
 		}
 		
 		// What do you want to be now?
-		if ($("#sms-form-tile-layout").val() == landscapeprefix) { // NAMECHANGE
+		if (newLayout == landscapeprefix) { // NAMECHANGE
 			newPrototype = "landscape";
 		} else {
 			newPrototype = "portrait";
@@ -854,7 +892,7 @@
 	 */	
 	function processText() {
 		var tileSelector = "#wrapper ." + tileprefix + "-text";
-		var newText = $("#sms-form-tile-text-value").val().replace(/\n/g,"<br>"); // NAMECHANGE
+		var newText = $("#tb-form-tile-text-value").val().replace(/\n/g,"<br>"); // NAMECHANGE
 		
         // Change the tile's text
         if (newText == "") { newText = "This is your tile text."; }
@@ -874,8 +912,8 @@
 	 */	
 	function processImage() {
 		var tileSelector = "#wrapper ." + tileprefix + "-img";	
-        var includeImage = $("#sms-form-tile-image-0").prop("checked"); // NAMECHANGE // Boolean, TRUE if an image is to be included
-		var tileLayout   = $("#sms-form-tile-layout").val(); // NAMECHANGE // The tile's layout; necessary for setting image sizes
+        var includeImage = $("#tb-form-tile-image-0").prop("checked"); // NAMECHANGE // Boolean, TRUE if an image is to be included
+		var tileLayout   = $("#tb-form-tile-layout").val(); // NAMECHANGE // The tile's layout; necessary for setting image sizes
 		
 		// Get rid of any existing image
         $(tileSelector).remove();		
@@ -890,8 +928,8 @@
 			var urlSelector = "#wrapper ." + urlprefix; 
 
             // Set imgURL and imgAlt to be the value from the form.
-            imgURL = $("#sms-form-tile-image-url").val(); // NAMECHANGE
-            imgAlt = $("#sms-form-tile-image-alt").val(); // NAMECHANGE
+            imgURL = $("#tb-form-tile-image-url").val(); // NAMECHANGE
+            imgAlt = $("#tb-form-tile-image-alt").val(); // NAMECHANGE
 
 			if ((tileLayout == portraitprefix) || (tileLayout == (portraitprefix + "-200"))) {
 				imgWidth = 150;
@@ -946,7 +984,7 @@
 	 * @return {void}
 	 */	
 	function processURL() {
-        var newURL = $("#sms-form-tile-url-value").val(); //NAMECHANGE
+        var newURL = $("#tb-form-tile-url-value").val(); //NAMECHANGE
 		var urlSelector = "#wrapper ." + urlprefix;
 		
         // Change the tile's URL
@@ -961,7 +999,7 @@
 	 * @return {void}
 	 */	
 	function processRibbon() {
-        var includeRibbon = $("#sms-form-tile-ribbon-0").prop("checked"); // NAMECHANGE
+        var includeRibbon = $("#tb-form-tile-ribbon-0").prop("checked"); // NAMECHANGE
 		var ribbonSelector = "#wrapper ." + ribbonprefix;
 		var portSelector = "#wrapper ." + textprefix;
 		var landSelector = "#wrapper ." + landscapeprefix;
@@ -977,9 +1015,12 @@
             var ribbonHTML = "";
 
             // Set the ribbonText and the ribbonColor to be the value from the form
-            ribbonText  = $("#sms-form-tile-ribbon-text").val(); // NAMECHANGE
-            ribbonColor = $("#sms-form-tile-ribbon-color").val(); // NAMECHANGE
-            ribbonLocation = $("input[name=sms-form-tile-ribbon-location]:checked").val();  // NAMECHANGE
+            ribbonText  = $("#tb-form-tile-ribbon-text").val(); // NAMECHANGE
+            ribbonColor = $("#tb-form-tile-ribbon-color").val(); // NAMECHANGE
+            ribbonLocation = $("input[name=tb-form-tile-ribbon-location]:checked").val();  // NAMECHANGE
+			
+			ribbonColor = ribbonColor.replace("tb-ribbon-color", ribboncolprefix);
+			ribbonLocation = ribbonLocation.replace("tb-ribbon", ribbonlocprefix);
 
             // Build the ribbon HTML
             if (ribbonText == "") { ribbonText = "New!"; }
@@ -1007,7 +1048,7 @@
 	 * @return {void}
 	 */		
 	function processGoBtn() {
-        var includeGoBtn  = $("#sms-form-tile-gobtn-0").prop("checked"); // NAMECHANGE
+        var includeGoBtn  = $("#tb-form-tile-gobtn-0").prop("checked"); // NAMECHANGE
 		var goBtnSelector = "#wrapper ." + gobtnprefix;
 		var tileTextSelector = "#wrapper ." + tileprefix + "-text";
 		
@@ -1017,7 +1058,7 @@
 		// If you want a Go button...
         if (includeGoBtn) {
             var goBtnHTML = "";
-            var goBtnText  = $("#sms-form-tile-gobtn-text").val(); //NAMECHANGE
+            var goBtnText  = $("#tb-form-tile-gobtn-text").val(); //NAMECHANGE
 
 
             // Build the Go Button
@@ -1037,7 +1078,7 @@
 	 * @return {void}
 	 */		
 	function processTriangles() {
-        var newTriangle  = $("input[name=sms-form-tile-triangle]:checked").val(); // NAMECHANGE
+        var newTriangle  = $("input[name=tb-form-tile-triangle]:checked").val(); // NAMECHANGE
 		var tileSelector = "#wrapper ." + tileprefix;
 		var noTriangle   = triprefix + "-none";
 		var fffTriangle  = triprefix + "-bgcolor-";
@@ -1045,6 +1086,9 @@
 		
 		fffTriangle += "white";
 		offTriangle += "offwhite";
+		
+		// Change the tb prefix to the framework prefix
+		newTriangle = newTriangle.replace("tb-tri", triprefix);		
  		
         // Remove all existing triangles, then add the correct triangle		
 		$(tileSelector).removeClass(triprefix).removeClass(function (index, className) {
@@ -1055,12 +1099,12 @@
 		});
 
         if (newTriangle == noTriangle) { 
-        	//$(tileSelector).removeClass(fffTriangle).removeClass(offTriangle); // Don't need ?
-			$("#sms-form-tile-tri-color-0").prop("checked", true); // NAMECHANGE
-			$("input[name=sms-form-tile-tri-color]").prop("disabled", true); // NAMECHANGE
+        	$(tileSelector).removeClass(fffTriangle).removeClass(offTriangle); // Don't need ?
+			$("#tb-form-tile-tri-color-0").prop("checked", true); // NAMECHANGE
+			$("input[name=tb-form-tile-tri-color]").prop("disabled", true); // NAMECHANGE
 		} else {
             $(tileSelector).addClass(newTriangle).addClass(triprefix);
-			$("input[name=sms-form-tile-tri-color]").prop("disabled", false); // NAMECHANGE
+			$("input[name=tb-form-tile-tri-color]").prop("disabled", false); // NAMECHANGE
 			processTriColor();
         } 
 		
@@ -1087,6 +1131,9 @@
 		offTriangle += "offwhite";
 		natTriangle += "natural"; // Should never be on the tile
 		
+		// Change the tb prefix to the framework prefix
+		newTriColor = newTriColor.replace("tb-tri", triprefix);			
+		
         // Remove all existing triangle colors, then add the correct triangle
         $(tileSelector).removeClass(fffTriangle).removeClass(offTriangle).removeClass(natTriangle);
         if (newTriColor != natTriangle) {
@@ -1105,8 +1152,11 @@
 	 * @return {void}
 	 */	
 	function processColor() {
-        var newColor = $("#sms-form-tile-color").val();	// NAMECHANGE
-		var tileSelector = "#wrapper ." + tileprefix;		
+        var newColor = $("#tb-form-tile-color").val();	// NAMECHANGE
+		var tileSelector = "#wrapper ." + tileprefix;	
+		
+		// Change the tb prefix to the framework prefix
+		newColor = newColor.replace("tb-color", colorprefix);	
 		
         // Remove exisiting color, then add the new color
         $(tileSelector).removeClass(function (index, className) {
@@ -1128,10 +1178,13 @@
 	 * @return {void}
 	 */		
 	function processTextColor() {
-        var newTextColor  = $("input[name=sms-form-tile-text-color]:checked").val(); // NAMECHANGE
+        var newTextColor  = $("input[name=tb-form-tile-text-color]:checked").val(); // NAMECHANGE
 		var tileSelector  = "#wrapper ." + tileprefix;
 		var lightColor    = textprefix + "-light";
 		var darkColor     = textprefix + "-dark";
+		
+		// Change the tb prefix to the framework prefix
+		newTextColor = newTextColor.replace("tb-text", textprefix);		
 
         // Remove existing text color, and then set text color
         $(tileSelector).removeClass(lightColor).removeClass(darkColor).addClass(newTextColor);
@@ -1144,24 +1197,27 @@
 	 * @return {void}
 	 */	
 	function processTextSize() {
-        var newTextSize   = $("input[name=sms-form-tile-text-size]:checked").val();	// NAMECHANGE
+        var newTextSize   = $("input[name=tb-form-tile-text-size]:checked").val();	// NAMECHANGE
 		var tileSelector  = "#wrapper ." + tileprefix;	
 		var textSize      = textprefix + "-size";  // A class denoting this tile has the default text size
 		var textSizes     = ["big", "small", "very-big", "very-small"]; // Text size classes
+		var textClasses   = [];
 		
+		// Change the tb prefix to the framework prefix
+		newTextSize = newTextSize.replace("tb-text", textprefix);				
 		
 		textSizes.forEach(function(item, index, array) { 
 			// Add the prefix
-			item = textprefix + '-' + item;
+			textClasses.push(textprefix + '-' + item);
 		});
 		
-		textSizes.push(textSize);
+		textClasses.push(textSize);
 		
-		var textClasses = textSizes.join(' ');
+		var allClasses = textSizes.join(' ');
 		
 		
 		// Remove existing text size, and then set text size
-        $(tileSelector).removeClass(textClasses);
+        $(tileSelector).removeClass(allClasses);
         if (newTextSize != textSize) {
             $(tileSelector).addClass(newTextSize);
         }
@@ -1174,22 +1230,26 @@
 	 * @return {void}
 	 */		
 	function processFooterTextSize() {
-        var newFooterTextSize = $("input[name=sms-form-footer-text-size]:checked").val();		// NAMECHANGE
+        var newFooterTextSize = $("input[name=tb-form-footer-text-size]:checked").val();		// NAMECHANGE
 		var footerSelector  = "#wrapper ." + landscapeprefix + "-footer";
 		var textSizes     = ["small", "very-small"]; // Footer text size classes
-		var textSize      = textprefix + "-size";  // A class denoting this tile has the default text size		
+		var textSize      = textprefix + "-size";  // A class denoting this tile has the default text size
+		var textClasses   = [];
+		
+		// Change the tb prefix to the framework prefix
+		newFooterTextSize = newFooterTextSize.replace("tb-text", textprefix);
 		
 		textSizes.forEach(function(item, index, array) { 
 			// Add the prefix
-			item = textprefix + '-' + item;
+			textClasses.push(textprefix + '-' + item);
 		});
 		
 		textSizes.push(textSize);		
 		
-		var textClasses = textSizes.join(' ');		
+		var allClasses = textSizes.join(' ');		
 		
 		// Remove existing text size, and then set text size
-        $(footerSelector).removeClass(textClasses);
+        $(footerSelector).removeClass(allClasses);
         if (newFooterTextSize != textSize) {
             $(footerSelector).addClass(newFooterTextSize);
         }
@@ -1203,7 +1263,7 @@
 	 * @return {void}
 	 */	
 	function processTextAlign() {
-		var newTextAlign = $("input[name=sms-form-tile-text-align]:checked").val(); // NAMECHANGE
+		var newTextAlign = $("input[name=tb-form-tile-text-align]:checked").val(); // NAMECHANGE
 		var tileTextSelector = "#wrapper ." + tileprefix + "-text";		
 		
         // Remove existing text alignment, and then set text alignment
@@ -1219,7 +1279,7 @@
 	 * @return {void}
 	 */		
 	function processFooterAlign() {
-		var newFooterAlign = $("input[name=sms-form-tile-footer-align]:checked").val(); // NAMECHANGE
+		var newFooterAlign = $("input[name=tb-form-tile-footer-align]:checked").val(); // NAMECHANGE
 		var footerSelector  = "#wrapper ." + landscapeprefix + "-footer";		
 		
         // Remove existing text alignment, and then set text alignment
@@ -1236,7 +1296,7 @@
 	 */	
 	function processLandscapeSubpanes() {
 		var outputHTML = "";
-		var newConfig = $("input[name=sms-form-landscape-config]:checked").val();  // NAMECHANGE
+		var newConfig = $("input[name=tb-form-landscape-config]:checked").val();  // NAMECHANGE
 		var n; // Number of subpanes desired
 		var subpaneSelector = "#wrapper ." + subpaneprefix;
 		var headerSelector  = "#wrapper ." + landscapeprefix + "-header";
@@ -1274,94 +1334,101 @@
 	 * @return {void}
 	 */	
 	function processHeader() {
-		var newHeader = $("#sms-form-tile-header-value").val();
+		var newHeader = $("#tb-form-tile-header-value").val();
 		var headerSelector = "#wrapper ." + landscapeprefix + "-header h4";
 		
         // Change the headers's text
         if (newHeader == "") { newHeader = "Header"; }
         $(headerSelector).html(newHeader);
-		processOlderMoodle();
-	}	
-	
-	/* Totally don't need but good reminder for what to do later when built into the form */
-	function prefixChanger(theString, formprefix, newprefix) {
-		return theString.replace(formprefix, newprefix);
-	}
-	
-	
-	function processAll() {
-		// Will need to do and remove all processes along the line except for private functions
-	}
-	
-</script>
-
-<script>
-
-	
-
-	
-
-	
-
-	
-	function displayTileOutput() {
-		// Show the HTML preview
-        var outputHTML = $("#wrapper").html();
-
-        // Write the output so it can be copied
-        $("#output").text(outputHTML);	
+		processOlderMoodle(); // Necessary
 	}	
 	
 
-	
+	/**
+	 * Process settings related to the HEADER TITLE CASE.
+	 *
+	 * @return {void}
+	 */	
 	function processHeaderTitleCase() {
-        var useTitleCase = $("#sms-form-header-title-case-0").prop("checked");
-		var h4Classes = $("#wrapper .sms-layout-landscape-header h4").attr("class");
+        var useTitleCase = $("#tb-form-header-title-case-0").prop("checked"); // NAMECHANGE
+		var headerSelector = "#wrapper ." + landscapeprefix + "-header h4";
+		var $h4Classes = $(headerSelector).attr("class");
 		
-		// Get rid of any title cases 
-		$("#wrapper .sms-layout-landscape-header h4").removeClass("text-capitalize");
+		// Get rid of any title cases
+		$(headerSelector).removeClass("text-capitalize");
 		
-		if (typeof h4Classes != 'undefined') {
-			if (($("#wrapper .sms-layout-landscape-header h4").attr("class").length) == 0) {
-				$("#wrapper .sms-layout-landscape-header h4").removeAttr("class");
+		// If there are no other classes, get rid of the class attribute
+		if (typeof $h4Classes != 'undefined') {
+			if (($(headerSelector).attr("class").length) == 0) {
+				$(headerSelector).removeAttr("class");
 			}
 		}
 
         // If you want a title case...
+		// Uses BOOTSTRAP classes
         if (useTitleCase) {
-            $("#wrapper .sms-layout-landscape-header h4").addClass("text-capitalize");
+            $(headerSelector).addClass("text-capitalize");
         }
-		processOlderMoodle();
+		processOlderMoodle(); // Necessary?
 	}	
 	
+	
+	/**
+	 * Process settings related to the FOOTER TEXT.
+	 *
+	 * @return {void}
+	 */	
 	function processFooter() {
-		var newFooter = $("#sms-form-tile-footer-value").val();
-		var incFooter = $("#sms-form-tile-footer-0").prop('checked');
+		var newFooter = $("#tb-form-tile-footer-value").val(); // NAMECHANGE
+		var incFooter = $("#tb-form-tile-footer-0").prop('checked'); // NAMECHANGE
+		var footerSelector = "#wrapper ." + landscapeprefix + "-footer";
 		
 		if (!incFooter) {
 			newFooter = "";
 		}
 		
-        // Change the footers's text
-        //if (newFooter == "") { 
-		//	newFooter = "Footer"; 
-		//}
-        $("#wrapper .sms-layout-landscape-footer").html(newFooter);	
-		processOlderMoodle();
+        $(footerSelector).html(newFooter);	
+		processOlderMoodle(); // Necessary?
 	}	
 	
+	
+	/**
+	 * Process settings related to the HEADER & FOOTER COLOR.
+	 *
+	 * Please note that while colour is spelled with a u for humans in Australia,
+	 * due to HTML/CSS protocol, we will always use the American spelling in any
+	 * HTML, CSS or Script files.
+	 *	 
+	 * @return {void}
+	 */		
 	function processHeaderTextColor() {
-        var newHeaderTextColor  = $("input[name=sms-form-header-text-color]:checked").val();
+        var newHeaderTextColor  = $("input[name=tb-form-header-text-color]:checked").val(); // NAMECHANGE
+		var headerSelector = "#wrapper ." + landscapeprefix + "-header";
+		var footerSelector = "#wrapper ." + landscapeprefix + "-footer";
+		var lightText = textprefix + "-light";
+		var darkText  = textprefix + "-dark";
+		var allText   = lightText + " " + darkText;
+		
+		// Change the tb prefix to the framework prefix
+		newHeaderTextColor = newHeaderTextColor.replace("tb-text", textprefix);
 
         // Remove existing text color, and then set text color
-        $("#wrapper .sms-layout-landscape-header").removeClass("sms-text-light sms-text-dark");
-        $("#wrapper .sms-layout-landscape-header").addClass(newHeaderTextColor);
-        $("#wrapper .sms-layout-landscape-footer").removeClass("sms-text-light sms-text-dark");
-        $("#wrapper .sms-layout-landscape-footer").addClass(newHeaderTextColor);		
+        $(headerSelector).removeClass(allText).addClass(newHeaderTextColor);
+        $(footerSelector).removeClass(allText).addClass(newHeaderTextColor);		
 	}	
 	
+
+	/**
+	 * Process settings related to the use of an OLDER MOODLE.
+	 *
+	 * Moodle 2.7.X, the current version of the Staff Moodle, does not like
+	 * the <header> element. <footer> it can deal with better but it hates <header>.
+	 * This function will switch a <header> for a <div class="header">.
+	 *	 
+	 * @return {void}
+	 */		
 	function processOlderMoodle() {
-		var useOlderMoodle = $("#sms-form-fix-for-older-moodle-0").prop("checked");
+		var useOlderMoodle = $("#tb-form-fix-for-older-moodle-0").prop("checked"); // NAMECHANGE
 		
 		if (useOlderMoodle) {
 			fixForOldMoodle();
@@ -1370,66 +1437,152 @@
 		}
 	}	
 	
+
+	/**
+	 * PRIVATE
+	 *
+	 * Swap a <header> for <div class="header"> and likewise for <footer>.
+	 * 
+	 * Only called via processOlderMoodle()
+	 *
+	 * @return {void}
+	 */		
 	function fixForOldMoodle() {
-		// Moodle v2.7.X doesn't like <header> or <footer>. Swap for <div>s
-		var headerClasses = "";
-		var footerClasses = "";
-		headerClasses = $("#wrapper .sms-layout-landscape header").attr("class");
-		footerClasses = $("#wrapper .sms-layout-landscape footer").attr("class");
+		var headerClasses  = ""; // Current <header> classes
+		var footerClasses  = "";
+		var headerSelector = "#wrapper ." + landscapeprefix + " header";
+		var footerSelector = "#wrapper ." + landscapeprefix + " footer";
+		headerClasses = $(headerSelector).attr("class"); // Set headerClasses = the value of the current header's class attribute
+		footerClasses = $(footerSelector).attr("class");
 		
-		$("#wrapper .sms-layout-landscape header").replaceWith(function() {
+		$(headerSelector).replaceWith(function() {
+			// Take the header and replace it with a div with the same contents.
 			return '<div class="' + headerClasses + '">' + this.innerHTML + '</div>';
 		});
-		$("#wrapper .sms-layout-landscape footer").replaceWith(function() {
+		$(footerSelector).replaceWith(function() {
 			return '<div class="' + footerClasses + '">' + this.innerHTML + '</div>';
 		});		
 	}
 	
+	
+	/**
+	 * PRIVATE
+	 *
+	 * The opposite of fixForOldMoodle()
+	 * Swap a <div class="header"> for <header> and likewise for <div class="footer">.
+	 * 
+	 * Only called via processOlderMoodle()
+	 *
+	 * @return {void}
+	 */		
 	function unfixForOldMoodle() {
-		// Moodle v2.7.X doesn't like <header> or <footer>. Swap for <div>s
 		var headerClasses = "";
 		var footerClasses = "";
-		headerClasses = $("#wrapper .sms-layout-landscape-header").attr("class");
-		footerClasses = $("#wrapper .sms-layout-landscape-footer").attr("class");
+		var headerSelector = "#wrapper ." + landscapeprefix + "-header";
+		var footerSelector = "#wrapper ." + landscapeprefix + "-footer";		
 		
-		$("#wrapper .sms-layout-landscape-header").replaceWith(function() {
+		headerClasses = $(headerSelector).attr("class");
+		footerClasses = $(footerSelector).attr("class");
+		
+		$(headerSelector).replaceWith(function() {
 			return '<header class="' + headerClasses + '">' + this.innerHTML + '</header>';
 		});
-		$("#wrapper .sms-layout-landscape-footer").replaceWith(function() {
+		$(footerSelector).replaceWith(function() {
 			return '<footer class="' + footerClasses + '">' + this.innerHTML + '</footer>';
 		});		
 	}	
 	
-	function countRows() {
-		return $(".sms-layout-landscape-config-table tbody tr").get().length;
-	}
-	
+
+	/**
+	 * Process settings related to ADD ROW button for LANDSCAPE TABLE LAYOUTS.
+	 * Only to be run when ADD ROW has been pressed.
+	 *	 
+	 * @return {void}
+	 */		
 	function processAddRow() {
-		var numRows = countRows();
-		var newRow = '<tr><td>Item ' + numRows + '</td><td class="shaded">Shaded Item ' + numRows + '</td></tr>';
-		$(".sms-layout-landscape-config-table tbody").append(newRow);
+		var numRows           = countRows();
+		var tableBodySelector = landscapeprefix + "-config-table tbody";
+		var removeRowSelector = "#tb-table-remove-row"; // NAMECHANGE
+		var newRow            = '<tr>
+								+ '<td>Item ' + numRows + '</td>' 
+								+ '<td class="shaded">Shaded Item ' + numRows + '</td>' 
+								+ '</tr>';
+		
+		
+		$(tableBodySelector).append(newRow);
+		
 		numRows++;
 		
+		// Enable the REMOVE ROW button if there's 3 or more rows
+		// using BOOTSTRAP class.
 		if (numRows > 2) {
-			$("#sms-table-remove-row").removeClass("disabled");
+			$(removeRowSelector).removeClass("disabled");
 		}	
-	}
+	}	
 	
+
+	/**
+	 * Process settings related to REMOVE ROW button for LANDSCAPE TABLE LAYOUTS.
+	 * Only to be run when REMOVE ROW has been pressed.
+	 *	 
+	 * @return {void}
+	 */		
 	function processRemoveRow() {
-		var numRows = countRows();
+		var numRows          = countRows();
+		var lastRowSelector  = landscapeprefix + "-config-table tbody tr:last"; // Literally removing the last row of the table.
+		var removeRowSelector = "#tb-table-remove-row"; // NAMECHANGE		
+		
 		if (numRows > 2) {
-			$(".sms-layout-landscape-config-table tbody tr:last").remove();
+			// Double check this hasn't been run on a table with less than two rows.
+			$(lastRowSelector).remove();
 			numRows--;
 		} 
 		
+		// Disable the REMOVE ROW button if there's 2 or fewer rows
+		// using BOOTSTRAP class.		
 		if (numRows <= 2) {
-			$("#sms-table-remove-row").addClass("disabled");
+			$(removeRowSelector).addClass("disabled");
 		}
 		
-	}
+	}	
+	
+
+	/**
+	 * PRIVATE
+	 *
+	 * Count the number of rows in a LANDSCAPE TABLE LAYOUTS 
+	 * 
+	 * Only called via processAddRow() and processRemoveRow()
+	 *
+	 * @return {void}
+	 */		
+	function countRows() {
+		var tableRowSelector = landscapeprefix + "-config-table tbody tr";
+		return $(tableRowSelector).get().length;
+	}	
+	
+	
+	/**
+	 * Grab the contents of the wrapper and display it as copyable HTML
+	 *
+	 * @return {void}
+	 */	
+	function displayTileOutput() {
+		// Show the HTML preview
+        var outputHTML = $("#wrapper").html();
+
+        // Write the output so it can be copied
+        $("#output").text(outputHTML);	
+	}		
+	
+
+	// -----------------------------------------------------------------------------/	
+	// Document Ready and Display Based On Functions
+	// These functions change what the TileBuider is Displaying
 
     // Doc Ready
     $(function() {
+		setColorDropdownPrefix();
         $(".configurable").hide();
         $("#wrapper").html(getPortaitHTML());
 		
@@ -1447,193 +1600,189 @@
 
 	
     // Show Image Configurables
-    $("#sms-form-tile-image-0").change(function() {
+    $("#tb-form-tile-image-0").change(function() {
 		toggleImageConfigs();
 		displayTileOutput();
 	});
 		
     // Show Ribbon Configurables
-    $("#sms-form-tile-ribbon-0").change(function() {
+    $("#tb-form-tile-ribbon-0").change(function() {
 		toggleRibbonConfigs();
 		displayTileOutput();
 	});
 
     // Show Go Button Configurables
-    $("#sms-form-tile-gobtn-0").change(function() {
+    $("#tb-form-tile-gobtn-0").change(function() {
 		toggleGoBtnConfigs();
 		displayTileOutput();
 	});
 	
 	// Layout changes
-	$("#sms-form-tile-layout").change(function() {
+	$("#tb-form-tile-layout").change(function() {
 		processLayout();
 		displayTileOutput();
 	});
 	
 	// Text changes
-	$("#sms-form-tile-text-value").on('change keyup paste', function() {
+	$("#tb-form-tile-text-value").on('change keyup paste', function() {
 		processText();
 		displayTileOutput();
 	});
 	
 	// Alignment changes
-	$("input[name=sms-form-tile-text-align]").change(function() {
+	$("input[name=tb-form-tile-text-align]").change(function() {
 		processTextAlign();
 		displayTileOutput();
 	});
 
 	// URL changes
-	$("#sms-form-tile-url-value").on('change keyup paste', function() {
+	$("#tb-form-tile-url-value").on('change keyup paste', function() {
 		processURL();
 		displayTileOutput();
 	})
 	
 	// Image Toggle
-	$("#sms-form-tile-image-0").change(toggleImageConfigs());
+	$("#tb-form-tile-image-0").change(toggleImageConfigs());
 	
 		// Image URL changes
-		$("#sms-form-tile-image-url").on('change paste', function() {
+		$("#tb-form-tile-image-url").on('change paste', function() {
 			processImage();
 			displayTileOutput();
 		});
 	
 		// Image ALT changes
-		$("#sms-form-tile-image-alt").on('change paste', function() {
+		$("#tb-form-tile-image-alt").on('change paste', function() {
 			processImage();
 			displayTileOutput();
 		});
 	
 	// Triangle changes
-	$("input[name=sms-form-tile-triangle]").change(function() {
+	$("input[name=tb-form-tile-triangle]").change(function() {
 		processTriangles();
 		displayTileOutput();
 	});
 	
 	// TriColor changes
-	$("input[name=sms-form-tile-tri-color]").change(function() {
+	$("input[name=tb-form-tile-tri-color]").change(function() {
 		processTriColor();
 		displayTileOutput();
 	});	
 	
 	// Tile Color changes
-	$("#sms-form-tile-color").change(function() {
+	$("#tb-form-tile-color").change(function() {
 		processColor();
 		displayTileOutput();
 	});
 	
 	// Text Color changes
-	$("input[name=sms-form-tile-text-color]").change(function() {
+	$("input[name=tb-form-tile-text-color]").change(function() {
 		processTextColor();
 		displayTileOutput();
 	});
 	
 	// Text Size changes
-	$("input[name=sms-form-tile-text-size]").change(function() {
+	$("input[name=tb-form-tile-text-size]").change(function() {
 		processTextSize();
 		displayTileOutput();
 	});
 	
 	
 	// Go Button Toggle
-	$("#sms-form-tile-gobtn-0").change(toggleGoBtnConfigs());	
+	$("#tb-form-tile-gobtn-0").change(toggleGoBtnConfigs());	
 	
 		// Go Button Text changes
-		$("#sms-form-tile-gobtn-text").change(function() {
+		$("#tb-form-tile-gobtn-text").change(function() {
 			processGoBtn();
 			displayTileOutput();
 		});
 	
 	// Ribbon Toggle
-	$("#sms-form-tile-ribbon-0").change(toggleRibbonConfigs());
+	$("#tb-form-tile-ribbon-0").change(toggleRibbonConfigs());
 	
 		// Ribbon Text changes
-		$("#sms-form-tile-ribbon-text").on('change keyup paste', function() {
+		$("#tb-form-tile-ribbon-text").on('change keyup paste', function() {
 			processRibbon();
 			displayTileOutput();
 		});
 	
 		// Ribbon Color changes
-		$("#sms-form-tile-ribbon-color").change(function() {
+		$("#tb-form-tile-ribbon-color").change(function() {
 			processRibbon();
 			displayTileOutput();
 		});	
 	
 		// Ribbon Location changes
-		$("input[name=sms-form-tile-ribbon-location]").change(function() {
+		$("input[name=tb-form-tile-ribbon-location]").change(function() {
 			processRibbon();
 			displayTileOutput();
 		});	
 	
 	// Landscape Config changes
-	$("input[name=sms-form-landscape-config]").change(function() {
+	$("input[name=tb-form-landscape-config]").change(function() {
 		processLandscapeSubpanes();
 		displayTileOutput();
 	});	
 	
 	// Header changes
-	$("#sms-form-tile-header-value").on('change keyup paste', function() {
+	$("#tb-form-tile-header-value").on('change keyup paste', function() {
 		processHeader();
 		displayTileOutput();
 	});	
 	
 	// Title Case changes
-	$("input[name=sms-form-fix-for-older-moodle]").change(function() {
+	$("input[name=tb-form-fix-for-older-moodle]").change(function() {
 		processOlderMoodle();
 		displayTileOutput();
 	});	
 	
 	
 	// Fix For Older Moodle changes
-	$("input[name=sms-form-header-title-case]").change(function() {
+	$("input[name=tb-form-header-title-case]").change(function() {
 		processHeaderTitleCase();
 		displayTileOutput();
 	});		
 	
 	// Text Color changes
-	$("input[name=sms-form-header-text-color]").change(function() {
+	$("input[name=tb-form-header-text-color]").change(function() {
 		processHeaderTextColor();
 		displayTileOutput();
 	});
 		
 	// Footer Toggle
-	$("#sms-form-tile-footer-0").change(function() {
+	$("#tb-form-tile-footer-0").change(function() {
 		toggleFooterConfigs();
 		displayTileOutput();
 	});	
 	
 		// Footer changes
-		$("#sms-form-tile-footer-value").on('change keyup paste', function() {
+		$("#tb-form-tile-footer-value").on('change keyup paste', function() {
 			processFooter();
 			displayTileOutput();
 		});		
 	
 		// Footer Text Size changes
-		$("input[name=sms-form-footer-text-size]").change(function() {
+		$("input[name=tb-form-footer-text-size]").change(function() {
 			processFooterTextSize();
 			displayTileOutput();
 		});	
 
 		// Footer Alignment changes
-		$("input[name=sms-form-tile-footer-align]").change(function() {
+		$("input[name=tb-form-tile-footer-align]").change(function() {
 			processFooterAlign();
 			displayTileOutput();
 		});	
 	
 	
-	$("#sms-table-remove-row").click(function () {
+	$("#tb-table-remove-row").click(function () {
 		processRemoveRow();
 		displayTileOutput();
 	});
 	
-	$("#sms-table-add-row").click(function () {
+	$("#tb-table-add-row").click(function () {
 		processAddRow();
 		displayTileOutput();
 	});	
-	
 
-
-
-	
 
 </script>
 
