@@ -2,22 +2,35 @@
 // Variables                                              */
 // -------------------------------------------------------*/
 // @kshuntley - kenneth.huntley@tafensw.edu.au
-// 12/01/2018 10:45
+// 02/08/2018 11:59
+
+//
+// Please note: If you change these, be sure to set new constants to match in the tile builder.
 
 // The overall prefix. I'm using SMS as this framework was first created for the SMS Project R2
-@tile-prefix:   ~'sms';	
+@framework-prefix:   ~'sms';	
+
+// Tile related prefixes
+@tile-prefix: 	~'@{framework-prefix}-tile';
 
 // Layout related prefixes
-@layout-prefix: 	~'@{tile-prefix}-layout';
+@layout-prefix: 	~'@{framework-prefix}-layout';
 @portrait-prefix: 	~'@{layout-prefix}-portrait';
 @landscape-prefix: 	~'@{layout-prefix}-landscape';
 @subpane-prefix: 	~'@{landscape-prefix}-subpane';
 
+// Box related prefixes
+@box-prefix: 		~'@{framework-prefix}-box';
+@shade-prefix: 		~'@{box-prefix}-shade';
+@shade-pattern-lt: 	~'@{shade-prefix}-pattern-left-third';
+
+
 // Various other prefixes
-@gobtn-prefix:  ~'@{tile-prefix}-go-btn';
-@ribbon-prefix: ~'@{tile-prefix}-ribbon';
-@color-prefix:  ~'@{tile-prefix}-color';
-@url-prefix: 	~'@{tile-prefix}-url';
-@page-prefix: 	~'@{tile-prefix}-page';
-@text-prefix: 	~'@{tile-prefix}-text';
-@tri-prefix: 	~'@{tile-prefix}-tri';
+@gobtn-prefix:  ~'@{framework-prefix}-go-btn';
+@ribbon-prefix: ~'@{framework-prefix}-ribbon';
+@color-prefix:  ~'@{framework-prefix}-color';
+@url-prefix: 	~'@{framework-prefix}-url';
+@page-prefix: 	~'@{framework-prefix}-page';
+@text-prefix: 	~'@{framework-prefix}-text';
+@tri-prefix: 	~'@{framework-prefix}-tri';
+

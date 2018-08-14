@@ -1,0 +1,169 @@
+/* -------------------------------------------------------*/
+/* Basic Box                                              */
+/*	- Apply to a <div> (or any block element)             */
+/*	Defaults to a AA Dark Teal Portrait with Dark Text    */
+/* -------------------------------------------------------*/
+// @kshuntley - kenneth.huntley@tafensw.edu.au
+// 02/08/2018 11:57
+
+@import (once) "variables.less";
+@import (once) "colors.less";
+@import (once) "mixins.less";
+
+.@{box-prefix} {
+	position: relative;
+	color: @dark-text;
+	background-color: @intranet-blue;
+	margin: 20px auto;
+	padding: 0;
+	width: 96%;
+	a {
+		&:link {
+			color: @dark-text;
+			text-decoration: none;
+		}
+		&:visited {
+			color: @dark-text;
+			text-decoration: none;
+		}
+		&:hover {
+			color: @dark-text;
+			text-decoration: none;
+		}
+		&:active {
+			color: @dark-text;
+			text-decoration: none;
+		}
+	}
+	
+	&-header {
+		color: @light-text;
+		padding: .2em .5em;
+		width:100%;
+		
+	}
+	
+	&-abstract {
+		background-color: rgba(255,255,255,.7);
+		margin: 0 10px 10px;
+		min-height: 50px;
+		p {
+			padding: .3em .1em;
+		}
+	}
+	
+	&-shade {
+		&-container {
+			position: relative;
+		}
+	}
+	
+	.@{box-prefix}-multi-list {
+		-webkit-column-count: 3;
+		   -moz-column-count: 3;
+		        column-count: 3;
+		-webkit-column-width: 200px;
+		   -moz-column-width: 200px;
+		        column-width: 200px;		
+		padding: 0 1em;
+		
+		li {
+			display: block;
+		
+			.details {
+				font-style: italic;
+				font-size: .9em;
+				
+				a {
+					text-decoration: underline;
+				}
+			}
+		}
+	}
+}
+
+.@{shade-prefix}-underlay {
+	position: absolute;
+	top: 0;
+	bottom: 10px;
+	z-index: 0;
+}
+
+.@{shade-prefix}-overlay {
+	z-index: 1;
+	position: relative;
+}
+
+
+.@{shade-pattern-lt} .@{shade-prefix} {
+	&-left {
+		width: ~"calc(((100% - 20px)/3)*1)";
+		background-color: rgba(255,255,255,0.7);
+		left: 10px;		
+	}
+	
+	&-right {
+		width: ~"calc(((100% - 20px)/3)*2)";
+		background-color: rgba(255,255,255,1);
+		right: 10px;
+		border-left-width: 5px;
+		border-left-style: solid;
+		border-left-color: #4d67ae;			
+	}	
+	
+	
+}
+
+.@{shade-pattern-lt} .@{box-prefix} {
+	&-sidebar {
+		width: ~"calc(((100% - 20px)/3)*1)";			
+		float: left;
+		margin-left: 10px;
+	}
+	
+	&-content {
+		width: ~"calc(((100% - 20px)/3)*2)";			
+		float: left;
+		margin-right: 10px;
+	}
+	
+	&-clear {
+		clear: both;
+		
+		&-bordered {
+			clear: both;
+			border-bottom-width: 5px;
+			border-bottom-style: solid;
+			border-bottom-color: #4d67ae;			
+		}
+	}
+	
+	&-row-content {
+		padding-top: 1em;	
+		.@{box-prefix}-sidebar {
+			vertical-align: middle;
+			
+			.@{box-prefix}-sidebar-artefact-filesize {
+				font-size: 85%;
+			}
+		}
+	
+		p {
+			padding: 0 1em;
+		}
+
+		.@{box-prefix}-content {
+			vertical-align: top;
+		}
+	}
+	
+	&-row-header {
+		vertical-align: middle;
+	}
+}
+
+
+		.sms-box-shade-pattern-left-third .sms-box-row-content .sms-box-content {
+			vertical-align: top;
+		}
+

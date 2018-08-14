@@ -31,9 +31,34 @@
 
 .color-mixin(@acolor) {
 	background-color: @acolor;
-	.@{subpane-prefix} {
-		border: @acolor solid 10px;
+	.@{shade-pattern-lt} {
+		& .@{shade-prefix}-right {
+			border-left-color: @acolor;
+		}
+		& .@{box-prefix}-clear-bordered {
+			border-bottom-color: @acolor;
+		}
 	}
+}
+
+
+.page-table-mixin(@bgcolor, @fgcolor: @white) {
+	background-color: @white;
+		
+	th { 
+		background-color: @bgcolor; 
+		color: @fgcolor;
+	}
+	
+	&, & td {
+		border: 2px solid @bgcolor;
+	}
+	
+}
+
+.heading-color-mixin(@acolor) {
+	color: @acolor;
+	background-color: @white;
 }
 
 .triangle-background-color(@bgcolor) {	

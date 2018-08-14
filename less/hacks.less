@@ -19,23 +19,61 @@
 /* Can be cut from Moodle CSS                             */
 /* -------------------------------------------------------*/
 // Hack for the Ribbon Colors to show up in the tile builder
-#sms-form-tile-ribbon-color {
-	color: @dark-text;
-	.@{color-prefix} {
-		&-red 		{ background-color: @ribbon-red; color: @light-text; }
-		&-pink 		{ background-color: @aa-pink; color: @light-text; }
-		&-purple 	{ background-color: @ribbon-purple; color: @light-text; }
-		&-blue 		{ background-color: @ribbon-blue; color: @light-text; }
-		&-salmon 	{ background-color: @ribbon-salmon; color: @light-text; }
-		&-aqua 		{ background-color: @ribbon-turquoise; color: @light-text; }
-		&-gold 		{ background-color: @ribbon-goldie; }
-		&-sunshine 	{ background-color: @ribbon-sunshine-yellow; }
-		&-green 	{ background-color: @ribbon-green; color: @light-text;}
-		&-teal 		{ background-color: @ribbon-teal; color: @light-text; }
-		&-azure 	{ background-color: @ribbon-azure; color: @light-text; }
-		&-lavendar 	{ background-color: @ribbon-lavendar; color: @light-text; }
-		&-peach 	{ background-color: @ribbon-peach; color: @light-text; }
-		&-mint 		{ background-color: @ribbon-mint; }
+option.@{ribbon-prefix} {
+	&-color {
+		&-red {
+			background-color: @ribbon-red;
+			color: @light-text;
+		}
+		&-pink {
+			background-color: @ribbon-pink;
+			color: @light-text;
+		}
+		&-purple {
+			background-color: @ribbon-purple;
+			color: @light-text;
+		}
+		&-blue {
+			background-color: @ribbon-blue;
+			color: @light-text;
+		}
+		&-salmon {
+			background-color: @ribbon-salmon;
+			color: @light-text;
+		}
+		&-aqua {
+			background-color: @ribbon-turquoise;
+			color: @light-text;
+		}
+		&-gold {
+			background-color: @ribbon-goldie;
+		}
+		&-sunshine {
+			background-color: @ribbon-sunshine-yellow;
+		}
+		&-green {
+			background-color: @ribbon-green;
+			color: @light-text;			
+		}
+		&-teal {
+			background-color: @ribbon-teal;
+			color: @light-text;			
+		}
+		&-azure {
+			background-color: @ribbon-azure;
+			color: @light-text;			
+		}
+		&-lavendar {
+			background-color: @ribbon-lavendar;
+			color: @light-text;			
+		}
+		&-peach {
+			background-color: @ribbon-peach;
+			color: @light-text;			
+		}
+		&-mint {
+			background-color: @ribbon-mint;		
+		}			
 	}
 }
 
@@ -47,7 +85,7 @@
 		        box-sizing: border-box; 
 		margin-top: 20px;
 		font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-		.@{tile-prefix}-tile-code {
+		.@{tile-prefix}-code {
 			border: 1px dotted #ccc;
 			width: 600px;
 			min-height: 600px;
@@ -76,7 +114,7 @@
 	
 	#wrapper {
 		position: absolute;
-		.@{tile-prefix}-tile {
+		.@{tile-prefix} {
 			margin: 0;
 		}
 		.@{layout-prefix} {
@@ -128,6 +166,15 @@
 			monospace;
 		font-size: 1.5em;
 	}
+}
+
+#box-builder h3 {
+	margin: 0;
+	margin-bottom: 20px;
+	border-bottom: 1px solid #e5e5e5;
+	letter-spacing: 0;
+	font-size: 21px;
+	line-height: 30px;
 }
 /* End Tile Builder Hack Code                             */
 /* -------------------------------------------------------*/
