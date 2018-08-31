@@ -262,7 +262,7 @@ nav.breadcrumb-nav .breadcrumb {
 
 /* Buttons and Forms */
 
-input[type="submit"], .btn-tafe-turquoise, input[type="button"], input[type="reset"], button {
+/*input[type="submit"], .btn-tafe-turquoise, input[type="button"], input[type="reset"], button {
     background-color: #1e988a;
     background-image: none;
     color: white;
@@ -276,7 +276,7 @@ input[type="submit"], .btn-tafe-turquoise, input[type="button"], input[type="res
 	border-bottom-color: rgba(0,0,0,0.25);
     /*font-size: 15px;
     padding: 8px 15px 7px 15px;*/
-}
+/*}
 
 input[type="submit"]:hover, .btn-tafe-turquoise:hover, input[type="button"]:hover, input[type="reset"]:hover, button:hover {
 	background-color: #076866;
@@ -294,7 +294,7 @@ input[type="cancel"] {
     font-weight: 200;
     letter-spacing: 1.2px;
     border-radius: 0;
-}
+}*/
 
 #notice .singlebutton+.singlebutton input {
 	border-radius: 0;
