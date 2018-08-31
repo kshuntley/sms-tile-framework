@@ -280,6 +280,8 @@
         // Remove existing text color, and then set text color
         $("#wrapper .sms-tile").removeClass("sms-text-light sms-text-dark");
         $("#wrapper .sms-tile").addClass(newTextColor);
+        $("#wrapper .sms-box-header").removeClass("sms-text-light sms-text-dark");
+        $("#wrapper .sms-box-header").addClass(newTextColor);		
 	}
 	
 	function processTextSize() {
