@@ -1,0 +1,451 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>The Menu Builder</title>
+   	<!-- Bootstrap -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" type="text/css" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous"> 
+    
+    <style>
+		/*#sms-menu-item-alpha {
+			background-color: aquamarine;
+		}*/
+		
+		.showEditable {
+		  background-color: rgba(246, 178, 32, 0.5) !important;
+		  border: 1px dashed red;
+		}		
+	
+	</style>
+    
+</head>
+
+<body id="menu-builder">
+
+	<div style="width: 300px; float: left" id="wrapper">
+	
+		<ul class="list-group sms-menu">
+			<li class="list-group-item ui-state-default"><a href="#" id="sms-menu-item-alpha"  contenteditable="false"><i class="fa fa-user-circle" aria-hidden="true"></i> Alpha</a></li>
+			<li class="list-group-item  ui-state-default"><a href="#" id="sms-menu-item-beta"  contenteditable="false"><i class="fa fa-thermometer-three-quarters" aria-hidden="true"></i> Beta</a></li>
+			<li class="list-group-item  ui-state-default"><a href="#" id="sms-menu-item-gamma"  contenteditable="false"><i class="fa fa-file-pdf-o" aria-hidden="true"></i> Gamma</a></li>
+			<li class="list-group-item  ui-state-default"><a href="#" id="sms-menu-item-delta"  contenteditable="false"><i class="fa fa-envelope-open" aria-hidden="true"></i> Delta</a></li>				
+		</ul>
+		
+	</div>
+	
+	<div id="controls" style="float: left;" class="col-md-6">
+
+				<legend style="margin-bottom: auto">Options</legend>
+				<div class="form-group" style="width: 80%; margin: 1em">
+					<div class="buttonrow btn-group addAndRemoveRows" role="group">
+						<button class="btn btn-info" id="btnAddRow"><i class="fa  fa-plus-square-o" aria-hidden="true" id="addRow"></i></button>
+						<button class="btn btn-info" id="btnRemoveRow"><i class="fa  fa-minus-square-o" aria-hidden="true" id="removeRow"></i></button>	
+					</div>
+
+
+					<div class="buttonrow btn-group dragAndSortBtns" role="group">
+						<button onClick="toggleSortable()" class="btn btn-success" id="btnSortable">Enable Drag &amp; Drop</button>
+						<button onClick="toggleEditable()" class="btn btn-success" id="btnEditable">Show Editable Content</button>	
+					</div>
+					
+					<!-- Multiple Radios: Placeholder Alphabet -->
+					<div class="form-group" style="margin-top: 1em">
+						<label class="control-label" for="sms-form-menu-alphabet">Placeholder Alphabet</label>
+						<div class="col-md-2 sms-menu-options-alphabet">
+							<div class="radio">
+								<label for="sms-form-menu-alphabet-0">
+									<input type="radio" name="sms-form-menu-alphabet" id="sms-form-menu-alphabet-0" value="greek" checked="checked">
+									Greek
+								</label>
+							</div>
+							<div class="radio">
+								<label for="sms-form-menu-alphabet-1">
+									<input type="radio" name="sms-form-menu-alphabet" id="sms-form-menu-alphabet-1" value="icao">
+									ICAO
+								</label>
+							</div>
+						</div>
+					</div>
+					
+					
+					 <!-- Multiple Radios (inline): Alignment -->
+					<div class="form-group portrait-related">
+					  <label class="col-md-6 control-label" for="sms-form-menu-text-align">Align</label>
+					  <div class="col-md-6">
+						<label class="radio-inline" for="sms-form-menu-text-align-0">
+						  <input type="radio" name="sms-form-menu-text-align" id="sms-form-menu-text-align-0" value="text-left" checked="checked">
+						  Left
+						</label>
+						<label class="radio-inline" for="sms-form-menu-text-align-1">
+						  <input type="radio" name="sms-form-menu-text-align" id="sms-form-menu-text-align-1" value="text-center">
+						  Center
+						</label>
+						<label class="radio-inline" for="sms-form-menu-text-align-2">
+						  <input type="radio" name="sms-form-menu-text-align" id="sms-form-menu-text-align-2" value="text-right">
+						  Right
+						</label>
+					  </div>
+					</div>
+					
+					<!-- Multiple Checkboxes: Include Drop Shadow -->
+					<div class="form-group">
+						<label class="col-md-6 control-label" for="sms-form-menu-bold">Bold</label>
+						<div class="col-md-6">
+							<div class="checkbox">
+								<label for="sms-form-menu-bold-0">
+									<input type="checkbox" name="sms-form-menu-bold" id="sms-form-menu-bold-0" value="true">
+									Yes
+								</label>
+							</div>
+						</div>
+					</div>
+				
+					<div class="outputcode">
+						<h3>Output</h3>
+						<p><i>Copy and paste this HTML:</i><br>
+						<code id="output">
+						</code></p>
+					</div>				
+				
+					<div class="row text-center">
+						<button type="button" onClick="copyToClipboard('#output')" class="btn btn-danger">Copy HTML</button>
+						<button type="button" id="inlinestylebutton" class="btn btn-success" onClick="runInlineConverter()">Convert to Inline CSS</button>
+						<button type="button" id="importcode" class="btn btn-info launch-modal" data-toggle="modal" data-target="#myTileBuilderModal">Import Tile HTML</button>
+					</div> 
+					
+				</div>
+				
+												
+
+	</div>
+	
+	
+	<!-- jQuery -->
+	<script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+	<script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js" integrity="sha256-eGE6blurk5sHj+rmkfsGYeKyZx3M4bG+ZlFyA7Kns7E=" crossorigin="anonymous"></script>
+
+   	<!-- Bootstrap -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>	
+    
+    <script>
+		
+		var someIcons = ["fa-address-book",
+							 "fa-user-circle",
+							 "fa-thermometer-three-quarters",
+							 "fa-file-pdf-o",
+							 "fa-file-audio-o",
+							 "fa-file-excel-o",
+							 "fa-files-o",
+							 "fa-envelope-open",
+							 "fa-graduation-cap",
+							 "fa-calendar",
+							 "fa-university"
+						];
+		
+		var alphabetGreek = ["Alpha", 
+								"Beta", 
+								"Gamma", 
+								"Delta", 
+								"Epsilon",
+								"Zeta",
+								"Eta",
+								"Theta",
+								"Iota",
+								"Kappa",
+								"Lambda",
+								"Mu",
+								"Nu",
+								"Xi",
+								"Omicron",
+								"Pi",
+								"Rho",
+								"Sigma",
+								"Tau",
+								"Upsilon",
+								"Phi",
+								"Chi",
+								"Psi",
+								"Omega"
+							];
+		
+		var alphabetICAO = ["Alfa",
+						   	"Bravo",
+						   	"Charlie",
+						   	"Delta",
+						   	"Echo",
+						   	"Foxtrot",
+						   	"Golf",
+						   	"Hotel",
+						   	"India",
+						   	"Juliett",
+						   	"Kilo",
+						   	"Lima",
+						   	"Mike",
+						   	"November",
+						   	"Oscar",
+						   	"Papa",
+						   	"Quebec",
+						   	"Romeo",
+						   	"Sierra",
+						   	"Tango",
+						   	"Uniform",
+						   	"Victor",
+						   	"Whiskey",
+						   	"X-ray",
+						   	"Yankee",
+						   	"Zulu"
+						   ];		
+		
+		function getRandomIcon() {	
+			var theIndex = Math.floor((Math.random() * someIcons.length));
+			return someIcons[theIndex];
+		}		
+		
+		function thatsAllGreekToMe(ab = "greek") {
+			var alphabet;
+			
+			if (ab === "greek") {
+				alphabet = alphabetGreek;
+			} else {
+				alphabet = alphabetICAO;
+			}
+			
+			$('.sms-menu').children().each( function(index) {
+				if ($(this).text() === "Item") {
+					var theIcon = getRandomIcon();
+					var theHTML = '<a href="#" id="sms-menu-item-new" contenteditable="false"><i class="fa '
+									+ theIcon
+									+ '" aria-hidden="true"></i> ';
+					var modIndex = index % alphabet.length;
+					
+					theHTML += alphabet[modIndex] + "</a>";
+					$(this).html(theHTML);
+				}
+			});
+		}
+		
+		
+		function newRow(numbRows = 1) {
+			var insertion = "";
+			
+			for (var i = 0; i < numbRows; i++) {
+				insertion += '<li class="list-group-item ui-state-default">Item</li>'
+			}
+			
+			return insertion;
+		}
+		
+		function isSingleRow() {
+			// Is there only one row remaining?
+
+			return (($(".sms-menu").children().length) < 2);
+		}
+		
+		
+		$("#btnAddRow").click( function() {
+			$(".sms-menu").append(newRow());
+			
+			// If I'm alone, don't delete me!
+			if (!isSingleRow()) 
+				$("#btnRemoveRow").prop("disabled", false);
+			
+			// Figure out my alphabet
+			var selectedAlphabet  = $("input[name=sms-form-menu-alphabet]:checked").val();
+			thatsAllGreekToMe(selectedAlphabet);
+			
+			// Set my alignment
+			var alignment = $("input[name=sms-form-menu-text-align]:checked").val();
+			$("#sms-menu-item-new").addClass(alignment);
+			
+			// Set my ID
+			$("#sms-menu-item-new").setNewID();
+			
+			displayMenuOutput();
+		});
+		
+		$("#btnRemoveRow").click( function() {
+			$(".sms-menu").children().last().remove();
+		
+			if (isSingleRow()) 
+				$("#btnRemoveRow").prop("disabled", true);	
+			
+			displayMenuOutput();
+		});
+		
+		
+		$(".sms-menu-options-alphabet input").click( function() {
+			var selectedAlphabet  = $("input[name=sms-form-menu-alphabet]:checked").val();
+			var oldABArray;
+			var newABArray;
+			
+			if (selectedAlphabet === "greek") {
+				newABArray = alphabetGreek;
+				oldABArray = alphabetICAO;
+			} else {
+				oldABArray = alphabetGreek;
+				newABArray = alphabetICAO;				
+			}
+			
+			$('.sms-menu li').children().each( function(index) {
+				
+				if (oldABArray.includes($(this).text().trim())) {
+					var modIndex = index % newABArray.length;
+					var theIcon = $(this).children("i").detach();
+					var theText = " " + newABArray[modIndex];
+					$(this).text(theText);
+					$(this).prepend(theIcon);
+				}
+			});	
+			
+			displayMenuOutput();
+		});
+		
+		function toggleEditable() {
+			'use strict';			
+			var btnText = $("#btnEditable").text();
+
+			if (btnText.startsWith("Show")) {
+				btnText = btnText.replace("Show", "Hide");
+				$("[contenteditable]").css({"cursor":"text"}).attr('contenteditable',true);
+				$(".addAndRemoveRows button, #btnSortable").prop("disabled", true);
+
+			} else {
+				btnText = btnText.replace("Hide", "Show");
+				$("[contenteditable='true']").css({"cursor":"auto"}).attr('contenteditable',false);
+				$(".addAndRemoveRows button, #btnSortable").prop("disabled", false);
+				
+				// Bug with hyperlinks not going back to pointer
+				$("a[contenteditable]").css({"cursor":"pointer"});
+
+			}
+
+			$("[contenteditable]").toggleClass("showEditable");
+			$('[class=""]').removeAttr('class'); // Hack to remove empty class attributes. Doesn't affect code, just make less ugly
+
+
+			$("#btnEditable").toggleClass("btn-danger").toggleClass("btn-success").text(btnText);
+
+			//tobeDeleteDisabled();
+			displayMenuOutput();
+			
+		}
+		
+		function toggleSortable() {
+			'use strict';			
+			var btnText = $("#btnSortable").text();
+
+
+			if (btnText.startsWith("En")) {
+				btnText = btnText.replace("En", "Dis");
+				$(".addAndRemoveRows button, #btnEditable").prop("disabled", true);				
+				$(".sms-menu").css({"cursor":"grab"}).sortable("enable").sortable({
+					"cursor":"move",
+					"axis": "y",
+					"revert": true,
+				});
+
+			} else {
+				btnText = btnText.replace("Dis", "En");
+				$(".addAndRemoveRows button, #btnEditable").prop("disabled", false);				
+				$(".sms-menu").css({"cursor":"auto"}).sortable("disable");
+			}
+			
+
+			$("#btnSortable").toggleClass("btn-danger").toggleClass("btn-success").text(btnText);
+
+			displayMenuOutput();
+		}
+		
+		$('a').css('cursor','context-menu');
+		$('.btn').css('cursor','pointer');
+		
+		function toLowerHyphenated (aString) {
+			var newString = aString.toLowerCase()
+									.replace(/[^\w\s]|_/g, "")
+									.replace(/\s+/g, " ")
+									.trim()
+									.split(" ")
+									.join("-");
+			return newString;
+		}
+
+		$('.sms-menu .list-group-item').blur(function() {
+			$(this).setNewID();
+			displayMenuOutput();
+		});	
+		
+		(function($){
+			$.fn.setNewID = function() {
+				var idcon = this.text();
+				var newID = "sms-menu-item-" + toLowerHyphenated(idcon);
+				
+				this.attr("id", newID);
+				
+				return this;
+			};
+		})(jQuery);
+		
+		
+		$(document).ready(function() {
+			$(".sms-menu").sortable({disabled: true});
+			
+			$('#wrapper').click(function(e) {
+				e.preventDefault();
+			});
+			
+			displayMenuOutput();			
+			
+		});
+		
+		$('input[name=sms-form-menu-text-align]').click(function() {
+			'use strict';			
+			var newTextAlign = $("input[name=sms-form-menu-text-align]:checked").val();
+
+			// Remove existing text alignment, and then set text alignment
+			$("#wrapper .sms-menu .list-group-item").removeClass("text-left text-right text-center");
+			$("#wrapper .sms-menu .list-group-item").addClass(newTextAlign);
+			displayMenuOutput();
+		});
+		
+		$('input[name=sms-form-menu-bold]').click(function() {
+			'use strict';	
+			
+			if ($("input[name=sms-form-menu-bold]:checked").val()) {
+				$("#wrapper .sms-menu .list-group-item").wrapInner("<strong></strong>");
+			} else {
+				$("#wrapper .sms-menu .list-group-item strong").replaceWith(function() { return this.innerHTML; });
+			}
+			
+			displayMenuOutput();
+		});			
+		
+		// Totes borrowed from https://codepen.io/shaikmaqsood/pen/XmydxJ/
+		function copyToClipboard(element) {
+			'use strict';
+			var $temp = $("<input>");
+			$("body").append($temp);
+			$temp.val($(element).text().trim()).select();
+			document.execCommand("copy");
+			$temp.remove();
+		}	
+		
+
+		function displayMenuOutput() {
+			'use strict';			
+			// Show the HTML preview
+			var outputHTML = $("#wrapper").html();
+
+			// Write the output so it can be copied
+			$("#output").text(outputHTML);	
+		}		
+		
+		
+		
+	</script>
+    
+
+</body>
+</html>

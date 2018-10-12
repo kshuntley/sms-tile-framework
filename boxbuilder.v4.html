@@ -582,24 +582,24 @@
 		
 		
 		
-		function toLowerHyphenated (aString) {
-			var newString = aString.toLowerCase()
-									.replace(/[^\w\s]|_/g, "")
-         							.replace(/\s+/g, " ")
-									.trim()
-									.split(" ")
-									.join("-");
-			return newString;
-		}
+	function toLowerHyphenated (aString) {
+		var newString = aString.toLowerCase()
+								.replace(/[^\w\s]|_/g, "")
+								.replace(/\s+/g, " ")
+								.trim()
+								.split(" ")
+								.join("-");
+		return newString;
+	}
 		
-		$('.sms-box-header h4').blur(function() {
-			var h4Con = $('.sms-box-header h4').text();
-			var newID = toLowerHyphenated(h4Con) + "-box-top";
-			var newLink = "#" + newID;
-			
-			$('.sms-box-header a.sms-box-header-anchor').attr("id", newID);
-			$('.sms-box-back a.sms-box-back-btn').attr("href", newLink);
-		});
+	$('.sms-box-header h4').blur(function() {
+		var h4Con = $('.sms-box-header h4').text();
+		var newID = toLowerHyphenated(h4Con) + "-box-top";
+		var newLink = "#" + newID;
+
+		$('.sms-box-header a.sms-box-header-anchor').attr("id", newID);
+		$('.sms-box-back a.sms-box-back-btn').attr("href", newLink);
+	});
 		
 		
 		function displayBoxOutput() {
