@@ -2398,6 +2398,27 @@ span.sms-go-btn {
   text-shadow: none;
   text-decoration: none;
 }
+.sms-layout-button {
+  height: 60px;
+  width: 300px;
+  text-align: center;
+  vertical-align: middle;
+  color: #ffffff;
+  font-size: 18px;
+  font-weight: 500;
+  border-radius: 5px;
+  position: relative;
+}
+.sms-layout-button span {
+  line-height: 60px;
+}
+.sms-layout-button a {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 60px;
+  width: 300px;
+}
 /* -------------------------------------------------------*/
 /* Ribbons                                                */
 /* -------------------------------------------------------*/
