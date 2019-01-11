@@ -51,6 +51,12 @@
 		'use strict';		
 		$("#gobtnConfigurables").slideToggle(200);
 		processGoBtn();
+	}
+
+	function toggleURLConfigs() {
+		'use strict';		
+		$("#urlConfigurable").slideToggle(200);
+		processUseURL();
 	}	
 	
 	function processLayout() {
@@ -65,7 +71,7 @@
 
 		processColor();
 		//processCustomColor();
-		processTriangles();
+		//processTriangles();
 		processRibbon();
 
 		processGoBtn();
@@ -126,7 +132,37 @@
                 case "sms-layout-portrait-220i":
                     imgWidth = 200;
                     imgHeight = 132;
-                    break;					
+                    break;	
+					
+				case "sms-layout-portrait-270":
+					imgWidth = 225;
+					imgHeight = 152;
+					break;
+					
+				case "sms-layout-portrait-240":
+					imgWidth = 200;
+					imgHeight = 134;
+					break;
+					
+				case "sms-layout-portrait-160":
+					imgWidth = 132;
+					imgHeight = 89;
+					break;
+					
+				case "sms-layout-portrait-192":
+					imgWidth = 160;
+					imgHeight = 107;
+					break;
+					
+				case "sms-layout-small-banner":
+					imgWidth = 400;
+					imgHeight = 160;
+					break;
+					
+				case "sms-layout-hero-tile":
+					imgWidth = 400;
+					imgHeight = 300;
+					break;					
 
                 //case "sms-layout-large-portrait":
                 default:
@@ -146,30 +182,35 @@
             // Build the img tag
             imgHTML = '<img src="' + imgURL + '" width="' + imgWidth + '" height="' + imgHeight + '" alt="' + imgAlt + '" class="sms-tile-img" />';
 
-            // Add the new image.
-            switch(newLayout) {
-                case "sms-layout-portrait":
-                case "sms-layout-portrait-200":
-                    $("#wrapper .sms-url").after(imgHTML);
-                    break;
-
-                //case "sms-layout-portrait-220":
-                //case "sms-layout-portrait-220i":					
-                //case "sms-layout-large-portrait":
-                default:
-                    $("#wrapper .sms-url").before(imgHTML);
-            }
+			$("#wrapper .sms-tile-text").before(imgHTML);
 
         } 		
 	}
 	
 	function processURL() {
-		'use strict';	
+		'use strict';
         var newURL = $("#sms-form-tile-url-value").val();
+		var newURLTitle = $("#sms-form-tile-url-title-value").val().trim();
 		
         // Change the tile's URL
         if (newURL === "") { newURL = "#"; }
-        $("#wrapper .sms-url").attr("href", newURL);		
+        $("#wrapper .sms-url").attr("href", newURL);
+		
+		if (newURLTitle === "") {
+			$("#wrapper .sms-url").removeAttr("title");
+		} else {
+			$("#wrapper .sms-url").attr("title", newURLTitle);
+		}
+	}
+
+	function processUseURL() {
+		'use strict';	
+		if ($("#sms-form-tile-url-0").prop('checked')) {
+			$(".sms-tile").prepend('<a href="#" class="sms-url"></a>');
+			processURL();
+		} else {
+			$(".sms-url").remove();
+		}
 	}
 	
 	function processRibbon() {
@@ -303,6 +344,15 @@
         $("#wrapper .sms-tile-text").removeClass("text-left text-right text-center");
         $("#wrapper .sms-tile-text").addClass(newTextAlign);			
 	}
+
+	function processFontWeight() {
+		'use strict';			
+		var newTextAlign = $("input[name=sms-form-tile-text-weight]:checked").val();
+		
+        // Remove existing text alignment, and then set text alignment
+        $("#wrapper .sms-tile-text").removeClass("font-weight-light font-weight-normal font-weight-bold");
+        $("#wrapper .sms-tile-text").addClass(newTextAlign);			
+	}
 		
 	function displayTileOutput() {
 		'use strict';			
@@ -319,7 +369,12 @@
 		var customColor = $("#sms-form-custom-color").val();
 		var currentInlineStyles = "";		
 		var newInlineStyles = "";
-		//var oldColor = "";
+		
+		if (useCustomColour) {
+			$("#wrapper .sms-tile").addClass("sms-custom-color");
+		} else {
+			$("#wrapper .sms-tile").removeClass("sms-custom-color");
+		}
 		
 		// If there is a custom colour, remove it.
 		currentInlineStyles = $("#wrapper .sms-tile").attr("style");
@@ -346,6 +401,8 @@
 		} else {
 			$("#wrapper .sms-tile").attr("style", newInlineStyles);			
 		}
+		
+
 		
 		return;
 	}	
@@ -411,10 +468,11 @@
 		processLayout();
 		processText();
 		processURL();
-		processTriangles();
+		//processTriangles();
 		processTextColor();
 		processTextSize();
 		processTextAlign();
+		processFontWeight();
 		
         displayTileOutput();
 	}
@@ -423,6 +481,7 @@
     $(function() {
 		'use strict';		
         $(".configurable").hide();
+		$("#urlConfigurable").show();
 		
 		// Can't figure out why this one won't hide!
 		//$("#customColorConfigurables").hide();
@@ -469,6 +528,13 @@
 		toggleGoBtnConfigs();
 		displayTileOutput();
 	});
+
+    // Show URL Configurables
+    $("#sms-form-tile-url-0").change(function() {
+		'use strict';		
+		toggleURLConfigs();
+		displayTileOutput();
+	});
 	
 	// Layout changes
 	$("#sms-form-tile-layout").change(function() {
@@ -491,8 +557,22 @@
 		displayTileOutput();
 	});
 
+	// Font Weight changes
+	$("input[name=sms-form-tile-text-weight]").change(function() {
+		'use strict';		
+		processFontWeight();
+		displayTileOutput();
+	});
+
 	// URL changes
 	$("#sms-form-tile-url-value").on('change keyup paste', function() {
+		'use strict';		
+		processURL();
+		displayTileOutput();
+	});
+
+	// URL Title changes
+	$("#sms-form-tile-url-title-value").on('change keyup paste', function() {
 		'use strict';		
 		processURL();
 		displayTileOutput();
@@ -630,16 +710,189 @@
 		var oldWrapper;
 		
 		inputTile = $('#myTileBuilderModal').find('#SMSImportTextarea').val();
-		oldWrapper = $("#wrapper").html();
+		oldWrapper = $("#wrapper").html(); // Save the old tile
 		
-		$("#wrapper").html(inputTile);
+		
+		$("#wrapper").html(inputTile); // Replace the tile
 		
 		tileCheck = $("#wrapper div").hasClass("sms-tile");
+
+		// Check if the tile is valid
 		if (!tileCheck) {
-			$("#wrapper").html(oldWrapper);
+			$("#wrapper").html(oldWrapper); // If not, go back to the old tile
+	
+		}
+		
+		// Undo any configs that might be open
+		$(":checkbox").removeAttr("checked");
+		$(".configurable").slideUp(200);
+		
+		
+		// Match the tile text to the imported text.
+		$("#sms-form-tile-text-value").text($(".sms-tile-text").text());
+		
+		// Match the tile URL to the imported URL.
+		if ($("#wrapper .sms-url").length) {
+			$("#sms-form-tile-url-value").text($(".sms-url").attr("href"));
+			var importedTitle = $("#wrapper .sms-url").attr("title");
+			if (typeof importedTitle !== typeof undefined && importedTitle !== false) {
+				$("#sms-form-tile-url-title-value").text($(".sms-url").attr("title"));
+			}
+		}
+			
+		// Check if there's an image
+		if ($("#wrapper img").length) { 
+			$("#sms-form-tile-image-0").prop("checked", true); // Set the image slide to open
+			$("#imageConfigurables").slideDown(200);
+			$("#sms-form-tile-image-url").val($("#wrapper .sms-tile-img").attr("src")); // Set the img url src tag
+			$("#sms-form-tile-image-alt").val($("#wrapper .sms-tile-img").attr("alt")); // Set the alt tag
+		}
+		
+		// Check if there's a dropshadow
+		if ($("#wrapper div").hasClass("sms-shadow")) {
+			$("#sms-form-tile-shadow-0").attr("checked","checked");
+		}
+		
+		// Check if there's a Go button
+		if ($("#wrapper .sms-go-btn").length) {
+			$("#sms-form-tile-gobtn-0").prop("checked", true); // Set the image slide to open
+			$("#gobtnConfigurables").slideDown(200);
+			$("#sms-form-tile-gobtn-text").val($("#wrapper .sms-go-btn").text()); // Set the alt tag
+		}
+		
+		// Check what layout it is
+		// Get all the classes for the tile and then match for a class starting with sms-layout-
+		var importedLayout = $("#wrapper .sms-tile").attr('class').match(/sms-layout-\S+/g);
+
+		// Go through the layout options and when finding a matching one, add selected to that option
+		$("#sms-form-tile-layout option").each(function(){
+			$(this).removeAttr("selected");
+			if ($(this).attr("value") == importedLayout) {
+				$(this).attr("selected","selected");
+			}
+		});
+		
+		// Check what the alignment is
+		// See if there's a text-right or text-center class in the sms-tile-text class, and if so check appropriate
+		if ($("#wrapper .sms-tile-text.text-center").length) {
+			$("#sms-form-tile-text-align-0").prop("checked",false);
+			$("#sms-form-tile-text-align-2").prop("checked",false);			
+			$("#sms-form-tile-text-align-1").prop("checked",true);
+			
+		} else if ($("#wrapper .sms-tile-text.text-right").length) {
+			$("#sms-form-tile-text-align-0").prop("checked",false);
+			$("#sms-form-tile-text-align-1").prop("checked",false);			
+			$("#sms-form-tile-text-align-2").prop("checked",true);
+			
+		} else {
+			$("#sms-form-tile-text-align-1").prop("checked",false);
+			$("#sms-form-tile-text-align-2").prop("checked",false);			
+			$("#sms-form-tile-text-align-0").prop("checked",true);			
+		}
+		
+		// Light vs Dark
+		// See if there's a sms-text-light or sms-text-dark class in the tile, and if so check appropriate
+		if ($("#wrapper .sms-text-dark").length) {
+			$("#sms-form-tile-text-color-0").prop("checked",false);	
+			$("#sms-form-tile-text-color-1").prop("checked",true);
+				
+		} else {
+			$("#sms-form-tile-text-color-0").prop("checked",true);
+			$("#sms-form-tile-text-color-1").prop("checked",false);					
+		}	
+		
+		// Set the text size
+		// See if there's a text-right or text-center class in the sms-tile-text class, and if so check appropriate
+		if ($("#wrapper .sms-text-big").length) {
+			$("#sms-form-tile-text-size-0").prop("checked",false);
+			$("#sms-form-tile-text-size-1").prop("checked",true);			
+			$("#sms-form-tile-text-size-4").prop("checked",false);
+			$("#sms-form-tile-text-size-2").prop("checked",false);
+			$("#sms-form-tile-text-size-3").prop("checked",false);			
+			
+		} else if ($("#wrapper .sms-text-very-big").length) {
+			$("#sms-form-tile-text-size-0").prop("checked",false);
+			$("#sms-form-tile-text-size-1").prop("checked",false);			
+			$("#sms-form-tile-text-size-4").prop("checked",true);
+			$("#sms-form-tile-text-size-2").prop("checked",false);
+			$("#sms-form-tile-text-size-3").prop("checked",false);	
+			
+		} else if ($("#wrapper .sms-text-small").length) {
+			$("#sms-form-tile-text-size-0").prop("checked",false);
+			$("#sms-form-tile-text-size-1").prop("checked",false);			
+			$("#sms-form-tile-text-size-4").prop("checked",false);
+			$("#sms-form-tile-text-size-2").prop("checked",true);
+			$("#sms-form-tile-text-size-3").prop("checked",false);	
+			
+		} else if ($("#wrapper .sms-text-very-small").length) {
+			$("#sms-form-tile-text-size-0").prop("checked",false);
+			$("#sms-form-tile-text-size-1").prop("checked",false);			
+			$("#sms-form-tile-text-size-4").prop("checked",false);
+			$("#sms-form-tile-text-size-2").prop("checked",false);
+			$("#sms-form-tile-text-size-3").prop("checked",true);	
+			
+		} else {
+			$("#sms-form-tile-text-size-0").prop("checked",true);
+			$("#sms-form-tile-text-size-1").prop("checked",false);			
+			$("#sms-form-tile-text-size-4").prop("checked",false);
+			$("#sms-form-tile-text-size-2").prop("checked",false);
+			$("#sms-form-tile-text-size-3").prop("checked",false);	
 			
 		}
+		
+		// Check if there's a ribbon
+		if ($("#wrapper .sms-ribbon").length) {
+			$("#sms-form-tile-ribbon-0").prop("checked", true); // Set the ribbon slide to open
+			$("#ribbonConfigurables").slideDown(200);
+			$("#sms-form-tile-ribbon-text").val($("#wrapper .sms-ribbon span").text()); // Set the ribbon tag
+			
+			var importedRibbonColor = $("#wrapper .sms-ribbon").attr('class').match(/sms-ribbon-color-\S+/g);
+			
+			$("#sms-form-tile-ribbon-color option").each(function(){
+				$(this).removeAttr("selected");
+				if ($(this).attr("value") == importedRibbonColor) {
+					$(this).attr("selected","selected");
+				}
+			});	
+			if ($("#wrapper .sms-ribbon-bl").length) {
+				$("#sms-form-tile-ribbon-location-0").prop("checked",false);	
+				$("#sms-form-tile-ribbon-location-1").prop("checked",true);
+			} else {
+				$("#sms-form-tile-ribbon-location-0").prop("checked",true);	
+				$("#sms-form-tile-ribbon-location-1").prop("checked",false);
+			}			
+		}
+		
+		// Look for custom colors
+		if ($("#wrapper .sms-custom-color").length) {
+			var customColor = "#ccaa00";
+			var currentInlineStyles = $("#wrapper .sms-tile").attr("style");
+			
+			if (currentInlineStyles !== undefined) {
+				if (currentInlineStyles.length !== 0) {
+					currentInlineStyles = currentInlineStyles.toLowerCase();
+					var bgcolorStart = currentInlineStyles.indexOf("background-color");
+					if (bgcolorStart > -1) {
+						var bgcolorEnd = currentInlineStyles.indexOf(";", bgcolorStart);
+						if (bgcolorEnd > -1) {
+							customColor = currentInlineStyles.slice(bgcolorStart, bgcolorEnd);
+						} else {
+							customColor = currentInlineStyles.slice(bgcolorStart);
+						}
+						customColor = customColor.replace("background-color:","");
+						customColor = customColor.trim();
+					}
+				}
+			}
+			
+			$("#sms-form-custom-color-toggle-0").prop("checked",true);	
+			$("#customColorConfigurables").slideDown(200);
+			$("#sms-form-custom-color").val(customColor);
+			processCustomColor();
+		}	
+
 			
 		displayTileOutput();		
 		$('#myTileBuilderModal').modal('hide');
 	});
+
