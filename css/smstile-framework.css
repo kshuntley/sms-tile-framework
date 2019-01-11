@@ -24,7 +24,8 @@
   position: relative;
   float: left;
   margin: 7px;
-  font-weight: 600;
+  /*font-weight: 600;*/
+  /* Implementing Bootstrap 4.0 classes */
 }
 .sms-tile a:link {
   color: #ffffff;
@@ -41,6 +42,15 @@
 .sms-tile a:active {
   color: #ffffff;
   text-decoration: none;
+}
+.sms-tile .font-weight-bold {
+  font-weight: 700;
+}
+.sms-tile .font-weight-normal {
+  font-weight: 400;
+}
+.sms-tile .font-weight-light {
+  font-weight: 200;
 }
 /* Drop Shadow - Not recommended, issues with triangle */
 .sms-shadow {
@@ -2324,6 +2334,39 @@ span.sms-go-btn {
   width: 180px;
   height: 216px;
 }
+.sms-layout-portrait-270 {
+  width: 225px;
+  height: 270px;
+}
+.sms-layout-portrait-270 div {
+  margin: 7px;
+}
+.sms-layout-portrait-270 .sms-url {
+  width: 225px;
+  height: 270px;
+}
+.sms-layout-portrait-240 {
+  width: 200px;
+  height: 240px;
+}
+.sms-layout-portrait-240 div {
+  margin: 7px;
+}
+.sms-layout-portrait-240 .sms-url {
+  width: 200px;
+  height: 240px;
+}
+.sms-layout-portrait-192 {
+  width: 160px;
+  height: 192px;
+}
+.sms-layout-portrait-192 div {
+  margin: 7px;
+}
+.sms-layout-portrait-192 .sms-url {
+  width: 160px;
+  height: 192px;
+}
 .sms-layout-portrait-220i {
   width: 200px;
   height: 220px;
@@ -2372,6 +2415,46 @@ span.sms-go-btn {
 .sms-layout-large-portrait .sms-url {
   width: 180px;
   height: 270px;
+}
+.sms-layout-small-banner {
+  width: 400px;
+  height: 227px;
+}
+.sms-layout-small-banner div {
+  margin: 7px;
+}
+.sms-layout-small-banner .sms-url {
+  width: 400px;
+  height: 227px;
+}
+.sms-layout-hero-tile {
+  width: 400px;
+  height: 480px;
+  font-size: 2em;
+}
+.sms-layout-hero-tile div {
+  margin: 7px;
+}
+.sms-layout-hero-tile .sms-url {
+  width: 400px;
+  height: 480px;
+}
+.sms-layout-hero-tile.sms-text-big {
+  font-size: 2.5em;
+}
+.sms-layout-hero-tile.sms-text-very-big {
+  font-size: 3em;
+}
+.sms-layout-hero-tile.sms-text-small {
+  font-size: 1.5em;
+}
+.sms-layout-hero-tile.sms-text-very-small {
+  font-size: 1em;
+}
+.sms-layout-hero-tile span.sms-go-btn {
+  font-size: 20px;
+  bottom: 15px;
+  right: 15px;
 }
 .sms-layout-pathway {
   height: 159px;
@@ -2787,10 +2870,34 @@ option.sms-ribbon-color-mint {
   top: 165px;
   left: 210px;
 }
+#tile-builder #wrapper .sms-layout-portrait-270 {
+  top: 165px;
+  left: 187px;
+}
+#tile-builder #wrapper .sms-layout-portrait-240 {
+  left: 200px;
+  top: 180px;
+}
+#tile-builder #wrapper .sms-layout-portrait-160 {
+  top: 220px;
+  left: 234px;
+}
+#tile-builder #wrapper .sms-layout-portrait-192 {
+  top: 204px;
+  left: 220px;
+}
 #tile-builder #wrapper .sms-layout-landscape {
   width: 550px;
   top: 100px;
   left: 25px;
+}
+#tile-builder #wrapper .sms-layout-small-banner {
+  left: 100px;
+  top: 186px;
+}
+#tile-builder #wrapper .sms-layout-hero-tile {
+  left: 100px;
+  top: 60px;
 }
 #tile-builder .outputcode {
   padding: 1em;
