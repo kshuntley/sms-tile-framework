@@ -5,7 +5,7 @@
     <title>The Tile Builder</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" type="text/css" rel="stylesheet">
     <link href="css/smstile-framework.css" type="text/css" rel="stylesheet">
-    <!-- <link href="css/sms-styles.min.css" type="text/css" rel="stylesheet">     -->
+    <!-- <link href="css/smstile-framework.min.css" type="text/css" rel="stylesheet"> -->
     <link href="css/custom.css" type="text/css" rel="stylesheet">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 </head>
@@ -24,12 +24,18 @@
           <label class="col-md-6 control-label" for="sms-form-tile-layout">Tile Type</label>
           <div class="col-md-6">
             <select id="sms-form-tile-layout" name="sms-form-tile-layout" class="form-control">
-              <option value="sms-layout-portrait">Portrait Original (150px by 180px)</option>
-              <option value="sms-layout-portrait-200">Portrait Taller (150px by 200px)</option>
-              <option value="sms-layout-portrait-216">Internal Tile Style 1 (180px by 216px)</option>  
-              <option value="sms-layout-portrait-220i">Internal Tile Style 2 (200px by 220px)</option>                           
-              <option value="sms-layout-portrait-220">SMS Tile (150px by 220px)</option>
+              <option value="sms-layout-portrait">Original Home Tile (150px by 180px)</option>
+              <option value="sms-layout-portrait-200">Improved Home Tile (150px by 200px)</option>
+              <option value="sms-layout-portrait-220i">EBS Tile Style (200px by 220px)</option>				
+              <option value="sms-layout-portrait-160">Internal Tile Style 1 (132px by 160px)</option>
+              <option value="sms-layout-portrait-192">Internal Tile Style 2 (160px by 192px)</option> 				
+              <option value="sms-layout-portrait-216">Internal Tile Style 3 (180px by 216px)</option>  
+              <option value="sms-layout-portrait-240">Internal Tile Style 4 (200px by 240px)</option> 				
+              <option value="sms-layout-portrait-270">Internal Tile Style 5 (225px by 270px)</option>
+              <option value="sms-layout-portrait-220">Planned SMS Tile (150px by 220px)</option>
               <option value="sms-layout-large-portrait">Improved SMS Tile (180px by 270px)</option>
+			  <option value="sms-layout-small-banner">Small Banner (400px by 220px)</option>
+			  <option value="sms-layout-hero-tile">Hero Tile (400px by 480px)</option>
               <option value="sms-layout-header" disabled="disabled">Course Header</option>                            
             </select>
           </div>
@@ -61,15 +67,38 @@
             </label>
           </div>
         </div>
+			
+        <!-- Multiple Checkboxes: Include URL toggle -->
+         <div class="form-group portrait-related">
+            <label class="col-md-6 control-label" for="sms-form-tile-image">Include a Hyperlink</label>
+            <div class="col-md-6">
+                <div class="checkbox">
+                    <label for="sms-form-tile-url-0">
+                        <input type="checkbox" name="sms-form-tile-url" id="sms-form-tile-url-0" value="yes" checked="checked">
+                        Yes
+                    </label>
+                </div>
+            </div>
+        </div>		
 
         <!-- Text input: URL -->
-        <div class="form-group portrait-related">
-            <label class="col-md-6 control-label" for="sms-form-tile-url-value">URL</label>
-            <div class="col-md-6">
-                <input id="sms-form-tile-url-value" name="sms-form-tile-url-value" type="text" placeholder="http://tafensw.edu.au" class="form-control input-md">
-                <span class="help-block">Where do you want this tile to link to? (Copy and paste a course location.)</span>
-            </div>
-        </div>
+        <div id="urlConfigurable" class="portrait-related configurable">
+			<div class="form-group">
+				<label class="col-md-6 control-label" for="sms-form-tile-url-value">URL</label>
+				<div class="col-md-6">
+					<input id="sms-form-tile-url-value" name="sms-form-tile-url-value" type="text" placeholder="http://tafensw.edu.au" class="form-control input-md">
+					<span class="help-block">Where do you want this tile to link to? (Copy and paste a course location.)</span>
+				</div>
+			</div>
+			
+			<div class="form-group">
+				<label class="col-md-6 control-label" for="sms-form-tile-url-title-value">URL Title</label>
+				<div class="col-md-6">
+					<input id="sms-form-tile-url-title-value" name="sms-form-tile-url-title-value" type="text" placeholder="TAFE NSW" class="form-control input-md">
+					<span class="help-block">What do you want the tool tip to say?</span>
+				</div>
+			</div>			
+		</div>
         
         <!-- Multiple Checkboxes: Include Drop Shadow -->
         <div class="form-group portrait-related">
@@ -209,7 +238,7 @@
 
         <!-- Multiple Radios: Text Colors -->
         <div class="form-group portrait-related">
-            <label class="col-md-6 control-label" for="sms-form-tile-text-color">Text Color</label>
+            <label class="col-md-6 control-label" for="sms-form-tile-text-color">Text Colour</label>
             <div class="col-md-6">
                 <div class="radio">
                     <label for="sms-form-tile-text-color-0">
@@ -225,6 +254,31 @@
                 </div>
             </div>
         </div>
+						
+        <!-- Multiple Radios: Font Weight -->
+        <div class="form-group portrait-related">
+            <label class="col-md-6 control-label" for="sms-form-tile-text-weight">Font Weight</label>
+            <div class="col-md-6">
+                <!--<div class="radio">
+                     <label for="sms-form-tile-text-color-0">
+                        <input type="radio" name="sms-form-tile-text-weight" id="sms-form-tile-weight-color-0" value="font-weight-light">
+                        Light <i class="bg-warning">Try to avoid</i>
+                    </label> 
+                </div>-->
+                <div class="radio">
+                    <label for="sms-form-tile-text-weight-1">
+                        <input type="radio" name="sms-form-tile-text-weight" id="sms-form-tile-weight-color-1" value="font-weight-normal" checked="checked">
+                        Normal
+                    </label>
+                </div>
+                <div class="radio">
+                    <label for="sms-form-tile-text-weight-2">
+                        <input type="radio" name="sms-form-tile-text-weight" id="sms-form-tile-text-weight-2" value="font-weight-bold">
+                        Bold
+                    </label>
+                </div>				
+            </div>
+        </div>			
 
         <!-- Multiple Radios: Text Size -->
         <div class="form-group portrait-related">
