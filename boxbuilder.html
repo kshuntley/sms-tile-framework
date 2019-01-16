@@ -214,19 +214,6 @@
 			</div>
 			</fieldset>
 			
-		
-			
-			<div class="form-group">
-				<label class="col-md-6 control-label" for="sms-box-sidebar-artefact-icon-chooser">Set Icons</label>
-				<br>
-				<div class="col-md-10 editIconBtns">
-					<button class="btn btn-primary action-create">Edit Icons</button>
-					<button class="btn btn-danger action-destroy" disabled="disabled">Stop Editing Icons</button>
-					
-
-				</div>
-			</div>
-			
 			<!-- Multiple Radios: Text Colors -->
 			<div class="form-group">
 				<label class="col-md-6 control-label" for="sms-form-tile-text-color">Text Color</label>
@@ -257,24 +244,57 @@
 						</label>
 					</div>
 				</div>
-			</div>  			
+			</div>  		
+			
+			<div class="form-group">
+				<label class="col-md-6 control-label" for="sms-box-sidebar-artefact-icon-chooser">Set Icons</label>
+				<br>
+				<div class="col-md-10 editIconBtns">
+					<button class="btn btn-primary action-create">Edit Icons</button>
+					<button class="btn btn-danger action-destroy" disabled="disabled">Stop Editing Icons</button>
+					
+
+				</div>
+			</div>
+			
+			<div class="form-group">
+				<label class="col-md-6 control-label" for="sms-box-sidebar-artefact-icon-chooser">Set Hyperlinks</label>
+				<br>
+				<div class="col-md-10 editIconBtns">
+					<button class="btn btn-primary show-links">Edit Links</button>
+					<button class="btn btn-danger hide-links" disabled="disabled">Stop Editing Links</button>
+					
+
+				</div>
+			</div>			
 			
 		</form>
+			
+			<div class="form-group">
+				<label class="col-md-6 control-label" for="sms-box-sidebar-artefact-icon-chooser">Content</label>
+				<br>
+				<div class="buttonrow btn-group dragAndSortBtns " role="group">
+					<button onClick="toggleSortable()" class="btn btn-success" id="btnSortable">Enable Drag &amp; Drop</button>
+					<button onClick="toggleEditable()" class="btn btn-success" id="btnEditable">Turn On Editable Content</button>	
+				</div>
+	
+				<div class="buttonrow btn-group editRowBtns " role="group">
+					<button onClick="addRow('Header')" class="btn btn-primary" id="btnNewHeader">Add Header Row</button>
+					<button onClick="addRow('Artefact')" class="btn btn-primary" id="btnNewArtefact">Add Artefact Row</button>
+					<button onClick="addRow('Multiple')" class="btn btn-primary" id="btnNewMultiple">Add Multiple Files Row</button>						
+				</div>	
 
-		<div class="buttonrow btn-group dragAndSortBtns" role="group">
-			<button onClick="toggleSortable()" class="btn btn-success" id="btnSortable">Enable Drag &amp; Drop</button>
-			<button onClick="toggleEditable()" class="btn btn-success" id="btnEditable">Show Editable Content</button>	
-		</div>
+				<div class="buttonrow editRowBtns" role="group">
+					<button onClick="deleteRow()" class="btn btn-danger" id="btnDeleteRow">Delete Last Row</button>								
+				</div>																				
+			</div>
+
 		
-		<div class="buttonrow btn-group editRowBtns" role="group">
-			<button onClick="addRow('Header')" class="btn btn-primary" id="btnNewHeader">Add Header Row</button>
-			<button onClick="addRow('Artefact')" class="btn btn-primary" id="btnNewArtefact">Add Artefact Row</button>
-			<button onClick="addRow('Multiple')" class="btn btn-primary" id="btnNewMultiple">Add Multiple Files Row</button>						
-		</div>
+
 		
-		<div class="buttonrow editRowBtns" role="group">
-			<button onClick="deleteRow()" class="btn btn-danger" id="btnDeleteRow">Delete Last Row</button>								
-		</div>				
+
+		
+			
 	
 	</div>
 	
@@ -327,11 +347,11 @@
 			var insertText = '\
 				<!-- Row: Column Headers -->\
 				<div class="sms-box-shade-overlay sms-box-row-header ui-state-default">\
-					<div class="sms-box-sidebar text-center" contenteditable="false">\
-						<h5>Artefact</h5>\
+					<div class="sms-box-sidebar text-center">\
+						<h5 class="isEditable">Artefact</h5>\
 					</div>\
-					<div class="sms-box-content text-center" contenteditable="false">\
-						<h5>Summary</h5>\
+					<div class="sms-box-content text-center">\
+						<h5 class="isEditable">Summary</h5>\
 					</div>\
 					<!-- Clear Div -->\
 					<div class="sms-box-clear-bordered"></div>\
@@ -348,14 +368,14 @@
 							<a href="https://tafe.learn.tafensw.edu.au/mod/scorm/view.php?id=10931" target="_blank" class="sms-box-sidebar-artefact-icon">\
 								<i aria-hidden="true" class="fa fa-graduation-cap fa-2x"></i>\
 							</a><br>\
-							<a href="https://tafe.learn.tafensw.edu.au/mod/scorm/view.php?id=10931" target="_blank" class="sms-box-sidebar-artefact-title"  contenteditable="false">\
+							<a href="https://tafe.learn.tafensw.edu.au/mod/scorm/view.php?id=10931" target="_blank" class="sms-box-sidebar-artefact-title isEditable">\
 								eLearning: Overview of Managing Enquiries\
 							</a><br>\
-							<i class="sms-box-sidebar-artefact-filesize" contenteditable="false">20 minutes</i>\
+							<i class="sms-box-sidebar-artefact-filesize isEditable">20 minutes</i>\
 						</p>\
 					</div>\
 					<div class="sms-box-content">\
-						<p contenteditable="false">An overview of CRM including the approach to managing enquiries, functions of <b>CRM </b>and a <b>CRM\ </b>walkthrough.</p>\
+						<p class="isEditable">An overview of CRM including the approach to managing enquiries, functions of <b>CRM </b>and a <b>CRM\ </b>walkthrough.</p>\
 					</div>\
 					<!-- Clear Div -->\
 					<div class="sms-box-clear-bordered"></div>\
@@ -372,25 +392,25 @@
 							<span class="sms-box-sidebar-artefact-icon">\
 								<i aria-hidden="true" class="fa fa-file-pdf-o fa-2x"></i>\
 							</span><br>\
-							<span class="sms-box-sidebar-artefact-title" contenteditable="false">\
+							<span class="sms-box-sidebar-artefact-title isEditable">\
 								Work Instructions\
 							</span><br>\
 						</p>\
 					</div>\
 					<div class="sms-box-content">\
 						<ul class="sms-box-multi-list">\
-							<li><a href="http://google.com">WI - Work Instruction 1</a> <span class="details">(12 kb)</span></li>\
-							<li><a href="http://google.com">WI - Work Instruction 2</a> <span class="details">(12 kb)</span></li>\
-							<li><a href="http://google.com">WI - Work Instruction 3</a> <span class="details">(12 kb)</span></li>\
-							<li><a href="http://google.com">WI - Work Instruction 4</a> <span class="details">(12 kb)</span></li>\
-							<li><a href="http://google.com">WI - Work Instruction 5</a> <span class="details">(12 kb)</span></li>\
-							<li><a href="http://google.com">WI - Work Instruction 6</a> <span class="details">(12 kb)</span></li>\
-							<li><a href="http://google.com">WI - Work Instruction 7</a> <span class="details">(12 kb)</span></li>\
-							<li><a href="http://google.com">WI - Work Instruction 8</a> <span class="details">(12 kb)</span></li>\
-							<li><a href="http://google.com">WI - Work Instruction 9</a> <span class="details">(12 kb)</span></li>\
-							<li><a href="http://google.com">WI - Work Instruction 10</a> <span class="details">(12 kb)</span></li>\
-							<li><a href="http://google.com">WI - Work Instruction 11</a> <span class="details">(12 kb)</span></li>\
-							<li><a href="http://google.com">WI - Work Instruction 12</a> <span class="details">(12 kb)</span></li>\
+							<li><a href="http://google.com" class="isEditable">WI - Work Instruction 1</a> <span class="details isEditable">(12 kb)</span></li>\
+							<li><a href="http://google.com" class="isEditable">WI - Work Instruction 2</a> <span class="details isEditable">(12 kb)</span></li>\
+							<li><a href="http://google.com" class="isEditable">WI - Work Instruction 3</a> <span class="details isEditable">(12 kb)</span></li>\
+							<li><a href="http://google.com" class="isEditable">WI - Work Instruction 4</a> <span class="details isEditable">(12 kb)</span></li>\
+							<li><a href="http://google.com" class="isEditable">WI - Work Instruction 5</a> <span class="details isEditable">(12 kb)</span></li>\
+							<li><a href="http://google.com" class="isEditable">WI - Work Instruction 6</a> <span class="details isEditable">(12 kb)</span></li>\
+							<li><a href="http://google.com" class="isEditable">WI - Work Instruction 7</a> <span class="details isEditable">(12 kb)</span></li>\
+							<li><a href="http://google.com" class="isEditable">WI - Work Instruction 8</a> <span class="details isEditable">(12 kb)</span></li>\
+							<li><a href="http://google.com" class="isEditable">WI - Work Instruction 9</a> <span class="details isEditable">(12 kb)</span></li>\
+							<li><a href="http://google.com" class="isEditable">WI - Work Instruction 10</a> <span class="details isEditable">(12 kb)</span></li>\
+							<li><a href="http://google.com" class="isEditable">WI - Work Instruction 11</a> <span class="details isEditable">(12 kb)</span></li>\
+							<li><a href="http://google.com" class="isEditable">WI - Work Instruction 12</a> <span class="details isEditable">(12 kb)</span></li>\
 						</ul>\
 					</div>\
 					<!-- Clear Div -->\
@@ -457,7 +477,7 @@
 			if (btnText.startsWith("En")) {
 				btnText = btnText.replace("En", "Dis");
 				$(".editRowBtns button, .editIconBtns .action-create").prop("disabled", true);				
-				$(".sms-box-rows").css({"cursor":"grab","filter":"blur(0.5px)"}).sortable("enable").sortable({
+				$(".sms-box-rows").css({"cursor":"grab"}).sortable("enable").sortable({
 					"cursor":"move",
 					"axis": "y",
 					"revert": true,
@@ -480,14 +500,14 @@
 			'use strict';			
 			var btnText = $("#btnEditable").text();
 
-			if (btnText.startsWith("Show")) {
-				btnText = btnText.replace("Show", "Hide");
-				$("[contenteditable]").css({"cursor":"text"}).attr('contenteditable',true);
+			if (btnText.startsWith("Turn On")) {
+				btnText = btnText.replace("Turn On", "Turn Off");
+				$(".isEditable").attr('contenteditable',true);
 				$(".editRowBtns button, .editIconBtns .action-create").prop("disabled", true);
 
 			} else {
-				btnText = btnText.replace("Hide", "Show");
-				$("[contenteditable='true']").css({"cursor":"auto"}).attr('contenteditable',false);
+				btnText = btnText.replace("Turn Off", "Turn On");
+				$("[contenteditable='true']").removeAttr('contenteditable');
 				$(".editRowBtns button, .editIconBtns .action-create").prop("disabled", false);
 				
 				// Bug with hyperlinks not going back to pointer
@@ -495,7 +515,7 @@
 				displayBoxOutput();
 			}
 
-			$("[contenteditable]").toggleClass("showEditable");
+			$(".isEditable").toggleClass("showEditable");
 			$('[class=""]').removeAttr('class'); // Hack to remove empty class attributes. Doesn't affect code, just make less ugly
 
 
@@ -518,6 +538,35 @@
 
 			$('#wrapper').click(function(e) {
 				e.preventDefault();
+			});
+			
+			// Start Editing Hyperlinks
+			$('.show-links').on('click', function() {
+				$('a[href]:not(.sms-box-sidebar-artefact-icon)').after(function() {
+					var theLink = $(this).attr("href");
+					return '<input class="form-control hyperlink-edit" value="' +theLink.trim() + '" type="text">';
+				});
+				$(".editRowBtns button, .dragAndSortBtns button, .action-create").prop("disabled", true);
+				$('.hide-links').removeAttr('disabled');
+				$('.show-links').attr('disabled','disabled');
+			});
+			
+			// Stop Editing Hyperlinks
+			$('.hide-links').on('click', function() {
+				$('.hyperlink-edit').remove();
+				$('.show-links').removeAttr('disabled');
+				$('.hide-links').attr('disabled','disabled');
+				$(".editRowBtns button, .dragAndSortBtns button, .action-create").prop("disabled", false);
+				
+				displayBoxOutput();
+			});
+			
+			// Update Hyperlinks when changed
+			$(document).on('change', '.hyperlink-edit', function() {
+				//alert("Trying to throw");
+				var newHyperlink = $(this).val();
+				$(this).prev('a[href]').attr("href", newHyperlink).siblings('a.sms-box-sidebar-artefact-icon').attr("href", newHyperlink);
+
 			});
 			
 			// Stop Editing Icons
@@ -629,10 +678,10 @@
 		
 		computedStyleToInlineStyle(document.querySelector("#wrapper .sms-box"), {
         	recursive: true,
-        	properties: ["background-color", "box-shadow", "-moz-box-shadow", "-webkit-box-shadow", "box-sizing", "-moz-box-siding", "-webkit-box-sizing", "color", "display", "float", "font-weight", "font-size", "font-style", "line-height", "padding", "padding-top", "padding-right", "padding-bottom", "padding-left", "position", "z-index", "vertical-align", "height", "text-decoration", "clear", "border-bottom-width", "border-bottom-color", "border-bottom-style", "border-left-width", "border-left-color", "border-left-style"]
+        	properties: ["background-color", "box-shadow", "-moz-box-shadow", "-webkit-box-shadow", "box-sizing", "-moz-box-siding", "-webkit-box-sizing", "color", "display", "float", "font-weight", "font-size", "font-style", "line-height", "padding", "padding-top", "padding-right", "padding-bottom", "padding-left", "position", "z-index", "vertical-align", "text-decoration", "clear", "border-bottom-width", "border-bottom-color", "border-bottom-style", "border-left-width", "border-left-color", "border-left-style"]
         });
 		
-		
+		//alert("here");
 		
 		// Manually put in the sms-box width & margins
 		$("#wrapper .sms-box").css("width", "96%", "margin-top", "20px", "margin-bottom", "20px", "margin-left", "auto", "margin-right", "auto");
@@ -640,10 +689,11 @@
 		$("#wrapper .sms-box-abstract").css("margin", "0 10px 10px");
 		$("#wrapper .sms-box-shade-pattern-left-third .sms-box-shade-left, #wrapper .sms-box-shade-pattern-left-third .sms-box-sidebar").css("width","calc(((100% - 20px)/3)*1)");
 		$("#wrapper .sms-box-shade-pattern-left-third .sms-box-shade-right, #wrapper .sms-box-shade-pattern-left-third .sms-box-content").css("width","calc(((100% - 20px)/3)*2)");
-		$("#wrapper .sms-box-multi-list").css("column-count", "3", "-moz-column-count", "3", "-webkit-column-count", "3", "column-width", "200px", "-moz-column-width", "200px", "-webkit-column-width", "200px");
+		$("#wrapper .sms-box-multi-list").css({"column-count": "3", "-moz-column-count": "3", "-webkit-column-count": "3", "column-width": "200px", "-moz-column-width": "200px", "-webkit-column-width": "200px", "margin-left": "0"});
 		$("#wrapper .sms-box-shade-right").css("right", "10px");
 		$("#wrapper .sms-box-shade-left").css("left", "10px");		
 		$("#wrapper .sms-box-sidebar").css("margin-left", "10px");
+		$("#wrapper .sms-box-shade-underlay").css("height", "calc(100% - 10px)");
 		
 		// Remove any class that starts with .sms
 		/*$('#wrapper *').removeClass(function (index, className) {
@@ -686,7 +736,7 @@
 	});		
 
 		
-		    // Totes borrowed from https://codepen.io/shaikmaqsood/pen/XmydxJ/
+	// Totes borrowed from https://codepen.io/shaikmaqsood/pen/XmydxJ/
     function copyToClipboard(element) {
 		'use strict';
         var $temp = $("<input>");
@@ -695,22 +745,11 @@
         document.execCommand("copy");
         $temp.remove();
     }
+	
+	function toggleHyperlinkEditor() {
 		
-		
-		$(".isEditable").dblclick(function(e) {
-			$(this).removeClass("isEditable").wrapInner("<span class='newEditable' contenteditable='true'></span>").focus();
-			e.stopPropagation();
-			//alert("in double click");
-		});
-		
-		$("* .newEditable").focusout(function() {
-			alert("In blur");
-			//$(this).parent().html($(this).html()).addClass("isEditable");
-			$(this).parent().addClass("isEditable");
-			$(this).remove();
-			
-		});
-				
+	}
+
 		
 	</script>
 	
