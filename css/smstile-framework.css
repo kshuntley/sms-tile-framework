@@ -2,7 +2,7 @@
 /*!-------------------------------------------------------*/
 /*  SMS Custom Style Framework                            */
 /*		by @kshuntley - kenneth.huntley@tafensw.edu.au    */
-/* 		14/08/2018 11:00                                  */
+/* 		16/01/2019 13:50                                  */
 /*                                                        */
 /* -------------------------------------------------------*/
 /* -------------------------------------------------------*/
@@ -187,6 +187,53 @@
 }
 .sms-box-shade-pattern-left-third .sms-box-row-content .sms-box-content {
   vertical-align: top;
+}
+/* -------------------------------------------------------*/
+/* Basic Button                                           */
+/*	- Apply to a <div> (or any block element)             */
+/*	Defaults to Intranet-Blue with Light Text             */
+/* -------------------------------------------------------*/
+.sms-button {
+  height: 60px;
+  width: 300px;
+  text-align: center;
+  vertical-align: middle;
+  border-radius: 8px;
+  position: relative;
+  color: #ffffff;
+  background-color: #4d67ae;
+  margin: 7px;
+}
+.sms-button .sms-button-text {
+  line-height: 60px;
+  font-size: 18px;
+}
+.sms-button a {
+  position: absolute;
+  top: 0;
+  height: 60px;
+  left: 0;
+  width: 300px;
+  display: block;
+  z-index: 1;
+}
+.sms-button .sms-text-big {
+  font-size: 22px;
+}
+.sms-button .sms-text-very-big {
+  font-size: 25px;
+}
+.sms-button .font-weight-light {
+  font-weight: 200;
+}
+.sms-button .font-weight-normal {
+  font-weight: 400;
+}
+.sms-button .font-weight-bold {
+  font-weight: 700;
+}
+.sms-button-row .sms-button {
+  float: left;
 }
 /* -------------------------------------------------------*/
 /* Pages                                                  */
