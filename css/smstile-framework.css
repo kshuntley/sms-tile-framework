@@ -110,7 +110,7 @@
   -webkit-column-width: 200px;
   -moz-column-width: 200px;
   column-width: 200px;
-  padding: 0 1em;
+  padding: 0 1em 1em;
 }
 .sms-box .sms-box-multi-list li {
   display: block;
