@@ -773,6 +773,18 @@
 			}
 		});
 		
+		// Check what colour it is
+		// Get all the classes for the tile and then match for a class starting with sms-color-
+		var importedColor = $("#wrapper .sms-tile").attr('class').match(/sms-color-\S+/g);
+
+		// Go through the layout options and when finding a matching one, add selected to that option
+		$("#sms-form-tile-color option").each(function(){
+			$(this).removeAttr("selected");
+			if ($(this).attr("value") == importedColor) {
+				$(this).attr("selected","selected");
+			}
+		});		
+		
 		// Check what the alignment is
 		// See if there's a text-right or text-center class in the sms-tile-text class, and if so check appropriate
 		if ($("#wrapper .sms-tile-text.text-center").length) {
