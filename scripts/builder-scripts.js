@@ -729,7 +729,8 @@
 		
 		
 		// Match the tile text to the imported text.
-		$("#sms-form-tile-text-value").text($(".sms-tile-text").text());
+		var importedText = $("#wrapper .sms-tile-text").clone().children().remove().end().text().trim();
+		$("#sms-form-tile-text-value").text(importedText);
 		
 		// Match the tile URL to the imported URL.
 		if ($("#wrapper .sms-url").length) {
@@ -883,13 +884,19 @@
 						customColor = customColor.trim();
 					}
 				}
+					
 			}
+						
+			$("#wrapper .sms-tile").removeAttr("style").find("*").removeAttr("style");
+			$("#wrapper .sms-tile").attr({"style":("background-color:"+customColor)}); // Drop all styles
 			
 			$("#sms-form-custom-color-toggle-0").prop("checked",true);	
 			$("#customColorConfigurables").slideDown(200);
 			$("#sms-form-custom-color").val(customColor);
 			processCustomColor();
-		}	
+		} else {
+			$("#wrapper .sms-tile").removeAttr("style").find("*").removeAttr("style");
+		}
 
 			
 		displayTileOutput();		
