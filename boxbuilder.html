@@ -22,13 +22,13 @@
     <link href="css/custom.min.css" type="text/css" rel="stylesheet">	-->
     
     <style>
-		.newEditable {
+		/*.newEditable {
 			background-color: rgb(255,255,255);
 			box-shadow: rgb(0,121,191) 0px 0px 0px 2px inset;
 			border-radius: 3px;
 			padding: 0.3em;
 			color: black;
-		}
+		}*/
 	</style>
 	
 	<script>
@@ -730,6 +730,38 @@
 			$("#wrapper").html(oldWrapper);
 			
 		}
+		
+		
+		// Check what colour it is
+		// Get all the classes for the tile and then match for a class starting with sms-color-
+		var importedColor = $("#wrapper .sms-box").attr('class').match(/sms-color-\S+/g);
+
+		// Go through the layout options and when finding a matching one, add selected to that option
+		$("#sms-form-box-color option").each(function(){
+			$(this).removeAttr("selected");
+			if ($(this).attr("value") == importedColor) {
+				$(this).attr("selected","selected");
+			}
+		});	
+		
+		// Light vs Dark
+		// See if there's a sms-text-light or sms-text-dark class in the tile, and if so check appropriate
+		if ($("#wrapper .sms-text-dark").length) {
+			$("#sms-form-tile-text-color-0").prop("checked",false);	
+			$("#sms-form-tile-text-color-1").prop("checked",true);
+				
+		} else {
+			$("#sms-form-tile-text-color-0").prop("checked",true);
+			$("#sms-form-tile-text-color-1").prop("checked",false);					
+		}	
+		
+		// Check if there's a dropshadow
+		if ($("#wrapper div").hasClass("sms-shadow")) {
+			$("#sms-form-tile-shadow-0").attr("checked","checked");
+		}	
+		
+		$("#wrapper .sms-box").removeAttr("style").find("*").removeAttr("style");		
+		
 			
 		displayBoxOutput();		
 		$('#myBoxBuilderModal').modal('hide');
