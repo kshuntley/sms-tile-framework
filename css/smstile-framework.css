@@ -235,6 +235,37 @@
 .sms-button-row .sms-button {
   float: left;
 }
+.sms-button-config {
+  margin: 7px;
+  border: 1px solid #373737;
+  width: 300px;
+  float: left;
+  border-radius: 5px;
+  padding: 0.5em;
+}
+.sms-button-config radio label {
+  width: 60px;
+}
+.sms-button-config .form-group {
+  width: 90%;
+  margin: 0 1em 1em;
+}
+.sms-button-config .help-block {
+  font-size: .75em;
+  font-style: italic;
+  text-align: right;
+}
+.sms-button-row .showEditable {
+  background-color: rgba(246, 178, 32, 0.5) !important;
+  border: 1px dashed #ff0000;
+}
+.sms-button-row .hyperlink-edit {
+  position: absolute;
+  top: 45px;
+  left: 10px;
+  border: 2px solid #000000;
+  background-color: #ffffe0;
+}
 /* -------------------------------------------------------*/
 /* Pages                                                  */
 /* -------------------------------------------------------*/
@@ -2979,4 +3010,13 @@ option.sms-ribbon-color-mint {
   font-size: .9em;
   margin: .1em auto;
   height: 90%;
+}
+#button-builder .outputcode {
+  padding: 1em;
+}
+#button-builder #output {
+  display: block;
+  margin: 1em;
+  font-family: Consolas, Andale Mono, "Lucida Console", "Lucida Sans Typewriter", Monaco, Courier New, monospace;
+  font-size: 1.5em;
 }
