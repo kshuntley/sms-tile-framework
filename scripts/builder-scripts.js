@@ -17,6 +17,14 @@
         $temp.remove();
     }
 
+(function($) {
+	$.fn.toggleDisabled = function() {
+		return this.each(function() {
+			this.disabled = !this.disabled;
+		});
+	};
+})(jQuery);
+
     function getPortaitHTML() {
 		'use strict';
         return '<div class="sms-tile sms-layout-portrait sms-text-light"><a href="#" class="sms-url"></a><div class="sms-tile-text">This is your tile text.</div></div>';
@@ -37,7 +45,7 @@
 	function toggleCustomColorConfigs() {
 		'use strict';		
 		$("#customColorConfigurables").slideToggle(200);
-		$("#sms-form-tile-color").toggleClass("disabled");	
+		$("#sms-form-tile-color").toggleDisabled();	
 		processCustomColor();
 	}	
 	
@@ -363,12 +371,21 @@
         $("#output").text(outputHTML);	
 	}	
 	
-	function processCustomColor() {
-		'use strict';			
+	function processCustomColor(aCustomColor) {
+		'use strict';		
+		var customColor;
 		var useCustomColour = $("#sms-form-custom-color-toggle-0").prop("checked");
-		var customColor = $("#sms-form-custom-color").val();
+		//var customColor = $("#sms-form-custom-color").val();
+		//var t = $("#sms-form-custom-spectrum").spectrum("get");
 		var currentInlineStyles = "";		
 		var newInlineStyles = "";
+		
+		
+		if ((typeof aCustomColor === "undefined") || (aCustomColor === "")) {
+			customColor = "#ccaa00";
+		} else {
+			customColor = aCustomColor;
+		}		
 		
 		if (useCustomColour) {
 			$("#wrapper .sms-tile").addClass("sms-custom-color");
@@ -605,14 +622,29 @@
 	$("#sms-form-custom-color-toggle-0").change(toggleCustomColorConfigs());
 	
 		// Custom Colour changes
-		$("#sms-form-custom-color").keypress(function (e) {
+		/*$("#sms-form-custom-color").keypress(function (e) {
 			'use strict';				
 			var key = e.which;
 			if (key===13) {
 				processCustomColor();
 				displayTileOutput();
 			}
-		}).blur(processCustomColor());
+		}).blur(processCustomColor());*/
+
+
+		$("#sms-form-custom-spectrum").spectrum({
+			change: function(aColor) {
+				'use strict';
+				processCustomColor(aColor.toHexString());
+				displayTileOutput();
+			},
+			showInput: true,
+			showInitial: true,
+			showPalette: true,
+			palette: [ ], 
+			preferredFormat: "hex",
+			clickoutFiresChange: true
+		});
 	
 	// Triangle changes
 	$("input[name=sms-form-tile-triangle]").change(function() {
@@ -914,4 +946,6 @@
 		displayTileOutput();		
 		$('#myTileBuilderModal').modal('hide');
 	});
+
+
 
