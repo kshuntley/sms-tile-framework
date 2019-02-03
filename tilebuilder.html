@@ -8,6 +8,7 @@
     <!-- <link href="css/smstile-framework.min.css" type="text/css" rel="stylesheet"> -->
     <link href="css/custom.css" type="text/css" rel="stylesheet">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+	<link rel="stylesheet" href="css/spectrum.css" />
 </head>
 
 <body id="tile-builder">
@@ -151,7 +152,7 @@
         <div class="form-group ">
             <label class="col-md-6 control-label" for="sms-form-tile-color">Tile Colour</label>
             <div class="col-md-6">
-                <select id="sms-form-tile-color" name="sms-form-tile-color" class="form-control">
+                <select id="sms-form-tile-color" name="sms-form-tile-color" class="form-control" disabled="false">
                     <optgroup label="Brand Book Colour Palette" class="sms-text-dark">
                         <option value="sms-color-teal" class="sms-color-teal sms-text-light">Teal</option>
                         <option value="sms-color-dark-teal" class="sms-color-dark-teal sms-text-light" selected>Dark Teal</option>
@@ -230,8 +231,9 @@
             <div class="form-group">
                 <label class="col-md-6 control-label" for="sms-form-custom-color">Custom Colour</label>
                 <div class="col-md-6">
-                    <input id="sms-form-custom-color" name="sms-form-custom-color" type="text" placeholder="#ccaa00" class="form-control input-md">
-                    <span class="help-block">What is the hexadecimal of the custom colour?</span>
+                    <!-- <input id="sms-form-custom-color" name="sms-form-custom-color" type="text" placeholder="#ccaa00" class="form-control input-md">
+                    <span class="help-block">What is the hexadecimal of the custom colour?</span> -->
+                    <input type="text" id="sms-form-custom-spectrum" value="#ca0" />
                 </div>
             </div>
         </div>        
@@ -470,6 +472,23 @@
 
     
 <script src="scripts/cssinline.js"></script>
+<script src="scripts/spectrum.js"></script>
+<script>
+	$("#sms-form-custom-spectrum").spectrum({
+		showInput: true,
+		showInitial: true,
+		showPalette: true,
+		palette: [ ], 
+		preferredFormat: "hex",
+		/*showSelectionPalette: true,
+		selectionPalette: [
+			['#D25299', '#663399', '#4768D6'],
+			['#D64541', '#B11030', '#1E988A']
+		]*/
+    	//localStorageKey: "spectrum.homepage", // Any Spectrum with the same string will share selection
+	});
+</script>
+
 <script src="scripts/builder-scripts.js"></script>
 <!-- <script src="scripts/builder-scripts.min.js"></script> -->
 
