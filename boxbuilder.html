@@ -319,7 +319,7 @@
 			</div>
 
 		
-		<div class="buttonrow">
+		<div class="buttonrow sms-functionality-btns">
 		<hr>
 		<button type="button" onClick="copyToClipboard('#output')" class="btn btn-danger">Copy HTML</button>
 		<button type="button" id="inlinestylebutton" class="btn btn-success" onClick="runInlineConverter()">Convert to Inline CSS</button>
@@ -474,6 +474,34 @@
 			$(".sms-box .sms-box-rows").append(newRow);
 			
 			tobeDeleteDisabled();
+			
+			// Check custom color
+			if ($(".sms-custom-color").length) {
+				var currentInlineStyles = $(".sms-custom-color").attr("style");
+				var customColor;
+
+				if (currentInlineStyles !== undefined) {
+					if (currentInlineStyles.length !== 0) {
+						currentInlineStyles = currentInlineStyles.toLowerCase();
+						var bgcolorStart = currentInlineStyles.indexOf("background-color");
+						if (bgcolorStart > -1) {
+							var bgcolorEnd = currentInlineStyles.indexOf(";", bgcolorStart);
+							if (bgcolorEnd > -1) {
+								customColor = currentInlineStyles.slice(bgcolorStart, bgcolorEnd);
+							} else {
+								customColor = currentInlineStyles.slice(bgcolorStart);
+							}
+							customColor = customColor.replace("background-color:","");
+							customColor = customColor.trim();
+						}
+					}
+
+				}
+				
+				
+				$(".sms-box-clear-bordered").css("border-bottom-color",customColor);
+			}
+			
 			displayBoxOutput();
 		}
 		
@@ -514,7 +542,7 @@
 
 			if (btnText.startsWith("En")) {
 				btnText = btnText.replace("En", "Dis");
-				$(".editRowBtns button, .editIconBtns .action-create").prop("disabled", true);				
+				$(".editRowBtns button, .editIconBtns .action-create, .editIconBtns .show-links, .sms-functionality-btns button, #btnEditable").prop("disabled", true);				
 				$(".sms-box-rows").css({"cursor":"grab"}).sortable("enable").sortable({
 					"cursor":"move",
 					"axis": "y",
@@ -523,7 +551,7 @@
 
 			} else {
 				btnText = btnText.replace("Dis", "En");
-				$(".editRowBtns button, .editIconBtns .action-create").prop("disabled", false);				
+				$(".editRowBtns button, .editIconBtns .action-create, .editIconBtns .show-links, .sms-functionality-btns button, #btnEditable").prop("disabled", false);				
 				$(".sms-box-rows").css({"cursor":"auto"}).sortable("disable");
 				displayBoxOutput();
 			}
@@ -541,12 +569,12 @@
 			if (btnText.startsWith("Turn On")) {
 				btnText = btnText.replace("Turn On", "Turn Off");
 				$(".isEditable").attr('contenteditable',true);
-				$(".editRowBtns button, .editIconBtns .action-create").prop("disabled", true);
+				$(".editRowBtns button, .editIconBtns .action-create, .editIconBtns .show-links, .sms-functionality-btns button, #btnSortable").prop("disabled", true);
 
 			} else {
 				btnText = btnText.replace("Turn Off", "Turn On");
 				$("[contenteditable='true']").removeAttr('contenteditable');
-				$(".editRowBtns button, .editIconBtns .action-create").prop("disabled", false);
+				$(".editRowBtns button, .editIconBtns .action-create, .editIconBtns .show-links, .sms-functionality-btns button, #btnSortable").prop("disabled", false);
 				
 				// Bug with hyperlinks not going back to pointer
 				$("a[contenteditable]").css({"cursor":"pointer"});
@@ -567,7 +595,7 @@
 			
 			$(".configurable").hide();
 			displayBoxOutput();
-
+			
 			$( ".sms-box-rows" ).sortable({disabled: true});
 
 			$("#sms-form-box-color").change(function() {
@@ -585,7 +613,7 @@
 					var theLink = $(this).attr("href");
 					return '<input class="form-control hyperlink-edit" value="' +theLink.trim() + '" type="text">';
 				});
-				$(".editRowBtns button, .dragAndSortBtns button, .action-create").prop("disabled", true);
+				$(".editRowBtns button, .dragAndSortBtns button, .action-create, .sms-functionality-btns button").prop("disabled", true);
 				$('.hide-links').removeAttr('disabled');
 				$('.show-links').attr('disabled','disabled');
 			});
@@ -595,7 +623,7 @@
 				$('.hyperlink-edit').remove();
 				$('.show-links').removeAttr('disabled');
 				$('.hide-links').attr('disabled','disabled');
-				$(".editRowBtns button, .dragAndSortBtns button, .action-create").prop("disabled", false);
+				$(".editRowBtns button, .dragAndSortBtns button, .action-create, .sms-functionality-btns button").prop("disabled", false);
 				
 				displayBoxOutput();
 			});
@@ -614,7 +642,7 @@
 				$('.icp').remove();
 				$('.action-create').removeAttr('disabled');
 				$('.action-destroy').attr('disabled','disabled');
-				$(".editRowBtns button, .dragAndSortBtns button, .show-links").prop("disabled", false);
+				$(".editRowBtns button, .dragAndSortBtns button, .show-links, .sms-functionality-btns button").prop("disabled", false);
 				
 				displayBoxOutput();
 			});	
@@ -627,7 +655,7 @@
 					return '<input class="form-control icp" value="' + faicon.trim() + '" type="text">';
 				});
 				
-				$(".editRowBtns button, .dragAndSortBtns button, .show-links").prop("disabled", true);
+				$(".editRowBtns button, .dragAndSortBtns button, .show-links, .sms-functionality-btns button").prop("disabled", true);
 				
 				$('.icp').iconpicker({
 					title: 'Choose a new icon',
@@ -760,6 +788,13 @@
 			$("#wrapper").html(oldWrapper);
 			
 		}
+		
+		// Incase someone tries to import a currently editable
+		$(".sms-box").removeClass("showEditable");
+
+		// Initalise sortable
+		$(".sms-box-rows").sortable();		
+		
 		
 		// Check what colour it is
 		// Get all the classes for the tile and then match for a class starting with sms-color-
