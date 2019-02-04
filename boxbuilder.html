@@ -16,19 +16,22 @@
     <!-- Local (Dev) -->
     <link href="css/smstile-framework.css" type="text/css" rel="stylesheet">
     <link href="css/custom.css" type="text/css" rel="stylesheet">
+    
+    <!-- Spectrum Colour Picker -->
+    <link rel="stylesheet" href="css/spectrum.css" />
 	
    <!-- Local (Prod) -->
     <!-- <link href="css/smstile-framework.min.css" type="text/css" rel="stylesheet">
     <link href="css/custom.min.css" type="text/css" rel="stylesheet">	-->
     
     <style>
-		/*.newEditable {
+		.newEditable {
 			background-color: rgb(255,255,255);
 			box-shadow: rgb(0,121,191) 0px 0px 0px 2px inset;
 			border-radius: 3px;
 			padding: 0.3em;
 			color: black;
-		}*/
+		}
 	</style>
 	
 	<script>
@@ -214,6 +217,32 @@
 			</div>
 			</fieldset>
 			
+			<!-- Multiple Checkboxes: Include Custom Color toggle -->
+			<div class="form-group portrait-related">
+				<label class="col-md-6 control-label" for="sms-form-custom-color-toggle">Use a Custom Colour</label>
+				<div class="col-md-6">
+					<div class="checkbox">
+						<label for="sms-form-custom-color-toggle-0">
+							<input type="checkbox" name="sms-form-custom-color-toggle" id="sms-form-custom-color-toggle-0" value="yes">
+							Yes
+						</label>
+					</div>
+				</div>
+			</div>
+
+			<!-- Configure Custom Color -->
+			<div id="customColorConfigurables" class="configurable">
+				<!-- Text input: Image URL -->
+				<div class="form-group">
+					<label class="col-md-6 control-label" for="sms-form-custom-color">Custom Colour</label>
+					<div class="col-md-6">
+						<!-- <input id="sms-form-custom-color" name="sms-form-custom-color" type="text" placeholder="#ccaa00" class="form-control input-md">
+						<span class="help-block">What is the hexadecimal of the custom colour?</span> -->
+						<input type="text" id="sms-form-custom-spectrum" value="#ca0" />
+					</div>
+				</div>
+			</div>  			
+			
 			<!-- Multiple Radios: Text Colors -->
 			<div class="form-group">
 				<label class="col-md-6 control-label" for="sms-form-tile-text-color">Text Color</label>
@@ -290,7 +319,12 @@
 			</div>
 
 		
-
+		<div class="buttonrow">
+		<hr>
+		<button type="button" onClick="copyToClipboard('#output')" class="btn btn-danger">Copy HTML</button>
+		<button type="button" id="inlinestylebutton" class="btn btn-success" onClick="runInlineConverter()">Convert to Inline CSS</button>
+		<button type="button" id="importcode" class="btn btn-info launch-modal" data-toggle="modal" data-target="#myBoxBuilderModal">Import Box HTML</button>
+		</div>
 		
 
 		
@@ -304,9 +338,10 @@
 		<code id="output">
 		</code></p>
 	
+	<!--
 		<button type="button" onClick="copyToClipboard('#output')" class="btn btn-danger">Copy HTML</button>
 		<button type="button" id="inlinestylebutton" class="btn btn-success" onClick="runInlineConverter()">Convert to Inline CSS</button>
-		<button type="button" id="importcode" class="btn btn-info launch-modal" data-toggle="modal" data-target="#myBoxBuilderModal">Import Box HTML</button>
+		<button type="button" id="importcode" class="btn btn-info launch-modal" data-toggle="modal" data-target="#myBoxBuilderModal">Import Box HTML</button>-->
 	</div> 
 	
 	<!-- Import Modal -->
@@ -340,6 +375,9 @@
     
     <!-- Inline Style -->
     <script src="scripts/cssinline.js"></script>
+    
+    <!-- Spectrum -->
+	<script src="scripts/spectrum.js"></script>    
 
 	<!-- Custom Scripts to add to separate file -->
 	<script>
@@ -527,6 +565,7 @@
 
 		$( document).ready(function() {
 			
+			$(".configurable").hide();
 			displayBoxOutput();
 
 			$( ".sms-box-rows" ).sortable({disabled: true});
@@ -680,8 +719,7 @@
         	recursive: true,
         	properties: ["background-color", "box-shadow", "-moz-box-shadow", "-webkit-box-shadow", "box-sizing", "-moz-box-siding", "-webkit-box-sizing", "color", "display", "float", "font-weight", "font-size", "font-style", "line-height", "padding", "padding-top", "padding-right", "padding-bottom", "padding-left", "position", "z-index", "vertical-align", "text-decoration", "clear", "border-bottom-width", "border-bottom-color", "border-bottom-style", "border-left-width", "border-left-color", "border-left-style"]
         });
-		
-		//alert("here");
+
 		
 		// Manually put in the sms-box width & margins
 		$("#wrapper .sms-box").css("width", "96%", "margin-top", "20px", "margin-bottom", "20px", "margin-left", "auto", "margin-right", "auto");
@@ -694,15 +732,7 @@
 		$("#wrapper .sms-box-shade-left").css("left", "10px");		
 		$("#wrapper .sms-box-sidebar").css("margin-left", "10px");
 		$("#wrapper .sms-box-shade-underlay").css("height", "calc(100% - 10px)");
-		
-		// Remove any class that starts with .sms
-		/*$('#wrapper *').removeClass(function (index, className) {
-			return (className.match(/(^|\s)sms-\S+/g) ||[]).join(' ');
-		});*/
-		
-		// Strip out any empty classes
-		//$('#wrapper *[class=""]').removeAttr('class');		
-		
+			
 		displayBoxOutput();
 			
 		return;
@@ -731,7 +761,6 @@
 			
 		}
 		
-		
 		// Check what colour it is
 		// Get all the classes for the tile and then match for a class starting with sms-color-
 		var importedColor = $("#wrapper .sms-box").attr('class').match(/sms-color-\S+/g);
@@ -744,23 +773,45 @@
 			}
 		});	
 		
-		// Light vs Dark
-		// See if there's a sms-text-light or sms-text-dark class in the tile, and if so check appropriate
-		if ($("#wrapper .sms-text-dark").length) {
-			$("#sms-form-tile-text-color-0").prop("checked",false);	
-			$("#sms-form-tile-text-color-1").prop("checked",true);
-				
+		// Look for custom colors
+		if ($("#wrapper .sms-custom-color").length) {
+			var customColor = "#ccaa00";
+			var currentInlineStyles = $("#wrapper .sms-box").attr("style");
+			//var currentBorderInlineStyles = $("#wrapper .sms-box-clear-bordered").attr("style");	
+			//var currentRightInlineStyles = $("#wrapper .sms-box-shade-pattern-left-third .sms-box-shade-right").attr("style");	
+			
+			if (currentInlineStyles !== undefined) {
+				if (currentInlineStyles.length !== 0) {
+					currentInlineStyles = currentInlineStyles.toLowerCase();
+					var bgcolorStart = currentInlineStyles.indexOf("background-color");
+					if (bgcolorStart > -1) {
+						var bgcolorEnd = currentInlineStyles.indexOf(";", bgcolorStart);
+						if (bgcolorEnd > -1) {
+							customColor = currentInlineStyles.slice(bgcolorStart, bgcolorEnd);
+						} else {
+							customColor = currentInlineStyles.slice(bgcolorStart);
+						}
+						customColor = customColor.replace("background-color:","");
+						customColor = customColor.trim();
+					}
+				}
+					
+			}
+						
+			$("#wrapper .sms-box").removeAttr("style").find("*").removeAttr("style"); // Drop all styles
+			$("#wrapper .sms-box").attr({"style":("background-color:"+customColor)}); 
+			$("#wrapper .sms-box-clear-bordered").attr({"style":("border-bottom-color:"+customColor)}); 
+			$("#wrapper .sms-box-shade-pattern-left-third .sms-box-shade-right").attr({"style":("border-left-color:"+customColor)}); 			
+			
+			$("#sms-form-custom-color-toggle-0").prop("checked",true);
+			$("#sms-form-box-color").attr("disabled", true);
+			$("#customColorConfigurables").slideDown(200);
+			$("#sms-form-custom-color").val(customColor);
+			processCustomColor(customColor);
 		} else {
-			$("#sms-form-tile-text-color-0").prop("checked",true);
-			$("#sms-form-tile-text-color-1").prop("checked",false);					
-		}	
+			$("#wrapper .sms-tile").removeAttr("style").find("*").removeAttr("style");
+		}		
 		
-		// Check if there's a dropshadow
-		if ($("#wrapper div").hasClass("sms-shadow")) {
-			$("#sms-form-tile-shadow-0").attr("checked","checked");
-		}	
-		
-		$("#wrapper .sms-box").removeAttr("style").find("*").removeAttr("style");		
 		
 			
 		displayBoxOutput();		
@@ -781,7 +832,173 @@
 	function toggleHyperlinkEditor() {
 		
 	}
+		
 
+	$("#sms-form-custom-spectrum").spectrum({
+		showInput: true,
+		showInitial: true,
+		showPalette: true,
+		palette: [ ], 
+		preferredFormat: "hex",
+		/*showSelectionPalette: true,
+		selectionPalette: [
+			['#D25299', '#663399', '#4768D6'],
+			['#D64541', '#B11030', '#1E988A']
+		]*/
+    	//localStorageKey: "spectrum.homepage", // Any Spectrum with the same string will share selection
+	});		
+		
+	$("#sms-form-custom-spectrum").spectrum({
+		change: function(aColor) {
+			'use strict';
+			processCustomColor(aColor.toHexString());
+			displayBoxOutput();
+		},
+		showInput: true,
+		showInitial: true,
+		showPalette: true,
+		palette: [ ], 
+		preferredFormat: "hex",
+		clickoutFiresChange: true
+	});
+		
+	(function($) {
+		$.fn.toggleDisabled = function() {
+			return this.each(function() {
+				this.disabled = !this.disabled;
+			});
+		};
+	})(jQuery);			
+		
+	// Show Custom Colour Configurables
+    $("#sms-form-custom-color-toggle-0").change(function() {
+		'use strict';		
+		toggleCustomColorConfigs();
+		displayBoxOutput();
+	});		
+		
+	function toggleCustomColorConfigs() {
+		'use strict';	
+		//alert("hi");
+		$("#customColorConfigurables").slideToggle(200);
+		$("#sms-form-box-color").toggleDisabled();	
+		processCustomColor();
+	}	
+		
+	function processCustomColor(aCustomColor) {
+		'use strict';		
+		var customColor;
+		var useCustomColour = $("#sms-form-custom-color-toggle-0").prop("checked");
+		//var customColor = $("#sms-form-custom-color").val();
+		//var t = $("#sms-form-custom-spectrum").spectrum("get");
+		var currentBoxInlineStyles = "";		
+		var newBoxInlineStyles = "";
+		var currentBorderInlineStyles = "";		
+		var newBorderInlineStyles = "";
+		var currentRightInlineStyles = "";		
+		var newRightInlineStyles = "";			
+			
+		if ((typeof aCustomColor === "undefined") || (aCustomColor === "")) {
+			//customColor = "#ccaa00";
+			customColor = $("#sms-form-custom-spectrum").spectrum("get").toString();
+		} else {
+			customColor = aCustomColor;
+		}
+		
+		
+		if (useCustomColour) {
+			$("#wrapper .sms-box").addClass("sms-custom-color");
+		} else {
+			$("#wrapper .sms-box").removeClass("sms-custom-color");
+		}
+		
+		$("#sms-form-custom-spectrum").spectrum("set", customColor);
+		
+		// If there is a custom colour, remove it.
+		currentBoxInlineStyles = $("#wrapper .sms-tile").attr("style");
+		
+		if (currentBoxInlineStyles !== undefined) {
+			if (currentBoxInlineStyles.length !== 0) {
+				var bgcolorStart = currentBoxInlineStyles.indexOf("background-color");
+				if (bgcolorStart > -1) {
+					var bgcolorEnd = currentBoxInlineStyles.indexOf(";", bgcolorStart);
+					newBoxInlineStyles = currentBoxInlineStyles.slice(0, bgcolorStart);
+					if (bgcolorEnd > -1) {
+						newBoxInlineStyles += currentBoxInlineStyles.slice(bgcolorEnd+1);
+					}
+				}
+			}
+		}
+		
+		if ((useCustomColour) && (customColor.length > 0)) {
+			newBoxInlineStyles += "background-color:" + customColor + ";";
+		} 
+		
+		if (newBoxInlineStyles.length === 0) {
+			$("#wrapper .sms-box").removeAttr("style");
+		} else {
+			$("#wrapper .sms-box").attr("style", newBoxInlineStyles);			
+		}
+		
+		
+		// If there is a custom colour, remove it.
+		currentBorderInlineStyles = $("#wrapper .sms-box-clear-bordered").attr("style");
+		
+		if (currentBorderInlineStyles !== undefined) {
+			if (currentBorderInlineStyles.length !== 0) {
+				var bgcolorStart = currentBorderInlineStyles.indexOf("border-bottom-color");
+				if (bgcolorStart > -1) {
+					var bgcolorEnd = currentBorderInlineStyles.indexOf(";", bgcolorStart);
+					newBorderInlineStyles = currentBorderInlineStyles.slice(0, bgcolorStart);
+					if (bgcolorEnd > -1) {
+						newBorderInlineStyles += currentBorderInlineStyles.slice(bgcolorEnd+1);
+					}
+				}
+			}
+		}
+		
+		if ((useCustomColour) && (customColor.length > 0)) {
+			newBorderInlineStyles += "border-bottom-color:" + customColor + ";";
+		} 
+		
+		if (newBorderInlineStyles.length === 0) {
+			$("#wrapper .sms-box-clear-bordered").removeAttr("style");
+		} else {
+			$("#wrapper .sms-box-clear-bordered").attr("style", newBorderInlineStyles);			
+		}
+		
+		
+		// If there is a custom colour, remove it.
+		currentRightInlineStyles = $("#wrapper .sms-box-clear-bordered").attr("style");
+		
+		if (currentRightInlineStyles !== undefined) {
+			if (currentRightInlineStyles.length !== 0) {
+				var bgcolorStart = currentRightInlineStyles.indexOf("border-left-color");
+				if (bgcolorStart > -1) {
+					var bgcolorEnd = currentRightInlineStyles.indexOf(";", bgcolorStart);
+					newRightInlineStyles = currentRightInlineStyles.slice(0, bgcolorStart);
+					if (bgcolorEnd > -1) {
+						newRightInlineStyles += currentRightInlineStyles.slice(bgcolorEnd+1);
+					}
+				}
+			}
+		}
+		
+		if ((useCustomColour) && (customColor.length > 0)) {
+			newRightInlineStyles += "border-left-color:" + customColor + ";";
+		} 
+		
+		if (newRightInlineStyles.length === 0) {
+			$("#wrapper .sms-box-shade-pattern-left-third .sms-box-shade-right").removeAttr("style");
+		} else {
+			$("#wrapper .sms-box-shade-pattern-left-third .sms-box-shade-right").attr("style", newRightInlineStyles);			
+		}		
+
+		
+		return;
+	}		
+		
+	
 		
 	</script>
 	
