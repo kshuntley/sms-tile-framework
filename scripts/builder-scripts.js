@@ -379,19 +379,22 @@
 		//var t = $("#sms-form-custom-spectrum").spectrum("get");
 		var currentInlineStyles = "";		
 		var newInlineStyles = "";
-		
-		
+			
 		if ((typeof aCustomColor === "undefined") || (aCustomColor === "")) {
-			customColor = "#ccaa00";
+			//customColor = "#ccaa00";
+			customColor = $("#sms-form-custom-spectrum").spectrum("get").toString();
 		} else {
 			customColor = aCustomColor;
-		}		
+		}
+		
 		
 		if (useCustomColour) {
 			$("#wrapper .sms-tile").addClass("sms-custom-color");
 		} else {
 			$("#wrapper .sms-tile").removeClass("sms-custom-color");
 		}
+		
+		$("#sms-form-custom-spectrum").spectrum("set", customColor);
 		
 		// If there is a custom colour, remove it.
 		currentInlineStyles = $("#wrapper .sms-tile").attr("style");
@@ -499,10 +502,7 @@
 		'use strict';		
         $(".configurable").hide();
 		$("#urlConfigurable").show();
-		
-		// Can't figure out why this one won't hide!
-		//$("#customColorConfigurables").hide();
-		
+			
         $("#wrapper").html(getPortaitHTML());
 	
 		resetTile();		
@@ -934,10 +934,11 @@
 			$("#wrapper .sms-tile").removeAttr("style").find("*").removeAttr("style");
 			$("#wrapper .sms-tile").attr({"style":("background-color:"+customColor)}); // Drop all styles
 			
-			$("#sms-form-custom-color-toggle-0").prop("checked",true);	
+			$("#sms-form-custom-color-toggle-0").prop("checked",true);
+			$("#sms-form-tile-color").attr("disabled", true);			
 			$("#customColorConfigurables").slideDown(200);
 			$("#sms-form-custom-color").val(customColor);
-			processCustomColor();
+			processCustomColor(customColor);
 		} else {
 			$("#wrapper .sms-tile").removeAttr("style").find("*").removeAttr("style");
 		}
