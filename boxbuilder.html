@@ -46,7 +46,7 @@
 	<h3>The Box Builder</h3>
 	
 		<div id="wrapper">
-			<div class="sms-box">
+			<div class="sms-box sms-color-intranet-blue">
 
 				<!-- Box Header -->
 				<div>
@@ -159,7 +159,7 @@
 					<select id="sms-form-box-color" name="sms-form-box-color" class="form-control">
 						<optgroup label="Brand Book Colour Palette" class="sms-text-dark">
 							<option value="sms-color-teal" class="sms-color-teal sms-text-light">Teal</option>
-							<option value="sms-color-dark-teal" class="sms-color-dark-teal sms-text-light" selected>Dark Teal</option>
+							<option value="sms-color-dark-teal" class="sms-color-dark-teal sms-text-light">Dark Teal</option>
 							<option value="sms-color-aa-teal" class="sms-color-aa-teal sms-text-light">AA Dark Teal</option>
 							<option value="sms-color-denim-blue" class="sms-color-denim-blue sms-text-light">Denim Blue</option>
 							<option value="sms-color-azure-blue" class="sms-color-azure-blue sms-text-light">Azure Blue</option>
@@ -197,7 +197,7 @@
 							<option value="sms-color-grey5" class="sms-text-dark sms-color-grey5">Grey 5</option>
 						</optgroup>
 						<optgroup label="TAFE Intranet Colours" class="sms-text-dark">
-							<option value="sms-color-intranet-blue" class="sms-text-light sms-color-intranet-blue" selected>Intranet Blue</option>
+							<option value="sms-color-intranet-blue" class="sms-text-light sms-color-intranet-blue" selected="selected">Intranet Blue</option>
 							<option value="sms-color-intranet-purple" class="sms-text-light sms-color-intranet-purple">Intranet Purple</option>
 							<option value="sms-color-intranet-turquoise" class="sms-text-light sms-color-intranet-turquoise">Intranet Turquoise</option>
 							<option value="sms-color-intranet-ochre" class="sms-text-light sms-color-intranet-ochre">Intranet Ochre</option>		
@@ -800,11 +800,13 @@
 		// Get all the classes for the tile and then match for a class starting with sms-color-
 		var importedColor = $("#wrapper .sms-box").attr('class').match(/sms-color-\S+/g);
 
+
 		// Go through the layout options and when finding a matching one, add selected to that option
+		$("#sms-form-box-color option:selected").removeAttr("selected");
 		$("#sms-form-box-color option").each(function(){
-			$(this).removeAttr("selected");
 			if ($(this).attr("value") == importedColor) {
-				$(this).attr("selected","selected");
+				$(this).prop("selected",true);
+				
 			}
 		});	
 		
