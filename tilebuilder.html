@@ -12,13 +12,109 @@
 </head>
 
 <body id="tile-builder">
+
+<!-- Tile Builder Toolset Menu -->	
+<nav class="navbar navbar-default">
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<a class="navbar-brand" href="../index.html">
+				<img alt="Brand" src="img/Logos/TileBuilderLogo.svg" width="32" height="32" style="margin-top: -6px">
+			</a>
+			<a class="navbar-brand" href="../index.html">Tile Builder Toolset</a>
+		</div>
+
+		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+			<ul class="nav navbar-nav">
+				<li class="dropdown">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Select Tool <span class="caret"></span></a>
+					<ul class="dropdown-menu">
+						<li class="navbar-link"><a href="../tilebuilder/"><img alt="Brand" src="img/Logos/TileBuilderLogo.svg" width="20" height="20"> Tile Builder</a></li>
+						<li><a href="../boxbuilder/"><img alt="Brand" src="img/Logos/BoxBuilderLogo.svg" width="20" height="20"> Box Builder</a></li>
+						<li><a href="../buttonbuilder/"><img alt="Brand" src="img/Logos/ButtonBuilderLogo.svg" width="20" height="20"> Button Builder</a></li>
+						<li><a href="../menubuilder/"><img alt="Brand" src="img/Logos/MenuBuilderLogo.svg" width="20" height="20"> Menu Builder</a></li>
+					</ul>
+				</li>
+				<li><a href="#" id="navCopyBtn" class="navMenuFunc copyFunc">Copy</a></li>
+				<li><a href="#" id="navConvertBtn" class="navMenuFunc convertFunc">Convert to Inline</a></li>				
+				<li><a href="#" id="navImportBtn" class="navMenuFunc launch-modal" data-toggle="modal" data-target="#myTileBuilderModal">Import</a></li>			
+			</ul>
+			<ul class="nav navbar-nav navbar-right">
+				<li><a href="#" id="navAboutBtn" class="navMenuFunc aboutFunc launch-modal" data-toggle="modal" data-target="#aboutModal">About</a></li>			
+			</ul>			
+		</div>
+
+
+	</div>  
+</nav>
+
+<!-- About Modal -->
+<div class="modal fade" id="aboutModal" tabindex="-1" role="dialog" aria-labelledby="aboutModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+	<div class="modal-content">
+	  <div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+		<h4 class="modal-title" id="aboutModalLabel">Tile Builder Toolset</h4>
+	  </div>
+	  <div class="modal-body">
+		  <p>The <b>Tile Builder Toolset</b> was developed by <a href="mailto:kenneth.huntley3@tafensw.edu.au">Kenneth "Scott" Huntley</a> for the <b>SMS Project</b>.</p>
+		  
+		  <p>The tools in the toolset are visual controls that generate HTML snippets. These snippets were designed to be copied and pasted into the <a href="https://tafe.learn.tafensw.edu.au/" target="_blank">Staff Moodle</a> to simulate the tile look of that site's theme. This toolset enables team members who do not know HTML and CSS to maintain the SMS Project Moodle pages.</p>
+		  
+		  <p>The Tile Builder Toolset was written with extensive use of <a href="https://jquery.com/" target="_blank">jQuery</a>, <a href="https://getbootstrap.com/" target="_blank">Bootstrap</a>, <a href="http://lesscss.org/" target="_blank">LESS</a> and <a href="https://fontawesome.com/" target="_blank">FontAwesome</a>, amongst other open source libraries.</p> 
+		  
+		  <p>Versions of jQuery, Bootstrap and FontAwesome are consistent with the existing Staff Moodle versions (2.2.4, 3.3.7, and 4.7.0 respectively).</p>
+		  
+		  <p><i>Created in the beautiful Marcus Clark Building, Ultimo.</i>
+		  	<img src="img/mcbuilding.jpg" alt="The Marcus Clark Building" class="img-responsive img-rounded">
+		  </p>
+	  </div>
+	  <div class="modal-footer">
+		<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+	  </div>
+	</div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->   
+
+<!-- Copy Modal -->
+<div class="modal fade" id="copiedModal" role="dialog">
+	<div class="modal-dialog modal-sm">
+	  <div class="modal-content">
+
+		<div class="modal-body">
+		  <p>The Tile HTML has been copied to clipboard.</p>
+		</div>
+		<div class="modal-footer">
+		  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+		</div>
+	  </div>
+	</div>
+</div>
+
+<!-- Convert Modal -->
+<div class="modal fade" id="convertModal" role="dialog">
+	<div class="modal-dialog modal-sm">
+	  <div class="modal-content">
+
+		<div class="modal-body">
+		  <p>The Tile been converted to use inline CSS styles.</p>
+		</div>
+		<div class="modal-footer">
+		  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+		</div>
+	  </div>
+	</div>
+</div>
+
+
+<!-- End Tile Builder Toolset Menu -->
+
 <div class="options">
 
     <form class="form-horizontal" id="tilebuilder-form">
         <fieldset>
 
         <!-- Form Name -->
-        <legend>The Tile Builder</legend>
+        <legend class="text-right">Tile Builder Controls</legend>
               
         <!-- Select Basic: Tile Layout -->
         <div class="form-group ">
@@ -429,15 +525,17 @@
         </div>
         <div class="outputcode">
             <h3>Output</h3>
+			<div class="row text-center">
+				<button type="button" id="copyBtn" class="btn btn-danger copyFunc">Copy HTML</button>
+				<button type="button" id="inlinestylebutton" class="btn btn-success convertFunc">Convert to Inline CSS</button>
+				<button type="button" id="importcode" class="btn btn-info launch-modal" data-toggle="modal" data-target="#myTileBuilderModal">Import Tile HTML</button>
+			</div>             
+            
             <p><i>Copy and paste this HTML:</i><br>
             <code id="output">
             </code></p>
         </div>
-        <div class="row text-center">
-			<button type="button" onClick="copyToClipboard('#output')" class="btn btn-danger">Copy HTML</button>
-			<button type="button" id="inlinestylebutton" class="btn btn-success" onClick="runInlineConverter()">Convert to Inline CSS</button>
-			<button type="button" id="importcode" class="btn btn-info launch-modal" data-toggle="modal" data-target="#myTileBuilderModal">Import Tile HTML</button>
-   		</div>     
+    
     </div>
     
     
