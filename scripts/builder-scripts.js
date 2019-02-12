@@ -6,24 +6,35 @@
     */
 	
 	var  inlineBool = false;
-	
-    // Totes borrowed from https://codepen.io/shaikmaqsood/pen/XmydxJ/
-    function copyToClipboard(element) {
-		'use strict';
-        var $temp = $("<input>");
-        $("body").append($temp);
-        $temp.val($(element).text().trim()).select();
-        document.execCommand("copy");
-        $temp.remove();
-    }
 
-(function($) {
-	$.fn.toggleDisabled = function() {
-		return this.each(function() {
-			this.disabled = !this.disabled;
-		});
+
+	// Stupid string .replace only does the first
+	String.prototype.replaceAll = function(search, replacement) {
+		"use strict";
+		var target = this;
+		return target.replace(new RegExp(search, 'g'), replacement);
 	};
-})(jQuery);
+
+	function copyToClipboard(element)
+	{
+		'use strict';
+		var $temp = $("<textarea>");
+		$("body").append($temp);
+		var x = $(element).html().trim().replaceAll("&lt;", '<').replaceAll("&gt;",'>\n');
+		x = "<!-- START TILE -->\n" + x + "<!-- END TILE -->\n\n";
+		$temp.val(x).select();
+		document.execCommand("copy");
+		$temp.remove();
+	}
+
+	(function($) {
+		"use strict";
+		$.fn.toggleDisabled = function() {
+			return this.each(function() {
+				this.disabled = !this.disabled;
+			});
+		};
+	})(jQuery);
 
     function getPortaitHTML() {
 		'use strict';
@@ -366,8 +377,8 @@
 		'use strict';			
 		// Show the HTML preview
         var outputHTML = $("#wrapper").html();
-
-        // Write the output so it can be copied
+		
+   		// Write the output so it can be copied
         $("#output").text(outputHTML);	
 	}	
 	
@@ -734,8 +745,21 @@
 		'use strict';
     	$('#SMSImportTextarea').focus();
 	});	
+
+	$(".copyFunc").click(function() {
+		'use strict';
+		copyToClipboard('#output');
+		$("#copiedModal").modal();
+	});
+
+	$(".convertFunc").click(function() {
+		'use strict';
+		runInlineConverter();
+		$("#convertModal").modal();		
+	});
+
 	
-	$('#importTile').click(function() {
+	$("#importTile").click(function() {
 		'use strict';
 		var inputTile = "";
 		var tileCheck;
