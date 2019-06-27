@@ -3,7 +3,7 @@
  *	This is actually an "object literal".
  *
  *	@author [Kenneth "Scott" Huntley](kenneth.huntley3@tafensw.edu.au)
- *	@version 6.0.2
+ *	@version 6.0.3 - Added ARIA Role
  *
  *	@class Menu
  *
@@ -11,10 +11,10 @@
 var Menu = {
 	/** @lends Menu */
 
-	//----- THE _menu_array & MENU ITEM (AND ADDING TO, REORDERING AND DELETING FROM) -----//
+	//----- THE _menu_array & MENUITEM (AND ADDING TO, REORDERING AND DELETING FROM) -----//
 	
 	/**
-	 *	An array of menu items.
+	 *	An array of MenuItems.
 	 *	@property {MenuItem[]} _menu_array - An array of MenuItem objects.
 	 *	@private
 	 */
@@ -75,7 +75,7 @@ var Menu = {
 		 *	@method
 		 *	@public
 		 *	@param {number} anIndex - The index of the MenuItem you want to move.
-		 *	@param {number} aDestination - The index to which you wish to move this MenuItem
+		 *	@param {number} aDestination - The index to which you wish to move this MenuItem.
 		 *	@throws {RangeError} Will throw error if anIndex is less than 0 or greater than the length of _menu_array.
 		 *	@throws {RangeError} Will throw error if aDestination is less than 0 or greater than the length of _menu_array.		 
 		 *	@returns {Menu} The Menu; this.		 
@@ -111,7 +111,7 @@ var Menu = {
 
 		/**
 		 * 	Resets the identifiers of MenuItems based on their index of the _menu_array. 
-		 *	Item at index 3 will have an identifier of "anIdentifier-3".
+		 *	MenuItem at index 3 will have an identifier of "anIdentifier-3".
 		 *
 		 *	@method
 		 *	@public
@@ -140,7 +140,7 @@ var Menu = {
 		 *
 		 *	@method
 		 *	@public
-		 *	@param {string=} aLabel - A prefix for the identifiers.	 
+		 *	@param {string=} aLabel - The label you wish to give the MenuItem.	 
 		 *	@returns {Menu} The Menu; this.		 
 		 */		
 		addMenuItem: function( aLabel ) {
@@ -184,6 +184,12 @@ var Menu = {
 				"use strict";
 				return this.addMenuItemFromJSON( aJSONString );
 			},
+	
+			/**	@borrows addMenuItemFromJSON as addItemJSON */
+			addItemJSON: function( aJSONString ) {
+				"use strict";
+				return this.addMenuItemFromJSON( aJSONString );
+			},	
 
 		/**
 		 * 	Return the MenuItem with this identifier.
@@ -193,7 +199,7 @@ var Menu = {
 		 *	@param {string} anIdentifier - The value of the id attribute of the MenuItem you want to match.
 		 *	@throws {SyntaxError} Will throw error if anIdentifier is not specified.
 		 *	@throws {SyntaxError} Will throw error if anIdentifier is not a string.			 
-		 *	@returns {MenuItem} The matching Menu item.		 
+		 *	@returns {MenuItem} The matching MenuItem.		 
 		 */		
 		getMenuItemByIdentifier: function( anIdentifer ) {
 			"use strict";
@@ -251,7 +257,7 @@ var Menu = {
 		/**
 		 * 	Delete the MenuItem at this index.
 		 *	@public
-		 *	@param {number} anIndex - The index of the MenuItem you want to delete.			 
+		 *	@param {number} [anIndex] - The index of the MenuItem you want to delete. If unspecified, last MenuItem is deleted.		 
 		 *	@returns {Menu} The Menu; this.		 
 		 */		
 		deleteMenuItem: function( anIndex ) {
@@ -273,7 +279,6 @@ var Menu = {
 				"use strict";
 				return this.deleteMenuItem( anIndex );
 			},	
-	
 	
 	//----- MENU TEXT ALIGNMENT -----//	
 	
@@ -329,7 +334,6 @@ var Menu = {
 				return this;				
 			}
 		},
-	
 	
 	//----- MENU TEXT WEIGHT -----//	
 	
@@ -391,7 +395,6 @@ var Menu = {
 				"use strict";
 				return this.textWeight( aParameter );
 			},	
-	
 	
 	//----- MENU ICONS -----//	
 	
@@ -535,12 +538,12 @@ var Menu = {
 	 *	@constructs Menu
 	 *	@method
 	 *	@public
-	 *	@param {string} aString - A JSON string describing a Menu.
+	 *	@param {string} anInput - A JSON string describing a Menu.
 	 */		
-	newFromJSON: function( aString ) {
+	newFromJSON: function( anInput ) {
 		"use strict";
 		
-		var jsonObj = JSON.parse( aString );
+		var jsonObj = JSON.parse( anInput );
 		var aNewMenu = this.new();
 		
 		aNewMenu.textAlign( jsonObj.textAlign );
@@ -556,8 +559,7 @@ var Menu = {
 		aNewMenu.renumerateMenu();
 		return aNewMenu;
 	},
-	
-	
+		
 	//----- OUTPUT -----//
 	
 	/**
@@ -580,7 +582,7 @@ var Menu = {
 		// Add menu items
 		jsonstring += '"menuItems": [ ';
 		for ( var i = 0; i < this.numberOfItems(); i++ ) {
-			jsonstring += this.item( i ).getJSON();
+			jsonstring += this.item(i).getJSON();
 			jsonstring += ', ';
 		}
 		// Strip off the last comma
@@ -616,7 +618,7 @@ var Menu = {
 		}
 		
 		generatedMenu += "<!-- Menu -->\n";
-		generatedMenu += "<ul class=\"list-group " + FRAMEWORK_PREFIX + "-menu ui-sortable ui-sortable-disabled\">";
+		generatedMenu += "<ul class=\"list-group " + FRAMEWORK_PREFIX + "-menu ui-sortable ui-sortable-disabled\" role=\"menu\">";
 		for ( var i = 0; i < n; i++ ) {
 			generatedMenu += this.item( i ).getHTML( useIcon, useBold, textAlign, placeRight );
 		}
