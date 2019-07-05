@@ -388,7 +388,7 @@ function updateDisplay( aPreviewElement, aCodeOutputElement ) {
 	// Set the output if unspecified
 	if ( !( ( aCodeOutputElement === undefined ) || ( aCodeOutputElement === null ) ) ) {
 		aCodeOutputElement = "#output";
-	} 		
+	} 	
 
 	$( "#wrapper" ).html( generated );
 	$( "#output" ).text( generated );
