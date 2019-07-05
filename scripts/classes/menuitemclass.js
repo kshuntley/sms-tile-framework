@@ -560,7 +560,7 @@ var MenuItem = {
 		
 		// Icon
 		if ( useIcon && !(placeRight) ) {
-			generatedItem += "<i class=\"fa " + this.iconClass() + "\" aria-hidden=\"true\"></i>\n";
+			generatedItem += "<i class=\"fa " + this.iconClass() + " fa-fw\" aria-hidden=\"true\"></i>\n";
 		}
 		
 		// Label

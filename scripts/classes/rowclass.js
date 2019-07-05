@@ -968,7 +968,7 @@ var Row = {
 				return this._getArtefactURLNewWindow();
 			}
 			else {
-				this._setgetArtefactURLNewWindow( aParameter );
+				this._setArtefactURLNewWindow( aParameter );
 				return this;
 			}
 			
@@ -2769,7 +2769,7 @@ var Row = {
 			if ( this.hasArtefactURLTitle() ) {
 				jsonstring += '"artefactURLTitle":"' + this.artefactURLTitle() + '", ';
 			}
-			jsonstring += '"artefactURLNewWindow":' + this.artefactURLTitle() + ', ';				
+			jsonstring += '"artefactURLNewWindow":' + this.artefactURLNewWindow() + ', ';				
 		}
 		jsonstring += '"summaryParagraph":"' + this.summaryParagraph() + '"';
 		
@@ -2870,7 +2870,7 @@ var Row = {
 			jsonstring += '"icon":"' + icons[i] + '", ';
 			jsonstring += '"link":"' + links[i] + '", ';			
 			jsonstring += '"linkTitle":"' + linkTitles[i] + '", ';
-			jsonstring += '"linkNewWindow":' + newWindows[i] + '" }, ';
+			jsonstring += '"linkNewWindow":' + newWindows[i] + ' }, ';
 		}
 		
 		// Strip off the last comma
@@ -3287,4 +3287,5 @@ var Row = {
 			"use strict";
 			return this.getClassName();
 		}
+	
 };

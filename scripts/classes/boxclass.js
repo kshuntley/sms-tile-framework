@@ -42,7 +42,7 @@ var Box = {
 			/** @borrows row as getRow */
 			getRow: function( anIndex ) {
 				"use strict";
-				return this.getRow( anIndex );
+				return this.row( anIndex );
 			},
 	
 		/**
