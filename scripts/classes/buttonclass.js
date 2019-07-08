@@ -934,7 +934,7 @@ var Button = {
 		if ( this.hasNewWindow() ) {
 			generatedBtn += "target=\"_blank\" ";
 		}
-		generatedBtn = "role=\"button\" ";
+		generatedBtn += "role=\"button\" ";
 		generatedBtn += "title=\"" + this.urlTitle() + "\">\n";
 		generatedBtn += "<span class=\"" + FRAMEWORK_PREFIX + "-button-text ";
 		generatedBtn += FRAMEWORK_PREFIX + "-text-big font-weight-normal isEditable\">";

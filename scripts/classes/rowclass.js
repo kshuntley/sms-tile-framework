@@ -3,7 +3,7 @@
  *	This is actually an "object literal".
  *
  *	@author [Kenneth "Scott" Huntley](kenneth.huntley3@tafensw.edu.au)
- *	@version 6.0.2
+ *	@version 6.0.3 - Added functionality for Row custom color.
  *
  *	@class Row
  *
@@ -708,7 +708,7 @@ var Row = {
 	 *	@property {string} _artefact_hyperlink
 	 *	@private
 	 */
-	_artefact_hyperlink: "http://tafensw.edu.au",
+	_artefact_hyperlink: "http://tafensw.edu.au/",
 	
 	/**
 	 *	The hyperlink title on the url that the artefact relates to. 
@@ -1016,6 +1016,120 @@ var Row = {
 				return this.artefactURLNewWindow( aParameter );
 			},	
 	
+	//----- CUSTOM COLOR -----//
+	
+	/**
+	 *	The Rows need to know about their parent Box's custom color inorder to draw the Clear Div correctly.
+	 *	We're going to use a hexadecimal string for the color and keep reseting it to empty if no color exists
+	 *
+	 *	@property {string} _custom_color
+	 *	@private
+	 */
+	_custom_color: "",
+	
+		/**
+		 * 	Return custom colour of this Row.
+		 *
+		 *	@method
+		 *	@private		 
+		 *	@returns {string} The colour in hexadecimal notation.
+		 */			
+		_getCustomColor: function() {
+			"use strict";
+			return this._custom_color;
+		},
+	
+		/**
+		 * 	Set the custom colour of this Row.
+		 *
+		 *	@method
+		 *	@private
+		 *	@param {string} aColor - The new custom colour for the Row. It 
+		 *		should be in hexadecimal notation.
+		 *	@returns {Row} The Row; this.	
+		 */			
+		_setCustomColor: function( aColor ) {
+			"use strict";		
+			this._custom_color = aColor;
+			return this;
+		},	
+	
+		/**
+		 * 	Get the use of a custom colour on this Row.
+		 *
+		 *	@method
+		 *	@public		 
+		 *	@returns {boolean} Returns true if the Row has a custom colour.	 
+		 */	
+		hasCustomColor: function() {
+			"use strict";			
+			if ( this._custom_color.length > 0 ) {
+				return true;
+			}
+			else {
+				return false;
+			}
+		},
+	
+			/**	@borrows hasCustomColor as hasCustomColour */
+			hasCustomColour: function( aParameter ) {
+				"use strict";
+				return this.hasCustomColor( aParameter );
+			},
+	
+			/**	@borrows hasCustomColor as hasCustom */
+			hasCustom: function( aParameter ) {
+				"use strict";
+				return this.hasCustomColor( aParameter );
+			},
+	
+			/**	@borrows hasCustomColor as useCustomColor */
+			useCustomColor: function( aParameter ) {
+				"use strict";
+				return this.hasCustomColor( aParameter );
+			},
+	
+			/**	@borrows hasCustomColor as useCustomColour */
+			useCustomColour: function( aParameter ) {
+				"use strict";
+				return this.hasCustomColor( aParameter );
+			},	
+	
+			/**	@borrows hasCustomColor as useCustom */
+			useCustom: function( aParameter ) {
+				"use strict";
+				return this.hasCustomColor( aParameter );
+			},
+	
+		/**
+		 * 	Get or Set the custom colour of this Row.
+		 *
+		 *	@method
+		 *	@public
+		 *	@param {?string} aParameter - The new custom colour for the Row, 
+		 *		in hexadecimal notation.		 
+		 *	@returns {(string|Row)} The custom colour of this Row, or the
+		 *		Row itself.	 
+		 */
+		customColor: function( aParameter ) {
+			"use strict";			
+			if ( ( aParameter === undefined ) || ( aParameter === null ) ) {
+				return this._getCustomColor();
+			} 
+			else {
+				this._setCustomColor( aParameter );
+				return this;
+			}
+		},
+	
+			/**	@borrows customColor as customColour */
+			customColour: function( aParameter ) {
+				"use strict";
+				return this.customColor( aParameter );
+			},
+				
+	
+	
 	//----- STRING/ARRAYS FOR MULTIPLE AND TRYME ROWS -----//
 	
 	/**
@@ -1050,7 +1164,7 @@ var Row = {
 	 *	@see _fileNamesArray
 	 *	@private
 	 */
-	_fileLinksArray: "http://tafenasw.edu.au/|http://tafenasw.edu.au/|http://tafenasw.edu.au/|http://tafenasw.edu.au/",
+	_fileLinksArray: "http://tafensw.edu.au/|http://tafensw.edu.au/|http://tafensw.edu.au/|http://tafensw.edu.au/",
 	
 	/**
 	 *	This string is used to replicate an array of hyperlink titles in the "multiple" Row.
@@ -2574,10 +2688,11 @@ var Row = {
 	 */	
 	newFourIcon: function() {
 		"use strict";
-		var aNewArtefact = Object.create( this );
+		var aNewTryme = Object.create( this );
 		
-		aNewArtefact.rowPrototype( "fouricon" );
-		return aNewArtefact;
+		aNewTryme.rowPrototype( "fouricon" );
+		//aNewTryme.artefactHyperlink( "" ).artefactHyperlinkTitle( "" ).fileLinksArray
+		return aNewTryme;
 	},	
 	
 	/**
@@ -3065,7 +3180,7 @@ var Row = {
 		
 		var generatedRow = "";
 		
-		generatedRow += "<!-- Row: Icon &amp; List Box -->\n";
+		generatedRow += "<!-- Row: Icon & List Box -->\n";
 		
 		generatedRow += "<div class=\"" + FRAMEWORK_PREFIX + "-box-shade-overlay ";
 		generatedRow += FRAMEWORK_PREFIX + "-box-row-multiple ";		
@@ -3133,7 +3248,7 @@ var Row = {
 		var generatedRow = "";
 		
 		// Draw the comment
-		generatedRow += "<!-- Row: SeeMe TryMe " + aSubPrototype + " Icons -->\n";
+		generatedRow += "<!-- Row: TryMe " + aSubPrototype + " Icons -->\n";
 		
 		// Draw the outer box
 		generatedRow += "<div class=\"" + FRAMEWORK_PREFIX + "-box-shade-overlay ";
@@ -3189,6 +3304,8 @@ var Row = {
 		var subtitles  = this.trymeSubTitleArray();
 		var icons      = this.trymeIconArray();
 		var newWindows = this.trymeLinkNewWindowArray();
+		
+		console.log(linkTitles);
 		
 		for( var i = 0; i < aSubPrototype; i++ ) {
 			
@@ -3264,7 +3381,13 @@ var Row = {
 		var generatedDiv = "";
 		
 		generatedDiv += "<!-- Clear Div -->\n";
-		generatedDiv += "<div class=\"" + FRAMEWORK_PREFIX + "-box-clear-bordered\"></div>\n";
+		generatedDiv += "<div class=\"" + FRAMEWORK_PREFIX + "-box-clear-bordered\"";
+		
+		if ( this.hasCustomColor() ) {
+			generatedDiv += " style=\"border-bottom-color: " + this.customColor() + "\"";
+		}
+		generatedDiv += "></div>\n";
+		
 		return generatedDiv;
 	},
 	

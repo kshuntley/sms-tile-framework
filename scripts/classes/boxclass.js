@@ -3,7 +3,7 @@
  *	This is actually an "object literal".
  *
  *	@author [Kenneth "Scott" Huntley](kenneth.huntley3@tafensw.edu.au)
- *	@version 6.0.2
+ *	@version 6.0.3 - Added functionality for Row custom color.
  *
  *	@class Box
  *
@@ -116,7 +116,7 @@ var Box = {
 		 */	
 		rearrangeRowsByIdentifier: function( aParameter ) {
 			"use strict";
-			
+					
 			var desiredOrder = [];
 			var newOrder = [];
 			
@@ -130,18 +130,19 @@ var Box = {
 			else {
 				throw new SyntaxError ( "Invalid parameter for specified operation (i.e. looking for an array or string)." ); 
 			}
-			
+					
 			// Check if the length of desiredOrder is the same as thisrowsLength. If not, throw an error
 			if ( desiredOrder.length !== this.rowsLength() ) {
 				throw new SyntaxError ( "Row count does not match between desired and existing. Cannot rearrange rows." ); 
 			}
 
 			for ( var i = 0; i < desiredOrder.length; i++) {
-				// Build a new array based on the desired order
+				// Build a new array based on the desired order				
 				newOrder[i] = this.getRowByID( desiredOrder[i] );
 			}
 			
 			this._row_array = newOrder;
+			this.renumerateRows();
 			return this;
 		},
 	
@@ -690,7 +691,7 @@ var Box = {
 		 *	@private
 		 *	@param {string} aColor - The new custom colour for the Box. It 
 		 *		should be in hexadecimal notation.
-		 *	@returns {Button} The Button; this.	 // See _setCustom for note on return 
+		 *	@returns {Box} The Box; this.	 // See _setCustom for note on return 
 		 */			
 		_setValue: function( aColor ) {
 			"use strict";		
@@ -704,8 +705,36 @@ var Box = {
 			}
 
 			return this;
-		},		
+		},
+		
 	},
+	
+		/**
+		 * 	Iterate through this Box's Rows and set the custom color.
+		 *
+		 *	@method
+		 *	@private
+		 *	@returns {Box} The Box; this.	 // See _setCustom for note on return 
+		 */					
+		_setRowColors: function() {
+			"use strict";
+			
+			var n = this.numberOfRows();
+			var rowCustomColor;
+			
+			if ( this.hasCustomColor() ) {
+				rowCustomColor = this.customColor();
+			}
+			else {
+				rowCustomColor = "";
+			}
+			
+			for ( var i = 0; i < n; i++ ) {
+				this.row(i).customColor( rowCustomColor );
+			}
+			
+			return this;
+		},	
 	
 		/**
 		 * 	Get or Set the use of a custom colour on this Box.
@@ -714,7 +743,7 @@ var Box = {
 		 *	@public
 		 *	@param {?boolean} aParameter - Set to true if you want a custom 
 		 *		colour for the Button.		 
-		 *	@returns {(string|Box)} Returns true if the Box has a custom 
+		 *	@returns {(boolean|Box)} Returns true if the Box has a custom 
 		 *		colour, or the Box itself.	 
 		 */	
 		hasCustomColor: function( aParameter ) {
@@ -725,6 +754,7 @@ var Box = {
 			}
 			else {
 				this._custom_color._setCustom( aParameter );
+				this._setRowColors();				
 				return this;
 			}
 		},
@@ -766,7 +796,7 @@ var Box = {
 		 *	@public
 		 *	@param {?string} aParameter - The new custom colour for the Box, 
 		 *		in hexadecimal notation.		 
-		 *	@returns {(string|Button)} The custom colour of this Box, or the
+		 *	@returns {(string|Box)} The custom colour of this Box, or the
 		 *		Box itself.	 
 		 */
 		customColor: function( aParameter ) {
@@ -777,6 +807,7 @@ var Box = {
 			} 
 			else {
 				this._custom_color._setValue( aParameter );
+				this._setRowColors();				
 				return this;
 			}
 		},
@@ -805,6 +836,21 @@ var Box = {
 		newBox._row_array = [];
 		return newBox;
 	},
+	
+	/**
+	 * 	Clone the Box object and populate it with the default Rows.
+	 *
+	 *	@constructs Box
+	 *	@method
+	 *	@public
+	 *	@example foo = Box.newDefault(); 
+	 */		
+	newDefault: function() {
+		"use strict";
+		var aNewBox =this.new();
+		aNewBox.addRow("header").addRow("artefact").addRow("multiple").addRow("threeicon").addRow("fouricon");
+		return aNewBox;
+	},	
 	
 	/**
 	 * 	Clone the Box object and then populate it with data from a JSON string.
@@ -897,7 +943,15 @@ var Box = {
 		
 		// START BOX
 		generatedBox += "<!-- START BOX -->\n";
-		generatedBox += "<div class=\"" + FRAMEWORK_PREFIX + "-box " + this.color() + "\">\n";
+		generatedBox += "<div class=\"" + FRAMEWORK_PREFIX + "-box " + this.color();
+		
+		// CUSTOM COLOR?
+		if ( this.hasCustomColor() ) {
+			generatedBox += " sms-custom-color\" style=\"background-color: " + this.customColor() + ";\">\n";
+		}
+		else {
+			generatedBox += "\">\n";
+		}
 		
 		// BOX HEADER
 		generatedBox += "<!-- Box Header -->\n";
@@ -916,7 +970,14 @@ var Box = {
 		generatedBox += "<!-- Shade Pattern 1/3 Left -->\n";
 		generatedBox += "<div class=\"" + FRAMEWORK_PREFIX + "-box-shade-container " + FRAMEWORK_PREFIX + "-box-shade-pattern-left-third\">\n";
 		generatedBox += "<div class=\"" + FRAMEWORK_PREFIX + "-box-shade-left "  + FRAMEWORK_PREFIX + "-box-shade-underlay\"></div>\n";
-		generatedBox += "<div class=\"" + FRAMEWORK_PREFIX + "-box-shade-right " + FRAMEWORK_PREFIX + "-box-shade-underlay\"></div>\n";		
+		generatedBox += "<div class=\"" + FRAMEWORK_PREFIX + "-box-shade-right " + FRAMEWORK_PREFIX + "-box-shade-underlay\"";
+		// CUSTOM COLOR?
+		if ( this.hasCustomColor() ) {
+			generatedBox += " style=\"border-left-color: " + this.customColor() + ";\"></div>\n";
+		}
+		else {
+			generatedBox += "></div>\n";
+		}
 
 		// DRAW ROWS
 		generatedBox += "<div class=\"" + FRAMEWORK_PREFIX + "-box-rows ui-sortable ui-sortable-disabled\">\n";
