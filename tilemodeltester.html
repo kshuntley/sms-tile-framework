@@ -1,0 +1,172 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>JS Tester</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" type="text/css" rel="stylesheet">   
+    <link href="css/smstile-framework.css" type="text/css" rel="stylesheet">
+    <!-- <link href="css/smstile-framework.min.css" type="text/css" rel="stylesheet"> -->
+    <link href="css/custom.css" type="text/css" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+	<link rel="stylesheet" href="css/spectrum.css" />
+</head>
+
+<body id="tile-builder">
+
+	<div id="wrapper" class="preview">
+		
+	</div>
+
+<div id="test">
+            <div class="col-md-6">
+                <select id="form-tile-color" name="form-tile-color" class="form-control" disabled="false">
+                    <optgroup label="Brand Book Colour Palette" class="text-dark">
+                        <option value="sms-color-teal" class="sms-color-teal sms-text-light">Teal</option>
+                        <option value="sms-color-dark-teal" class="sms-color-dark-teal sms-text-light" selected>Dark Teal</option>
+                        <option value="sms-color-aa-teal" class="sms-color-aa-teal sms-text-light">AA Dark Teal</option>
+                        <option value="sms-color-denim-blue" class="sms-color-denim-blue sms-text-light">Denim Blue</option>
+                        <option value="sms-color-azure-blue" class="sms-color-azure-blue sms-text-light">Azure Blue</option>
+                        <option value="sms-color-aa-azure-blue" class="sms-color-aa-azure-blue sms-text-light">AA Azure Blue</option>
+                        <option value="sms-color-lavendar" class="sms-color-lavendar sms-text-light">Lavendar</option>
+                        <option value="sms-color-dark-lavendar" class="sms-color-dark-lavendar sms-text-light">Dark Lavendar</option>
+                        <option value="sms-color-aa-dark-lavendar" class="sms-color-aa-dark-lavendar sms-text-light">AA Dark Lavendar</option>
+                        <option value="sms-color-fresh-peach" class="sms-color-fresh-peach sms-text-light">Fresh Peach</option>
+                        <option value="sms-color-ripe-peach" class="sms-color-ripe-peach sms-text-light">Ripe Peach</option>
+                        <option value="sms-color-aa-dark-peach" class="sms-color-aa-dark-peach sms-text-light">AA Dark Peach</option>
+                        <option value="sms-color-lemonade-yellow" class="sms-color-lemonade-yellow sms-text-dark">Lemonade Yellow</option>
+                        <option value="sms-color-sunshine-yellow" class="sms-color-sunshine-yellow sms-text-dark">Sunshine Yellow</option>
+                        <option value="sms-color-minty-green" class="sms-color-minty-green sms-text-dark">Minty Green</option>
+                        <option value="sms-color-spearmint" class="sms-color-spearmint sms-text-light">Spearmint</option>
+                        <option value="sms-color-aa-green" class="sms-color-aa-green sms-text-light">AA Green</option>
+                        <option value="sms-color-aqua" class="sms-color-aqua sms-text-light">Aqua</option>
+                        <option value="sms-color-deep-aqua" class="sms-color-deep-aqua sms-text-light">Deep Aqua</option>
+                        <option value="sms-color-aa-aqua" class="sms-color-aa-aqua sms-text-light">AA Aqua</option>
+                        <option value="sms-color-powder-mauve" class="sms-color-powder-mauve sms-text-light">Powder Mauve</option>
+                        <option value="sms-color-mauve" class="sms-color-mauve sms-text-light">Mauve</option>
+                        <option value="sms-color-aa-mauve" class="sms-color-aa-mauve sms-text-light">AA Mauve</option>
+                        <option value="sms-color-flamingo" class="sms-text-light sms-color-flamingo">Flamingo</option>
+                        <option value="sms-color-bubblegum" class="sms-text-light sms-color-bubblegum">Bubblegum</option>
+                        <option value="sms-color-aa-pink" class="sms-color-aa-pink sms-text-light">AA Pink</option>
+                        <option value="sms-color-apricot" class="sms-text-light sms-color-apricot">Apricot</option>
+                        <option value="sms-color-goldie" class="sms-text-light sms-color-goldie">Goldie</option>
+                    </optgroup>
+                    <optgroup label="Brand Book B&W" class="sms-text-dark">
+                        <option value="sms-color-black" class="sms-text-light sms-color-black">Black</option>
+                        <option value="sms-color-charcoal" class="sms-text-light sms-color-charcoal">Charcoal</option>
+                        <option value="sms-color-grey1" class="sms-text-light sms-color-grey1">Grey 1</option>
+                        <option value="sms-color-grey2" class="sms-text-light sms-color-grey2">Grey 2</option>
+                        <option value="sms-color-grey3" class="sms-text-light sms-color-grey3">Grey 3</option>
+                        <option value="sms-color-grey4" class="sms-text-dark sms-color-grey2">Grey 4</option>
+                        <option value="sms-color-grey5" class="sms-text-dark sms-color-grey5">Grey 5</option>
+                    </optgroup>
+                    <optgroup label="TAFE Intranet Colours" class="sms-text-dark">
+                        <option value="sms-color-intranet-blue" class="sms-text-light sms-color-intranet-blue">Intranet Blue</option>
+                        <option value="sms-color-intranet-purple" class="sms-text-light sms-color-intranet-purple">Intranet Purple</option>
+                        <option value="sms-color-intranet-turquoise" class="sms-text-light sms-color-intranet-turquoise">Intranet Turquoise</option>
+                        <option value="sms-color-intranet-ochre" class="sms-text-light sms-color-intranet-ochre">Intranet Ochre</option>
+                    </optgroup>
+                    <optgroup label="SMS R2 Mockup Colours" class="sms-text-dark">
+                        <option value="sms-color-smsmock-blue" class="sms-text-light sms-color-smsmock-blue">SMS Blue</option>
+                        <option value="sms-color-smsmock-green" class="sms-text-light sms-color-smsmock-green">SMS Green</option>
+                        <option value="sms-color-smsmock-grey" class="sms-text-light sms-color-smsmock-grey">SMS Grey</option>
+                        <option value="sms-color-smsmock-orange" class="sms-text-light sms-color-smsmock-orange">SMS Orange</option>
+                        <option value="sms-color-smsmock-pink" class="sms-text-light sms-color-smsmock-pink">SMS Pink</option>
+                        <option value="sms-color-smsmock-purple" class="sms-text-light sms-color-smsmock-purple">SMS Purple</option>
+                        <option value="sms-color-smsmock-turquoise" class="sms-text-light sms-color-smsmock-turquoise">SMS Turquoise</option>
+                        <option value="sms-color-smsmock-yellow" class="sms-text-dark sms-color-smsmock-yellow">SMS Yellow</option>
+                    </optgroup>
+                </select>
+            </div>
+	
+</div>
+
+<script 
+	src="https://code.jquery.com/jquery-2.2.4.min.js" 
+	integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" 
+	crossorigin="anonymous"></script>
+
+<script 
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" 
+	integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" 
+	crossorigin="anonymous"></script>
+
+    
+<script src="scripts/cssinline.js"></script>
+<script src="scripts/spectrum.js"></script>
+<script>
+	$("#sms-form-custom-spectrum").spectrum({
+		showInput: true,
+		showInitial: true,
+		showPalette: true,
+		palette: [ ], 
+		preferredFormat: "hex",
+		/*showSelectionPalette: true,
+		selectionPalette: [
+			['#D25299', '#663399', '#4768D6'],
+			['#D64541', '#B11030', '#1E988A']
+		]*/
+    	//localStorageKey: "spectrum.homepage", // Any Spectrum with the same string will share selection
+	});
+</script>
+<script src="scripts/commonfunctions.js"></script> 
+<script src="scripts/tileclass.js"></script>
+<script>
+
+	var newTile = Tile;
+	var generated;
+	var generatedTile;
+	
+	newTile.layout("sms-layout-portrait")
+			.colour("sms-color-goldie")
+			.text("Oh yeah baby!")
+			.textAlign("text-center")
+			.textColor("sms-text-dark")
+			.textBold("font-weight-bold")
+			.textSize("sms-text-normal")
+			.hasIMG(true).imageAlt("This is it!")
+			.hasGoBtn(true)
+			.goBtn("Go!")
+			.url("http://google.com")
+			.urlTitle("Click me")
+			.hasUrl(true)
+	;
+	
+	
+	var thejson = newTile.getJSON(); console.log(newTile._alt);
+	
+	console.log(thejson);
+	generatedTile = Tile.newFromJSON(thejson);
+	
+	generatedTile.openInNewWindow(true).customColor("#34a7b2").layout("layout-hero-tile").goBtn("HERE WE GO!").textSize("sms-text-very-big");
+	
+	console.log(newTile);
+	console.log(generatedTile);
+	generated = generatedTile.getHTML();
+	
+	
+	
+	
+	$(function() {
+
+		$("#wrapper").html(generated);
+		
+	});
+	
+	
+	
+	
+	/*var string = "<div id='outer' class='sms-tile'><span id='inner' class='sms-what'>Test</span><span id='inner2'>Test</span></div>";
+	var nodes = $.parseHTML(string);
+	
+	$("body").append("<div id='imported'></div>");
+	$("#imported").append(nodes);
+	if ($("#inner").hasClass("sms-what")) {
+		console.log("maybe");
+	}
+	$("#imported").remove();*/
+
+	
+</script>
+
+</body>
+</html>

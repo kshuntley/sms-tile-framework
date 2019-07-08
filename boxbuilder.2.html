@@ -1,0 +1,880 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>The Box Builder</title>
+                     
+   	<!-- Bootstrap -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" type="text/css" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous"> 
+    
+    <!-- Icon Picker -->
+	<link href="css/fontawesome-iconpicker.min.css" type="text/css" rel="stylesheet">
+
+    <!-- Spectrum Colour Picker -->
+    <link rel="stylesheet" href="css/spectrum.css" />                     
+                      
+    <!-- Local (Dev) -->
+    <link href="css/smstile-framework.css" type="text/css" rel="stylesheet">
+    <link href="css/custom.css" type="text/css" rel="stylesheet">
+	
+    <!-- Local (Prod) -->
+    <!-- 
+    <link href="css/smstile-framework.min.css" type="text/css" rel="stylesheet">
+    <link href="css/custom.min.css" type="text/css" rel="stylesheet">
+    -->
+    
+    <style>
+		.navbar-brand img { margin-top: -6px; }
+		.sms-box-header h4 { font-size: 1.8em; }
+	</style>
+    
+	
+</head>
+
+<body id="box-builder">
+<!-- Tile Builder Toolset Menu -->	
+<nav class="navbar navbar-default">
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<a class="navbar-brand" href="../index.html">
+				<img alt="Brand" src="img/Logos/BoxBuilderLogo.svg" width="32" height="32">
+			</a>
+			<a class="navbar-brand" href="../index.html">Tile Builder Toolset</a>
+		</div>
+
+		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+			<ul class="nav navbar-nav">
+				<li class="dropdown">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Select Tool <span class="caret"></span></a>
+					<ul class="dropdown-menu">
+						<li><a href="../tilebuilder/"><img alt="Brand" src="img/Logos/TileBuilderLogo.svg" width="20" height="20"> Tile Builder</a></li>
+						<li class="navbar-link"><a href="../boxbuilder/"><img alt="Brand" src="img/Logos/BoxBuilderLogo.svg" width="20" height="20"> Box Builder</a></li>
+						<li><a href="../buttonbuilder/"><img alt="Brand" src="img/Logos/ButtonBuilderLogo.svg" width="20" height="20"> Button Builder</a></li>
+						<li><a href="../menubuilder/"><img alt="Brand" src="img/Logos/MenuBuilderLogo.svg" width="20" height="20"> Menu Builder</a></li>
+					</ul>
+				</li>
+				<li class="dropdown">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Save <span class="caret"></span></a>
+					<ul class="dropdown-menu nav-menu-func nav-edit-func">
+						<li><a href="#" class="func-save-json">Save Box</a></li>
+						<li><a href="#" class="func-load-json">Load Box</a></li>
+						<li role="separator" class="divider"></li>
+						<li><a href="#" id="navImportBtn" class="nav-menu-func launch-modal func-import" data-toggle="modal" data-target="#myBoxBuilderModal">Import Box</a></li>		
+					</ul>
+				</li>
+				<li><a href="#" id="navCopyBtn" class="nav-menu-func func-copy">Copy</a></li>
+				<li><a href="#" id="navConvertBtn" class="nav-menu-func func-convert">Convert to Inline</a></li>				
+				<li class="dropdown">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Edit <span class="caret"></span></a>
+					<ul class="dropdown-menu nav-menu-func nav-edit-func">
+						<li><a href="#" class="func-edit-icon">Edit Icons</a></li>
+						<li><a href="#" class="func-edit-links">Edit Links</a></li>
+						<li><a href="#" class="func-edit-titles">Edit Titles</a></li>
+						<li><a href="#" class="func-edit-new-window">Open in New Window</a></li>
+						<li role="separator" class="divider"></li>
+						<li><a href="#" class="func-edit-content">Edit Content</a></li>							
+						<li role="separator" class="divider"></li>						
+						<li class="disabled"><a href="#" class="func-stop-edit-icon func-stop-edit-links func-stop-edit-content">Stop Editing</a></li>						
+					</ul>
+				</li>
+				<li class="dropdown">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Add Rows <span class="caret"></span></a>
+					<ul class="dropdown-menu nav-menu-func nav-add-row-func">
+						<li><a href="#" class="func-add-row-header">Add Header</a></li>
+						<li><a href="#" class="func-add-row-artefact">Add Artefact</a></li>
+						<li><a href="#" class="func-add-row-multiple">Add Multiple Files</a></li>
+						<li role="separator" class="divider"></li>
+						<li><a href="#" class="func-add-row-twoicon">Add 2 Icon Try Me</a></li>
+						<li><a href="#" class="func-add-row-threeicon">Add 3 Icon Try Me</a></li>
+						<li><a href="#" class="func-add-row-fouricon">Add 4 Icon Try</a></li>												
+						<li role="separator" class="divider"></li>
+						<li><a href="#" class="func-delete-row">Delete Last Row</a></li>						
+					</ul>
+				</li>
+				<li><a href="#" id="navDragBtn" class="nav-menu-func func-toggle-sortable">Drag Rows</a></li>							
+			</ul>
+			<ul class="nav navbar-nav navbar-right">
+				<li><a href="#" id="navAboutBtn" class="nav-menu-func about-func launch-modal" data-toggle="modal" data-target="#aboutModal">About</a></li>			
+			</ul>			
+		</div>
+
+
+	</div>  
+</nav>
+
+<!-- About Modal -->
+<div class="modal fade" id="aboutModal" tabindex="-1" role="dialog" aria-labelledby="aboutModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+	<div class="modal-content">
+	  <div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+		<h4 class="modal-title" id="aboutModalLabel">Tile Builder Toolset</h4>
+	  </div>
+	  <div class="modal-body">
+		  <p>The <b>Tile Builder Toolset</b> was developed by <a href="mailto:kenneth.huntley3@tafensw.edu.au">Kenneth "Scott" Huntley</a> for the <b>SMS Project</b>.</p>
+		  
+		  <p>The tools in the toolset are visual controls that generate HTML snippets. These snippets were designed to be copied and pasted into the <a href="https://tafe.learn.tafensw.edu.au/" target="_blank">Staff Moodle</a> to simulate the tile look of that site's theme. This toolset enables team members who do not know HTML and CSS to maintain the SMS Project Moodle pages.</p>
+		  
+		  <p>The Tile Builder Toolset was written with extensive use of <a href="https://jquery.com/" target="_blank">jQuery</a>, <a href="https://getbootstrap.com/" target="_blank">Bootstrap</a>, <a href="http://lesscss.org/" target="_blank">LESS</a> and <a href="https://fontawesome.com/" target="_blank">FontAwesome</a>, amongst other open source libraries.</p> 
+		  
+		  <p>Versions of jQuery, Bootstrap and FontAwesome are consistent with the existing Staff Moodle versions (2.2.4, 3.3.7, and 4.7.0 respectively).</p>
+		  
+		  <p><i>Created in the beautiful Marcus Clark Building, Ultimo.</i>
+		  	<img src="img/mcbuilding.jpg" alt="The Marcus Clark Building" class="img-responsive img-rounded">
+		  </p>
+	  </div>
+	  <div class="modal-footer">
+		<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+	  </div>
+	</div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->   
+
+<!-- Copy Modal -->
+<div class="modal fade" id="copiedModal" role="dialog">
+	<div class="modal-dialog modal-sm">
+	  <div class="modal-content">
+
+		<div class="modal-body">
+		  <p>The Box HTML has been copied to clipboard.</p>
+		</div>
+		<div class="modal-footer">
+		  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+		</div>
+	  </div>
+	</div>
+</div>
+
+<!-- Convert Modal -->
+<div class="modal fade" id="convertModal" role="dialog">
+	<div class="modal-dialog modal-sm">
+	  <div class="modal-content">
+
+		<div class="modal-body">
+		  <p>The Box been converted to use inline CSS styles.</p>
+		</div>
+		<div class="modal-footer">
+		  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+		</div>
+	  </div>
+	</div>
+</div>
+<!-- End Tile Builder Toolset Menu -->
+
+	<div class="col-md-8" style="float: left; width:65%">
+	
+	<h3>The Box Builder</h3>
+		<div id="wrapper">
+			<div class="sms-box sms-color-intranet-blue">
+
+				<!-- Box Header -->
+				<div>
+					<div class="sms-box-header text-capitalize sms-text-light">
+						<a id="this-is-a-headline-box-top" class="sms-box-header-anchor"><h4 class="isEditable">Getting Started</h4></a>
+					</div>
+				</div>
+
+				<!-- Box Abstract -->
+				<div class="sms-box-abstract">
+					<p class="isEditable"><i>This topic includes an overview of <b>CRM </b>and how it is used for managing enquiries at <b>TAFE NSW</b> as well as resources to help you set up and get started.</i></p>
+				</div>
+
+				<!-- Shade Pattern 1/3 Left -->
+				<div class="sms-box-shade-container sms-box-shade-pattern-left-third">
+					<div class="sms-box-shade-left sms-box-shade-underlay">
+						&nbsp;
+					</div>
+					<div class="sms-box-shade-right sms-box-shade-underlay">
+						&nbsp;
+					</div>
+
+					<div class="sms-box-rows">
+
+					<!-- Row: Column Headers -->
+					<div class="sms-box-shade-overlay sms-box-row-header ui-state-default">
+						<div class="sms-box-sidebar text-center">
+							<h5 class="isEditable">Artefact</h5>
+						</div>
+						<div class="sms-box-content text-center">
+							<h5 class="isEditable">Summary</h5>
+						</div>
+						<div class="sms-box-clear-bordered"></div>
+					</div>
+
+					<!-- Row: Icon & Description -->
+					<div class="sms-box-shade-overlay sms-box-row-content ui-state-default">
+						<div class="sms-box-sidebar text-center ">
+							<p>
+								<a href="https://tafe.learn.tafensw.edu.au/mod/scorm/view.php?id=10931" target="_blank" class="sms-box-sidebar-artefact-icon">
+									<i aria-hidden="true" class="fa fa-graduation-cap fa-2x"></i>
+								</a><br>
+								<a href="https://tafe.learn.tafensw.edu.au/mod/scorm/view.php?id=10931" target="_blank" class="sms-box-sidebar-artefact-title isEditable">
+									eLearning: Overview of Managing Enquiries
+								</a><br>
+								<i class="sms-box-sidebar-artefact-filesize isEditable">20 minutes</i>
+							</p>
+						</div>
+						<div class="sms-box-content">
+							<p class="isEditable">An overview of CRM including the approach to managing enquiries, functions of <b>CRM </b>and a <b>CRM </b>walkthrough.</p>
+						</div>
+
+						<!-- Clear Div -->
+						<div class="sms-box-clear-bordered"></div>
+					</div>
+					
+					<!-- Row: See Me Try Me 4 -->
+					<div class="sms-box-shade-overlay sms-box-row-content ui-state-default">
+						<div class="sms-box-sidebar text-center ">
+							<p>
+								<span class="sms-box-sidebar-artefact-icon">
+									<i aria-hidden="true" class="fa fa-graduation-cap fa-2x"></i>
+								</span><br>
+								<span class="sms-box-sidebar-artefact-title isEditable">
+									eLearning: Learning Something about Things
+								</span><br>
+							</p>
+						</div>
+						<div class="sms-box-content text-center">
+							<div class="sms-box-content" style="width: 100%; text-align: left; padding-bottom: 1em;">
+								<p class="isEditable" style="font-style: italic">This is an important topic that involves <b>things</b> and <b>stuff</b>.</p>
+							</div>
+							<div style="width: 25%; float: left; min-width: 100px; border: none; min-height: 100px;">
+								<p>
+									<a href="https://tafe.learn.tafensw.edu.au/mod/scorm/view.php?id=10931" target="_blank" class="sms-box-sidebar-artefact-icon">
+										<i aria-hidden="true" class="fa fa-2x fa-book"></i>
+									</a><br>
+									<a href="https://tafe.learn.tafensw.edu.au/mod/scorm/view.php?id=10931" target="_blank" class="sms-box-sidebar-artefact-title isEditable">
+										Topic Overview
+									</a><br>
+									<i class="sms-box-sidebar-artefact-filesize isEditable" style="font-size: .85em">Presentation<br>5 minutes</i>
+								</p>
+							</div>							
+							<div style="width: 25%; float: left; min-width: 100px; border: none; min-height: 100px;">
+								<p>
+									<a href="https://tafe.learn.tafensw.edu.au/mod/scorm/view.php?id=10931" target="_blank" class="sms-box-sidebar-artefact-icon">
+										<i aria-hidden="true" class="fa fa-2x fa-video-camera"></i>
+									</a><br>
+									<a href="https://tafe.learn.tafensw.edu.au/mod/scorm/view.php?id=10931" target="_blank" class="sms-box-sidebar-artefact-title isEditable">
+										Video Demonstration
+									</a><br>
+									<i class="sms-box-sidebar-artefact-filesize isEditable" style="font-size: .85em">Video<br>10 minutes</i>
+								</p>
+							</div>
+							<div style="width: 25%; float: left; min-width: 100px; border: none; min-height: 100px;">
+								<p>
+									<a href="https://tafe.learn.tafensw.edu.au/mod/scorm/view.php?id=10931" target="_blank" class="sms-box-sidebar-artefact-icon">
+										<i aria-hidden="true" class="fa fa-laptop fa-2x"></i>
+									</a><br>
+									<a href="https://tafe.learn.tafensw.edu.au/mod/scorm/view.php?id=10931" target="_blank" class="sms-box-sidebar-artefact-title isEditable">
+										Simulation
+									</a><br>
+									<i class="sms-box-sidebar-artefact-filesize isEditable" style="font-size: .85em">PeopleSoft Simulation<br>20 minutes</i>
+								</p>
+							</div>
+							<div style="width: 25%; float: left; min-width: 100px; border: none; min-height: 100px;">
+								<p>
+									<a href="https://tafe.learn.tafensw.edu.au/mod/scorm/view.php?id=10931" target="_blank" class="sms-box-sidebar-artefact-icon">
+										<i aria-hidden="true" class="fa fa-graduation-cap fa-2x"></i>
+									</a><br>
+									<a href="https://tafe.learn.tafensw.edu.au/mod/scorm/view.php?id=10931" target="_blank" class="sms-box-sidebar-artefact-title isEditable">
+										Knowledge Check
+									</a><br>
+									<i class="sms-box-sidebar-artefact-filesize isEditable" style="font-size: .85em">Quiz</i>
+								</p>
+							</div>
+						</div>
+						
+						<!-- Clear div -->
+						<div class="sms-box-clear-bordered"></div>
+					</div>
+
+				
+					<!-- Row: See Me Try Me 3 -->
+					<div class="sms-box-shade-overlay sms-box-row-content ui-state-default">
+						<div class="sms-box-sidebar text-center ">
+							<p>
+								<span class="sms-box-sidebar-artefact-icon">
+									<i aria-hidden="true" class="fa fa-graduation-cap fa-2x"></i>
+								</span><br>
+								<span class="sms-box-sidebar-artefact-title isEditable">
+									eLearning: Learning Something about Things
+								</span><br>
+							</p>
+						</div>
+						<div class="sms-box-content text-center">
+							<div class="sms-box-content" style="width: 100%; text-align: left; padding-bottom: 1em;">
+								<p class="isEditable" style="font-style: italic">This is an important topic that involves <b>things</b> and <b>stuff</b>.</p>
+							</div>
+							<div class="sms-box-tryme sms-box-tryme-three">
+								<p>
+									<a href="https://tafe.learn.tafensw.edu.au/mod/scorm/view.php?id=10931" target="_blank" class="sms-box-sidebar-artefact-icon">
+										<i aria-hidden="true" class="fa fa-book fa-2x"></i>
+									</a><br>
+									<a href="https://tafe.learn.tafensw.edu.au/mod/scorm/view.php?id=10931" target="_blank" class="sms-box-sidebar-artefact-title isEditable">
+										Topic Overview
+									</a><br>
+									<i class="sms-box-sidebar-artefact-filesize isEditable" style="font-size: .85em">Presentation<br>5 minutes</i>
+								</p>
+							</div>
+							<div class="sms-box-tryme sms-box-tryme-three">
+								<p>
+									<a href="https://tafe.learn.tafensw.edu.au/mod/scorm/view.php?id=10931" target="_blank" class="sms-box-sidebar-artefact-icon">
+										<i aria-hidden="true" class="fa fa-video-camera fa-2x"></i>
+									</a><br>
+									<a href="https://tafe.learn.tafensw.edu.au/mod/scorm/view.php?id=10931" target="_blank" class="sms-box-sidebar-artefact-title isEditable">
+										Video Demonstration
+									</a><br>
+									<i class="sms-box-sidebar-artefact-filesize isEditable" style="font-size: .85em">Video<br>10 minutes</i>
+								</p>
+							</div>
+							<div class="sms-box-tryme sms-box-tryme-three">
+								<p>
+									<a href="https://tafe.learn.tafensw.edu.au/mod/scorm/view.php?id=10931" target="_blank" class="sms-box-sidebar-artefact-icon">
+										<i aria-hidden="true" class="fa fa-laptop fa-2x"></i>
+									</a><br>
+									<a href="https://tafe.learn.tafensw.edu.au/mod/scorm/view.php?id=10931" target="_blank" class="sms-box-sidebar-artefact-title isEditable">
+										Simulation
+									</a><br>
+									<i class="sms-box-sidebar-artefact-filesize isEditable" style="font-size: .85em">PeopleSoft Simulation<br>20 minutes</i>
+								</p>
+							</div>
+
+						</div>
+						
+						<!-- Clear div -->
+						<div class="sms-box-clear-bordered"></div>
+					</div>
+				
+
+					<!-- Row: See Me Try Me 3 NEW CLASS -->
+					<div class="sms-box-shade-overlay sms-box-row-content ui-state-default">
+						<div class="sms-box-sidebar text-center ">
+							<p>
+								<span class="sms-box-sidebar-artefact-icon">
+									<i aria-hidden="true" class="fa fa-graduation-cap fa-2x"></i>
+								</span><br>
+								<span class="sms-box-sidebar-artefact-title isEditable">
+									eLearning: Learning Something about Things
+								</span><br>
+							</p>
+						</div>
+						<div class="sms-box-content text-center">
+							<div class="sms-box-content" style="width: 100%; text-align: left; padding-bottom: 1em;">
+								<p class="isEditable" style="font-style: italic">This is an important topic that involves <b>things</b> and <b>stuff</b>.</p>
+							</div>
+							<div class="sms-box-tryme sms-box-tryme-three">
+								<p>
+									<a href="https://tafe.learn.tafensw.edu.au/mod/scorm/view.php?id=10931" target="_blank" class="sms-box-sidebar-artefact-icon">
+										<i aria-hidden="true" class="fa fa-book fa-2x"></i>
+									</a><br>
+									<a href="https://tafe.learn.tafensw.edu.au/mod/scorm/view.php?id=10931" target="_blank" class="sms-box-sidebar-artefact-title isEditable">
+										Topic Overview
+									</a><br>
+									<i class="sms-box-sidebar-artefact-filesize isEditable" style="font-size: .85em">Presentation<br>5 minutes</i>
+								</p>
+							</div>
+							<div class="sms-box-tryme sms-box-tryme-three">
+								<p>
+									<a href="https://tafe.learn.tafensw.edu.au/mod/scorm/view.php?id=10931" target="_blank" class="sms-box-sidebar-artefact-icon">
+										<i aria-hidden="true" class="fa fa-video-camera fa-2x"></i>
+									</a><br>
+									<a href="https://tafe.learn.tafensw.edu.au/mod/scorm/view.php?id=10931" target="_blank" class="sms-box-sidebar-artefact-title isEditable">
+										Video Demonstration
+									</a><br>
+									<i class="sms-box-sidebar-artefact-filesize isEditable" style="font-size: .85em">Video<br>10 minutes</i>
+								</p>
+							</div>
+							<div class="sms-box-tryme sms-box-tryme-three">
+								<p>
+									<a href="https://tafe.learn.tafensw.edu.au/mod/scorm/view.php?id=10931" target="_blank" class="sms-box-sidebar-artefact-icon">
+										<i aria-hidden="true" class="fa fa-laptop fa-2x"></i>
+									</a><br>
+									<a href="https://tafe.learn.tafensw.edu.au/mod/scorm/view.php?id=10931" target="_blank" class="sms-box-sidebar-artefact-title isEditable">
+										Simulation
+									</a><br>
+									<i class="sms-box-sidebar-artefact-filesize isEditable" style="font-size: .85em">PeopleSoft Simulation<br>20 minutes</i>
+								</p>
+							</div>
+
+						</div>
+						
+						<!-- Clear div -->
+						<div class="sms-box-clear-bordered"></div>
+					</div>
+				
+					<!-- Row: See Me Try Me 4 -->
+					<div class="sms-box-shade-overlay sms-box-row-content ui-state-default">	
+						<div class="sms-box-sidebar text-center ">
+							<p>
+								<span class="sms-box-sidebar-artefact-icon">
+									<i aria-hidden="true" class="fa fa-file-pdf-o fa-2x"></i>
+								</span><br>
+								<span class="sms-box-sidebar-artefact-title isEditable">
+									Work Instructions
+								</span><br>
+							</p>
+						</div>
+						<div class="sms-box-content">
+							<ul class="sms-box-multi-list">
+								<li><a href="http://google.com" class="isEditable">WI - Work Instruction 1</a> <span class="details isEditable">(12 kb)</span></li>
+								<li><a href="http://google.com" class="isEditable">WI - Work Instruction 2</a> <span class="details isEditable">(12 kb)</span></li>
+								<li><a href="http://google.com" class="isEditable">WI - Work Instruction 3</a> <span class="details isEditable">(12 kb)</span></li>
+								<li><a href="http://google.com" class="isEditable">WI - Work Instruction 4</a> <span class="details isEditable">(12 kb)</span></li>
+								<li><a href="http://google.com" class="isEditable">WI - Work Instruction 5</a> <span class="details isEditable">(12 kb)</span></li>
+								<li><a href="http://google.com" class="isEditable">WI - Work Instruction 6</a> <span class="details isEditable">(12 kb)</span></li>
+								<li><a href="http://google.com" class="isEditable">WI - Work Instruction 7</a> <span class="details isEditable">(12 kb)</span></li>
+								<li><a href="http://google.com" class="isEditable">WI - Work Instruction 8</a> <span class="details isEditable">(12 kb)</span></li>
+								<li><a href="http://google.com" class="isEditable">WI - Work Instruction 9</a> <span class="details isEditable">(12 kb)</span></li>
+								<li><a href="http://google.com" class="isEditable">WI - Work Instruction 10</a> <span class="details isEditable">(12 kb)</span></li>
+								<li><a href="http://google.com" class="isEditable">WI - Work Instruction 11</a> <span class="details isEditable">(12 kb)</span></li>
+								<li><a href="http://google.com" class="isEditable">WI - Work Instruction 12</a> <span class="details isEditable">(12 kb)</span></li>							
+							</ul>
+						</div>
+
+						<!-- Clear Div -->
+						<div class="sms-box-clear-bordered"></div>
+					</div>										
+
+
+					</div>
+
+				<!-- End Pattern Div -->		
+				</div>	
+
+			<!-- End Box Div -->
+			</div>
+
+		</div><!-- End Wrapper Div -->
+	</div>
+	
+	<!-- Controls -->
+	<div class="col-md-4 text-left form-row" style="float: left; width:30%;">	
+	
+		<form class="form-vertical" id="boxbuilder-form">
+			<fieldset>
+			
+			<legend style="margin-bottom: auto">Options</legend>
+			<div class="form-group" style="width: 80%; margin: 0 1em 1em">
+				<label class="control-label" for="form-box-color">Box Colour</label>
+				<div class="col">
+					<select id="form-box-color" name="form-box-color" class="form-control box-color-select">
+						<optgroup label="Brand Book Colour Palette" class="sms-text-dark">
+							<option value="color-teal" class="sms-color-teal sms-text-light">Teal</option>
+							<option value="color-dark-teal" class="sms-color-dark-teal sms-text-light">Dark Teal</option>
+							<option value="color-aa-teal" class="sms-color-aa-teal sms-text-light">AA Dark Teal</option>
+							<option value="color-denim-blue" class="sms-color-denim-blue sms-text-light">Denim Blue</option>
+							<option value="color-azure-blue" class="sms-color-azure-blue sms-text-light">Azure Blue</option>
+							<option value="color-aa-azure-blue" class="sms-color-aa-azure-blue sms-text-light">AA Azure Blue</option>
+							<option value="color-lavendar" class="sms-color-lavendar sms-text-light">Lavendar</option>
+							<option value="color-dark-lavendar" class="sms-color-dark-lavendar sms-text-light">Dark Lavendar</option>
+							<option value="color-aa-dark-lavendar" class="sms-color-aa-dark-lavendar sms-text-light">AA Dark Lavendar</option>
+							<option value="color-fresh-peach" class="sms-color-fresh-peach sms-text-light">Fresh Peach</option>
+							<option value="color-ripe-peach" class="sms-color-ripe-peach sms-text-light">Ripe Peach</option>
+							<option value="color-aa-dark-peach" class="sms-color-aa-dark-peach sms-text-light">AA Dark Peach</option>
+							<option value="color-lemonade-yellow" class="sms-color-lemonade-yellow sms-text-dark">Lemonade Yellow</option>
+							<option value="color-sunshine-yellow" class="sms-color-sunshine-yellow sms-text-dark">Sunshine Yellow</option>
+							<option value="color-minty-green" class="sms-color-minty-green sms-text-dark">Minty Green</option>
+							<option value="color-spearmint" class="sms-color-spearmint sms-text-light">Spearmint</option>
+							<option value="color-aa-green" class="sms-color-aa-green sms-text-light">AA Green</option>
+							<option value="color-aqua" class="sms-color-aqua sms-text-light">Aqua</option>
+							<option value="color-deep-aqua" class="sms-color-deep-aqua sms-text-light">Deep Aqua</option>
+							<option value="color-aa-aqua" class="sms-color-aa-aqua sms-text-light">AA Aqua</option>
+							<option value="color-powder-mauve" class="sms-color-powder-mauve sms-text-light">Powder Mauve</option>
+							<option value="color-mauve" class="sms-color-mauve sms-text-light">Mauve</option>
+							<option value="color-aa-mauve" class="sms-color-aa-mauve sms-text-light">AA Mauve</option>
+							<option value="color-flamingo" class="sms-text-light sms-color-flamingo">Flamingo</option>
+							<option value="color-bubblegum" class="sms-text-light sms-color-bubblegum">Bubblegum</option>
+							<option value="color-aa-pink" class="sms-color-aa-pink sms-text-light">AA Pink</option>
+							<option value="color-apricot" class="sms-text-light sms-color-apricot">Apricot</option>
+							<option value="color-goldie" class="sms-text-light sms-color-goldie">Goldie</option>
+						</optgroup>
+						<optgroup label="Brand Book B&W" class="sms-text-dark">
+							<option value="color-black" class="sms-text-light sms-color-black">Black</option>
+							<option value="color-charcoal" class="sms-text-light sms-color-charcoal">Charcoal</option>
+							<option value="color-grey1" class="sms-text-light sms-color-grey1">Grey 1</option>
+							<option value="color-grey2" class="sms-text-light sms-color-grey2">Grey 2</option>
+							<option value="color-grey3" class="sms-text-light sms-color-grey3">Grey 3</option>
+							<option value="color-grey4" class="sms-text-dark sms-color-grey2">Grey 4</option>
+							<option value="color-grey5" class="sms-text-dark sms-color-grey5">Grey 5</option>
+						</optgroup>
+						<optgroup label="TAFE Intranet Colours" class="sms-text-dark">
+							<option value="color-intranet-blue" class="sms-text-light sms-color-intranet-blue" selected="selected">Intranet Blue</option>
+							<option value="color-intranet-purple" class="sms-text-light sms-color-intranet-purple">Intranet Purple</option>
+							<option value="color-intranet-turquoise" class="sms-text-light sms-color-intranet-turquoise">Intranet Turquoise</option>
+							<option value="color-intranet-ochre" class="sms-text-light sms-color-intranet-ochre">Intranet Ochre</option>		
+						</optgroup>
+						<optgroup label="SMS R2 Mockup Colours" class="sms-text-dark">
+							<option value="color-smsmock-blue" class="sms-text-light sms-color-smsmock-blue">SMS Blue</option>
+							<option value="color-smsmock-green" class="sms-text-light sms-color-smsmock-green">SMS Green</option>
+							<option value="color-smsmock-grey" class="sms-text-light sms-color-smsmock-grey">SMS Grey</option>
+							<option value="color-smsmock-orange" class="sms-text-light sms-color-smsmock-orange">SMS Orange</option>
+							<option value="color-smsmock-pink" class="sms-text-light sms-color-smsmock-pink">SMS Pink</option>
+							<option value="color-smsmock-purple" class="sms-text-light sms-color-smsmock-purple">SMS Purple</option>
+							<option value="color-smsmock-turquoise" class="sms-text-light sms-color-smsmock-turquoise">SMS Turquoise</option>
+							<option value="color-smsmock-yellow" class="sms-text-dark sms-color-smsmock-yellow">SMS Yellow</option>
+						</optgroup>
+					</select>
+				</div>
+			</div>
+			</fieldset>
+			
+			<!-- Multiple Checkboxes: Include Custom Color toggle -->
+			<div class="form-group">
+				<label class="col-md-6 control-label" for="form-custom-color-toggle">Use a Custom Colour</label>
+				<div class="col-md-6">
+					<div class="checkbox">
+						<label for="form-custom-color-toggle-0">
+							<input type="checkbox" name="form-custom-color-toggle" id="form-custom-color-toggle-0" value="yes" class="box-custom-check">
+							Yes
+						</label>
+					</div>
+				</div>
+			</div>
+
+			<!-- Configure Custom Color -->
+			<div class="configurable configurable-custom-color">
+				<!-- Text input: Image URL -->
+				<div class="form-group">
+					<label class="col-md-6 control-label" for="form-custom-color">Custom Colour</label>
+					<div class="col-md-6">
+						<!-- <input id="sms-form-custom-color" name="sms-form-custom-color" type="text" placeholder="#ccaa00" class="form-control input-md">
+						<span class="help-block">What is the hexadecimal of the custom colour?</span> -->
+						<input type="text" id="form-custom-spectrum" value="#ca0" />
+					</div>
+				</div>
+			</div>  			
+			
+			<!-- Multiple Radios: Text Colors -->
+			<div class="form-group">
+				<label class="col-md-6 control-label" for="form-box-text-color">Text Color</label>
+				<div class="col-md-2">
+					<div class="radio">
+						<label for="form-box-text-color-0">
+							<input type="radio" name="form-box-text-color" id="form-box-text-color-0" value="text-light" checked="checked" class="box-text-color-radio">
+							Light
+						</label>
+					</div>
+					<div class="radio">
+						<label for="form-box-text-color-1">
+							<input type="radio" name="form-box-text-color" id="form-box-text-color-1" value="text-dark" class="box-text-color-radio">
+							Dark
+						</label>
+					</div>
+				</div>
+			</div>
+
+			<!-- Multiple Checkboxes: Include Drop Shadow -->
+			<div class="form-group">
+				<label class="col-md-6 control-label" for="form-box-shadow">Drop Shadow</label>
+				<div class="col-md-6">
+					<div class="checkbox">
+						<label for="form-tile-shadow-0">
+							<input type="checkbox" name="form-tile-shadow" id="form-tile-shadow-0" value="yes" class="box-drop-shadow-check">
+							Yes
+						</label>
+					</div>
+				</div>
+			</div>
+				
+			<!-- Accessibility -->
+			<div class="form-group">
+				<label class="col-md-6 control-label" for="form-webaim">Accessible Colour Contrast</label>
+				<div class="col-md-6 accessibilityIndicators">
+					<a href="https://webaim.org/resources/contrastchecker/" target="_blank" class="webaim-href"><span class="label label-default webaim-is-aa">AA</span></a>
+					<a href="https://webaim.org/resources/contrastchecker/" target="_blank" class="webaim-href"><span class="label label-default webaim-is-aaa">AAA</span></a>      		
+				</div>
+			</div>	
+								
+			
+			<div class="form-group">
+				<label class="col-md-10 control-label" for="sms-box-sidebar-artefact-icon-chooser">Set Icons</label>
+				<br>
+				<div class="col-md-10 edit-icon-btns">
+					<button class="btn btn-primary func-edit-icon">Edit Icons</button>
+					<button class="btn btn-danger func-stop-edit-icon" disabled="disabled">Stop Editing Icons</button>
+					
+
+				</div>
+			</div>
+			
+			<div class="form-group">
+				<label class="col-md-6 control-label" for="sms-box-sidebar-artefact-icon-chooser">Set Hyperlinks</label>
+				<br>
+				<div class="col-md-10 edit-link-btns">
+					<div class="btn-group">
+						<button class="btn btn-primary func-edit-links" >Edit Links</button>
+						<button class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							<span class="caret"></span>
+							<span class="sr-only">Toggle Dropdown</span>
+						</button>
+						<ul class="dropdown-menu">
+							<li><a href="#" class="func-edit-links">Edit Links</a></li>
+							<li><a href="#" class="func-edit-titles">Edit Titles</a></li>
+							<!-- <li><a href="#" class="show-tabs">Edit Tab Index</a></li>-->
+						</ul>
+					</div>
+					<button class="btn btn-danger func-stop-edit-links" disabled="disabled">Stop Editing Links</button>
+
+				</div>
+			</div>			
+			
+		</form>
+			
+			<div class="form-group">
+				<label class="col-md-6 control-label" for="sms-box-sidebar-artefact-icon-chooser">Content</label>
+				<br>
+				<div class="buttonrow btn-group drag-sort-btns " role="group">
+					<button class="btn btn-success func-toggle-sortable" id="btnSortable">Enable Drag &amp; Drop</button>
+					<button class="btn btn-success func-edit-content" id="btnEditable">Turn On Editable Content</button>	
+				</div>
+	
+				<div class="buttonrow btn-group edit-row-btns " role="group">
+					<button class="btn btn-primary func-add-row-header" id="btnNewHeader">Add Header</button>
+					<button class="btn btn-primary func-add-row-artefact" id="btnNewArtefact">Add Artefact</button>
+					<button class="btn btn-primary func-add-row-multiple" id="btnNewMultiple">Add Multiple Files</button>
+				</div>
+				<div class="buttonrow edit-row-btns btn-group">
+					<button class="btn btn-primary func-add-row-threeicon" >Add Try Me</button>
+						<button class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							<span class="caret"></span>
+							<span class="sr-only">Toggle Dropdown</span>
+						</button>
+						<ul class="dropdown-menu">
+							<li><a href="#" class="func-add-row-twoicon">2 Icon Try Me</a></li>
+							<li><a href="#" class="func-add-row-threeicon">3 Icon Try Me</a></li>
+							<li><a href="#" class="func-add-row-fouricon">4 Icon Try Me</a></li>
+						</ul>											
+				</div>	
+
+				<div class="buttonrow edit-row-btns" role="group">
+					<button class="btn btn-danger func-delete-row" id="btnDeleteRow">Delete Last Row</button>								
+				</div>																				
+			</div>
+
+		
+		<div class="buttonrow func-application">
+		<hr>
+		<button type="button" class="btn btn-danger func-copy">Copy HTML</button>
+		<button type="button" id="inlinestylebutton" class="btn btn-success func-convert">Convert to Inline CSS</button>
+		<button type="button" id="importcode" class="btn btn-info launch-modal func-import" data-toggle="modal" data-target="#myBoxBuilderModal">Import Box HTML</button>
+		</div>
+	
+	</div>
+	
+	<div class="outputcode col-md-10">
+		<h3>Output</h3>
+		<p><i>Copy and paste this HTML:</i><br>
+		<code id="output">
+		</code></p>
+	
+
+	</div> 
+	
+	<!-- Import Modal -->
+	<div class="modal fade" id="myBoxBuilderModal" tabindex="-1" role="dialog" aria-labelledby="myBoxBuilderModalLabel" aria-hidden="true">
+	  <div class="modal-dialog">
+		<div class="modal-content">
+		  <div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+			<h4 class="modal-title" id="myBoxBuilderModalLabel">SMS Box HTML</h4>
+		  </div>
+		  <div class="modal-body">
+			<textarea id="SMSImportTextarea" class="form-control" rows="6"></textarea>
+		  </div>
+		  <div class="modal-footer">
+			<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+			<button type="button" class="btn btn-primary" id="importBox">Import</button>
+		  </div>
+		</div><!-- /.modal-content -->
+	  </div><!-- /.modal-dialog -->
+	</div><!-- /.modal -->    	
+
+	<!-- JS LIBRARIES -->
+	<!-- jQuery -->
+	<script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+	<script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js" integrity="sha256-eGE6blurk5sHj+rmkfsGYeKyZx3M4bG+ZlFyA7Kns7E=" crossorigin="anonymous"></script>
+
+   	<!-- Bootstrap -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    
+    <!-- Icon Picker library -->
+    <script src="scripts/iconpicker/fontawesome-iconpicker.js"></script>
+    
+    <!-- Inline Style library -->
+    <script src="scripts/cssinline.js"></script>
+    
+    <!-- Spectrum (Custom Colour library) -->
+	<script src="scripts/spectrum/spectrum.js"></script> 
+	
+	<!-- CUSTOM JS -->
+	<!-- Row Class, Box Class, Box UI Scripts -->
+	<script src="scripts/classes/rowclass.js"></script>
+	<script src="scripts/classes/boxclass.js"></script>
+	<script src="scripts/commonfunctions.js"></script>
+	<script src="scripts/uis/boxui.js"></script>
+
+	<!-- Custom Scripts -->
+	<script>
+		
+	// Initalise the tile
+	var theModel = Box.newDefault();
+
+		
+	
+	// Document Ready
+	$( function() {
+		
+		// Hide Configurables
+        $( ".configurable" ).hide();
+		
+		// Prevent any hyperlinks in the Preview from working	
+		$( "#wrapper a" ).click(function(e) {
+			console.log("Can't click here");
+			e.preventDefault();
+		});		
+			
+		// Update the display!
+		updateDisplay();
+		checkAim();
+		
+		
+	});		
+		
+
+	
+		
+		
+	/*	
+	function runInlineConverter() {
+		'use strict';			
+		
+		computedStyleToInlineStyle(document.querySelector("#wrapper .sms-box"), {
+        	recursive: true,
+        	properties: ["background-color", "box-shadow", "-moz-box-shadow", "-webkit-box-shadow", "box-sizing", "-moz-box-siding", "-webkit-box-sizing", "color", "display", "float", "font-weight", "font-size", "font-style", "line-height", "padding", "padding-top", "padding-right", "padding-bottom", "padding-left", "position", "z-index", "vertical-align", "text-decoration", "clear", "border-bottom-width", "border-bottom-color", "border-bottom-style", "border-left-width", "border-left-color", "border-left-style"]
+        });
+
+		
+		// Manually put in the sms-box width & margins
+		$("#wrapper .sms-box").css("width", "96%", "margin-top", "20px", "margin-bottom", "20px", "margin-left", "auto", "margin-right", "auto");
+		$("#wrapper .sms-box-header").css("width", "100%");
+		$("#wrapper .sms-box-abstract").css("margin", "0 10px 10px");
+		$("#wrapper .sms-box-shade-pattern-left-third .sms-box-shade-left, #wrapper .sms-box-shade-pattern-left-third .sms-box-sidebar").css("width","calc(((100% - 20px)/3)*1)");
+		$("#wrapper .sms-box-shade-pattern-left-third .sms-box-shade-right, #wrapper .sms-box-shade-pattern-left-third .sms-box-content").css("width","calc(((100% - 20px)/3)*2)");
+		$("#wrapper .sms-box-multi-list").css({"column-count": "3", "-moz-column-count": "3", "-webkit-column-count": "3", "column-width": "200px", "-moz-column-width": "200px", "-webkit-column-width": "200px", "margin-left": "0"});
+		$("#wrapper .sms-box-shade-right").css("right", "10px");
+		$("#wrapper .sms-box-shade-left").css("left", "10px");		
+		$("#wrapper .sms-box-sidebar").css("margin-left", "10px");
+		$("#wrapper .sms-box-shade-underlay").css("height", "calc(100% - 10px)");
+			
+		updateDisplay();
+			
+		return;
+	}
+	
+*/
+		
+		
+		// EVEN MORE WTF
+		
+	// Modal Importing
+	$('#myBoxBuilderModal').on('shown.bs.modal', function () {
+		'use strict';
+    	$('#SMSImportTextarea').focus();
+	});	
+	
+	$('#importBox').click(function() {
+		'use strict';
+		var inputBox = "";
+		var boxCheck;
+		var oldWrapper;
+		
+		inputBox = $('#myBoxBuilderModal').find('#SMSImportTextarea').val();
+		oldWrapper = $("#wrapper").html();
+		
+		$("#wrapper").html(inputBox);
+		
+		boxCheck = $("#wrapper div").hasClass("sms-box");
+		if (!boxCheck) {
+			$("#wrapper").html(oldWrapper);
+			
+		}
+		
+		// Incase someone tries to import a currently editable
+		$(".sms-box").removeClass("showEditable");
+
+		// Initalise sortable
+		$(".sms-box-rows").sortable();		
+		
+		
+		// Check what colour it is
+		// Get all the classes for the tile and then match for a class starting with sms-color-
+		var importedColor = $("#wrapper .sms-box").attr('class').match(/sms-color-\S+/g);
+
+
+		// Go through the layout options and when finding a matching one, add selected to that option
+		$("#sms-form-box-color option:selected").removeAttr("selected");
+		$("#sms-form-box-color option").each(function(){
+			if ($(this).attr("value") == importedColor) {
+				$(this).prop("selected",true);
+				
+			}
+		});	
+		
+		// Look for custom colors
+		if ($("#wrapper .sms-custom-color").length) {
+			var customColor = "#ccaa00";
+			var currentInlineStyles = $("#wrapper .sms-box").attr("style");
+			//var currentBorderInlineStyles = $("#wrapper .sms-box-clear-bordered").attr("style");	
+			//var currentRightInlineStyles = $("#wrapper .sms-box-shade-pattern-left-third .sms-box-shade-right").attr("style");	
+			
+			if (currentInlineStyles !== undefined) {
+				if (currentInlineStyles.length !== 0) {
+					currentInlineStyles = currentInlineStyles.toLowerCase();
+					var bgcolorStart = currentInlineStyles.indexOf("background-color");
+					if (bgcolorStart > -1) {
+						var bgcolorEnd = currentInlineStyles.indexOf(";", bgcolorStart);
+						if (bgcolorEnd > -1) {
+							customColor = currentInlineStyles.slice(bgcolorStart, bgcolorEnd);
+						} else {
+							customColor = currentInlineStyles.slice(bgcolorStart);
+						}
+						customColor = customColor.replace("background-color:","");
+						customColor = customColor.trim();
+					}
+				}
+					
+			}
+						
+			$("#wrapper .sms-box").removeAttr("style").find("*").removeAttr("style"); // Drop all styles
+			$("#wrapper .sms-box").attr({"style":("background-color:"+customColor)}); 
+			$("#wrapper .sms-box-clear-bordered").attr({"style":("border-bottom-color:"+customColor)}); 
+			$("#wrapper .sms-box-shade-pattern-left-third .sms-box-shade-right").attr({"style":("border-left-color:"+customColor)}); 			
+			
+			$("#sms-form-custom-color-toggle-0").prop("checked",true);
+			$("#sms-form-box-color").attr("disabled", true);
+			$("#customColorConfigurables").slideDown(200);
+			$("#sms-form-custom-color").val(customColor);
+			processCustomColor(customColor);
+		} else {
+			$("#wrapper .sms-tile").removeAttr("style").find("*").removeAttr("style");
+		}		
+		
+		
+			
+		updateDisplay();		
+		$('#myBoxBuilderModal').modal('hide');
+	});			
+
+
+
+	
+		
+	</script>
+	
+	
+
+</body>
+</html>

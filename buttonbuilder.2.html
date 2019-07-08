@@ -1,0 +1,1141 @@
+
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>The Button Builder</title>
+                     
+   	<!-- Bootstrap -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" type="text/css" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous"> 
+    
+    <!-- Icon Picker -->
+	<link href="css/fontawesome-iconpicker.min.css" type="text/css" rel="stylesheet">
+
+    <!-- Spectrum Colour Picker -->
+    <link rel="stylesheet" href="css/spectrum.css" />                     
+                      
+    <!-- Local (Dev) -->
+    <link href="css/smstile-framework.css" type="text/css" rel="stylesheet">
+    <link href="css/custom.css" type="text/css" rel="stylesheet">
+	
+    <!-- Local (Prod) -->
+    <!-- 
+    <link href="css/smstile-framework.min.css" type="text/css" rel="stylesheet">
+    <link href="css/custom.min.css" type="text/css" rel="stylesheet">
+    -->
+    
+	
+</head>
+
+<body id="button-builder">
+<!-- Tile Builder Toolset Menu -->	
+<nav class="navbar navbar-default">
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<a class="navbar-brand" href="../index.html">
+				<img alt="Brand" src="img/Logos/ButtonBuilderLogo.svg" width="32" height="32" style="margin-top: -6px">
+			</a>
+			<a class="navbar-brand" href="../index.html">Tile Builder Toolset</a>
+		</div>
+
+		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+			<ul class="nav navbar-nav">
+				<li class="dropdown">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Select Tool <span class="caret"></span></a>
+					<ul class="dropdown-menu">
+						<li><a href="../tilebuilder/"><img alt="Brand" src="img/Logos/TileBuilderLogo.svg" width="20" height="20"> Tile Builder</a></li>
+						<li><a href="../boxbuilder/"><img alt="Brand" src="img/Logos/BoxBuilderLogo.svg" width="20" height="20"> Box Builder</a></li>
+						<li class="navbar-link"><a href="../buttonbuilder/"><img alt="Brand" src="img/Logos/ButtonBuilderLogo.svg" width="20" height="20"> Button Builder</a></li>
+						<li><a href="../menubuilder/"><img alt="Brand" src="img/Logos/MenuBuilderLogo.svg" width="20" height="20"> Menu Builder</a></li>
+					</ul>
+				</li>
+				<li class="dropdown">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Save <span class="caret"></span></a>
+					<ul class="dropdown-menu nav-menu-func nav-save-func">
+						<li><a href="#" class="func-save-json">Save Buttons</a></li>
+						<li><a href="#" class="func-load-json">Load Buttons</a></li>						
+					</ul>
+				</li>				
+				<li><a href="#" id="navCopyBtn" class="nav-menu-func func-copy">Copy</a></li>
+				<li><a href="#" id="navConvertBtn" class="nav-menu-func func-convert">Convert to Inline</a></li>				
+				<li><a href="#" id="navImportBtn" class="nav-menu-func launch-modal func-import" data-toggle="modal" data-target="#myBoxBuilderModal">Import</a></li>
+				<li class="dropdown">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Edit <span class="caret"></span></a>
+					<ul class="dropdown-menu nav-menu-func nav-edit-func">
+						<li><a href="#" class="func-edit-links">Edit Links</a></li>
+						<li><a href="#" class="func-edit-titles">Edit Titles</a></li>
+						<li><a href="#" class="func-edit-btn-text">Edit Button Text</a></li>							
+						<li role="separator" class="divider"></li>						
+						<li class="disabled"><a href="#" class="func-stop-edit-icon func-stop-edit-links func-stop-edit-content">Stop Editing</a></li>						
+					</ul>
+				</li>
+				<li class="dropdown">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Add <span class="caret"></span></a>
+					<ul class="dropdown-menu nav-menu-func nav-add-row-func">
+						<li><a href="#" class="func-add-btn">Add a Button</a></li>
+							<li><a href="#" class="func-delete-btn">Delete a Button</a></li>						
+					</ul>
+				</li>
+				<li class="disabled"><a href="#" id="navDragBtn" class="nav-menu-func func-toggle-sortable">Drag Buttons</a></li>							
+			</ul>
+			<ul class="nav navbar-nav navbar-right">
+				<li><a href="#" id="navAboutBtn" class="nav-menu-func about-func launch-modal" data-toggle="modal" data-target="#aboutModal">About</a></li>			
+			</ul>			
+		</div>
+
+	</div>  
+</nav>
+ 
+<!-- About Modal -->
+<div class="modal fade" id="aboutModal" tabindex="-1" role="dialog" aria-labelledby="aboutModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+	<div class="modal-content">
+	  <div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+		<h4 class="modal-title" id="aboutModalLabel">Tile Builder Toolset</h4>
+	  </div>
+	  <div class="modal-body">
+		  <p>The <b>Tile Builder Toolset</b> was developed by <a href="mailto:kenneth.huntley3@tafensw.edu.au">Kenneth "Scott" Huntley</a> for the <b>SMS Project</b>.</p>
+		  
+		  <p>The tools in the toolset are visual controls that generate HTML snippets. These snippets were designed to be copied and pasted into the <a href="https://tafe.learn.tafensw.edu.au/" target="_blank">Staff Moodle</a> to simulate the tile look of that site's theme. This toolset enables team members who do not know HTML and CSS to maintain the SMS Project Moodle pages.</p>
+		  
+		  <p>The Tile Builder Toolset was written with extensive use of <a href="https://jquery.com/" target="_blank">jQuery</a>, <a href="https://getbootstrap.com/" target="_blank">Bootstrap</a>, <a href="http://lesscss.org/" target="_blank">LESS</a> and <a href="https://fontawesome.com/" target="_blank">FontAwesome</a>, amongst other open source libraries.</p> 
+		  
+		  <p>Versions of jQuery, Bootstrap and FontAwesome are consistent with the existing Staff Moodle versions (2.2.4, 3.3.7, and 4.7.0 respectively).</p>
+		  
+		  <p><i>Created in the beautiful Marcus Clark Building, Ultimo.</i>
+		  	<img src="img/mcbuilding.jpg" alt="The Marcus Clark Building" class="img-responsive img-rounded">
+		  </p>
+	  </div>
+	  <div class="modal-footer">
+		<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+	  </div>
+	</div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->   
+ 
+ <!-- Copy Modal -->
+<div class="modal fade" id="copiedModal" role="dialog">
+	<div class="modal-dialog modal-sm">
+	  <div class="modal-content">
+
+		<div class="modal-body">
+		  <p>The Box HTML has been copied to clipboard.</p>
+		</div>
+		<div class="modal-footer">
+		  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+		</div>
+	  </div>
+	</div>
+</div>
+
+<!-- Convert Modal -->
+<div class="modal fade" id="convertModal" role="dialog">
+	<div class="modal-dialog modal-sm">
+	  <div class="modal-content">
+
+		<div class="modal-body">
+		  <p>The Box been converted to use inline CSS styles.</p>
+		</div>
+		<div class="modal-footer">
+		  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+		</div>
+	  </div>
+	</div>
+</div>
+<!-- End Tile Builder Toolset Menu -->
+  
+<div id="wrapper">
+	<div class="sms-button-row">
+
+		<div class="sms-button sms-color-intranet-blue sms-text-light" id="sms-button-1">
+			<a href="http://google.com" title="Go To A Location"><span class="sms-button-text sms-text-big font-weight-normal isEditable">Button Text</span></a>
+		</div>
+
+	</div>
+</div>
+	
+<div style="width:100%; float: left; " class="sms-button-form-control-row">
+	<div class="sms-button-config" id="sms-button-config-1">
+		<form class="form-vertical" id="form-button-1">
+			<fieldset>
+			<div class="form-group">
+				<label class="control-label" for="form-color-button-1">Button Colour</label>
+				<div class="col">
+					<select id="form-color-button-1" name="form-color-button-1" class="form-control button-color-dropdown">
+						<optgroup label="Brand Book Colour Palette" class="sms-text-dark">
+							<option value="sms-color-teal" class="sms-color-teal sms-text-light">Teal</option>
+							<option value="sms-color-dark-teal" class="sms-color-dark-teal sms-text-light">Dark Teal</option>
+							<option value="sms-color-aa-teal" class="sms-color-aa-teal sms-text-light">AA Dark Teal</option>
+							<option value="sms-color-denim-blue" class="sms-color-denim-blue sms-text-light">Denim Blue</option>
+							<option value="sms-color-azure-blue" class="sms-color-azure-blue sms-text-light">Azure Blue</option>
+							<option value="sms-color-aa-azure-blue" class="sms-color-aa-azure-blue sms-text-light">AA Azure Blue</option>
+							<option value="sms-color-lavendar" class="sms-color-lavendar sms-text-light">Lavendar</option>
+							<option value="sms-color-dark-lavendar" class="sms-color-dark-lavendar sms-text-light">Dark Lavendar</option>
+							<option value="sms-color-aa-dark-lavendar" class="sms-color-aa-dark-lavendar sms-text-light">AA Dark Lavendar</option>
+							<option value="sms-color-fresh-peach" class="sms-color-fresh-peach sms-text-light">Fresh Peach</option>
+							<option value="sms-color-ripe-peach" class="sms-color-ripe-peach sms-text-light">Ripe Peach</option>
+							<option value="sms-color-aa-dark-peach" class="sms-color-aa-dark-peach sms-text-light">AA Dark Peach</option>
+							<option value="sms-color-lemonade-yellow" class="sms-color-lemonade-yellow sms-text-dark">Lemonade Yellow</option>
+							<option value="sms-color-sunshine-yellow" class="sms-color-sunshine-yellow sms-text-dark">Sunshine Yellow</option>
+							<option value="sms-color-minty-green" class="sms-color-minty-green sms-text-dark">Minty Green</option>
+							<option value="sms-color-spearmint" class="sms-color-spearmint sms-text-light">Spearmint</option>
+							<option value="sms-color-aa-green" class="sms-color-aa-green sms-text-light">AA Green</option>
+							<option value="sms-color-aqua" class="sms-color-aqua sms-text-light">Aqua</option>
+							<option value="sms-color-deep-aqua" class="sms-color-deep-aqua sms-text-light">Deep Aqua</option>
+							<option value="sms-color-aa-aqua" class="sms-color-aa-aqua sms-text-light">AA Aqua</option>
+							<option value="sms-color-powder-mauve" class="sms-color-powder-mauve sms-text-light">Powder Mauve</option>
+							<option value="sms-color-mauve" class="sms-color-mauve sms-text-light">Mauve</option>
+							<option value="sms-color-aa-mauve" class="sms-color-aa-mauve sms-text-light">AA Mauve</option>
+							<option value="sms-color-flamingo" class="sms-text-light sms-color-flamingo">Flamingo</option>
+							<option value="sms-color-bubblegum" class="sms-text-light sms-color-bubblegum">Bubblegum</option>
+							<option value="sms-color-aa-pink" class="sms-color-aa-pink sms-text-light">AA Pink</option>
+							<option value="sms-color-apricot" class="sms-text-light sms-color-apricot">Apricot</option>
+							<option value="sms-color-goldie" class="sms-text-light sms-color-goldie">Goldie</option>
+						</optgroup>
+						<optgroup label="Brand Book B&W" class="sms-text-dark">
+							<option value="sms-color-black" class="sms-text-light sms-color-black">Black</option>
+							<option value="sms-color-charcoal" class="sms-text-light sms-color-charcoal">Charcoal</option>
+							<option value="sms-color-grey1" class="sms-text-light sms-color-grey1">Grey 1</option>
+							<option value="sms-color-grey2" class="sms-text-light sms-color-grey2">Grey 2</option>
+							<option value="sms-color-grey3" class="sms-text-light sms-color-grey3">Grey 3</option>
+							<option value="sms-color-grey4" class="sms-text-dark sms-color-grey2">Grey 4</option>
+							<option value="sms-color-grey5" class="sms-text-dark sms-color-grey5">Grey 5</option>
+						</optgroup>
+						<optgroup label="TAFE Intranet Colours" class="sms-text-dark">
+							<option value="sms-color-intranet-blue" class="sms-text-light sms-color-intranet-blue" selected>Intranet Blue</option>
+							<option value="sms-color-intranet-purple" class="sms-text-light sms-color-intranet-purple">Intranet Purple</option>
+							<option value="sms-color-intranet-turquoise" class="sms-text-light sms-color-intranet-turquoise">Intranet Turquoise</option>
+							<option value="sms-color-intranet-ochre" class="sms-text-light sms-color-intranet-ochre">Intranet Ochre</option>		
+						</optgroup>
+						<optgroup label="SMS R2 Mockup Colours" class="sms-text-dark">
+							<option value="sms-color-smsmock-blue" class="sms-text-light sms-color-smsmock-blue">SMS Blue</option>
+							<option value="sms-color-smsmock-green" class="sms-text-light sms-color-smsmock-green">SMS Green</option>
+							<option value="sms-color-smsmock-grey" class="sms-text-light sms-color-smsmock-grey">SMS Grey</option>
+							<option value="sms-color-smsmock-orange" class="sms-text-light sms-color-smsmock-orange">SMS Orange</option>
+							<option value="sms-color-smsmock-pink" class="sms-text-light sms-color-smsmock-pink">SMS Pink</option>
+							<option value="sms-color-smsmock-purple" class="sms-text-light sms-color-smsmock-purple">SMS Purple</option>
+							<option value="sms-color-smsmock-turquoise" class="sms-text-light sms-color-smsmock-turquoise">SMS Turquoise</option>
+							<option value="sms-color-smsmock-yellow" class="sms-text-dark sms-color-smsmock-yellow">SMS Yellow</option>
+						</optgroup>
+					</select>
+				</div>
+			</div>
+			</fieldset>
+
+			<!-- Multiple Checkboxes: Include Custom Color toggle -->
+			<div class="form-group">
+				<label class="control-label" for="form-custom-color-toggle-0-button-1">Use a Custom Colour</label>
+				<div>
+					<div class="checkbox">
+						<label for="form-custom-color-toggle-0-button-1">
+							<input type="checkbox" name="form-custom-color-toggle-0-button-1" id="form-custom-color-toggle-0-button-1" value="customColorConfigurables-button-1" class="customColorToggle">
+							Yes
+						</label>
+					</div>
+				</div>
+			</div>
+
+			<!-- Configure Custom Color -->
+			<div id="customColorConfigurables-button-1" class="configurable">
+				<!-- Text input: Image URL -->
+				<div class="form-group">
+					<label class="control-label" for="form-custom-color-button-1">Custom Colour</label>
+					<div>
+						<input type="text" id="form-custom-color-button-1" class="spectrum-selector" value="#ca0" />
+					</div>
+				</div>
+			</div> 		
+
+
+			<div class="form-group">
+				<label class="control-label" for="form-text-color-button-1">Text Color</label>
+				<div>
+					<div class="radio">
+						<label for="form-text-color-0-button-1">
+							<input type="radio" name="form-text-color-button-1" id="form-text-color-0-button-1" value="sms-text-light" checked="checked" class="button-textcolor-radio">
+							Light
+						</label>
+
+						<label for="sms-form-tile-text-color-1">
+							<input type="radio" name="form-text-color-button-1" id="form-text-color-1-button-1" value="sms-text-dark" class="button-textcolor-radio">
+							Dark
+						</label>
+					</div>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label class="control-label" for="form-button-1-shadow">Drop Shadow</label>
+				<div>
+					<div class="checkbox">
+						<label for="form-button-1-shadow-0">
+							<input type="checkbox" name="form-button-1-shadow" id="form-button-1-shadow-0" value="sms-shadow">
+							Yes
+						</label>
+					</div>
+				</div>
+			</div>  
+
+			<div class="form-group">
+				<label class="control-label" for="form-button-1-url-title-value">URL Title</label>
+				<div>
+					<input id="form-button-1-url-title-value" name="form-button-1-url-title-value" type="text" value="Go To A Location" class="form-control input-md">
+					<span class="help-block">What do you want the tool tip to say?</span>
+				</div>
+			</div>
+
+			<div class="form-group copyStyleConfs" style="display:none;">
+				<label class="control-label" for="form-copy-style">Copy to other buttons?</label>
+				<div>
+					<div class="checkbox">
+						<label for="form-copy-style-0">
+							<input type="checkbox" name="form-copy-style" id="form-copy-style" value="true">
+							Yes
+						</label>
+					</div>
+				</div>
+			</div> 				
+		</form>
+	</div>
+
+</div>	
+	
+<div style="width:100%; float: left; margin: 7px" class="sms-button-form-control change-number-buttons">
+	<button id="addAButton" class="btn btn-info">Add a button</button>
+	<button id="removeAButton" class="btn btn-info">Remove a button</button>
+</div>
+
+<div style="width:100%; float: left; margin: 7px" class="sms-button-form-control">
+	<button onClick="toggleEditable()" class="btn btn-success" id="btnEditable">Turn On Editable Content</button>
+</div>
+
+<div style="width:100%; float: left; margin: 7px"  class="editLinkBtns">
+	<button class="btn btn-success" id="btnEditLink">Edit Links</button>
+</div>
+  	
+<div class="preview" style="clear: both; margin: 7px; width: 800px">
+	<div class="outputcode">
+		<h3>Output</h3>
+		<p><i>Copy and paste this HTML:</i><br>
+		<code id="output">
+			&lt;div class="sms-button-row"&gt; &lt;div class="sms-button sms-color-intranet-blue sms-text-light" id="sms-button-1"&gt; &lt;a href="https://google.com" title="Go To A Location"&gt; &lt;span class="sms-button-text sms-text-big font-weight-normal isEditable"&gt;Button Text&lt;/span&gt; &lt;/a&gt; &lt;/div&gt; &lt;/div&gt;
+		</code></p>
+	</div>
+	<div class="row text-center">
+		<button type="button" onClick="copyToClipboard('#output')" class="btn btn-danger">Copy HTML</button>
+		<button type="button" id="inlinestylebutton" class="btn btn-success" onClick="runInlineConverter()">Convert to Inline CSS</button>
+		<button type="button" id="importcode" class="btn btn-info launch-modal" data-toggle="modal" data-target="#myTileBuilderModal">Import Tile HTML</button>
+	</div>     
+</div>
+    
+<!-- Import Modal -->
+<div class="modal fade" id="myTileBuilderModal" tabindex="-1" role="dialog" aria-labelledby="myTileBuilderModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+	<div class="modal-content">
+	  <div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+		<h4 class="modal-title" id="myTileBuilderModalLabel">SMS Tile HTML</h4>
+	  </div>
+	  <div class="modal-body">
+		<textarea id="SMSImportTextarea" class="form-control" rows="6"></textarea>
+	  </div>
+	  <div class="modal-footer">
+		<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+		<button type="button" class="btn btn-primary" id="importTile">Import</button>
+	  </div>
+	</div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->        
+  
+<script 
+	src="https://code.jquery.com/jquery-2.2.4.min.js" 
+	integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" 
+	crossorigin="anonymous"></script>
+
+<script 
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" 
+	integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" 
+	crossorigin="anonymous"></script>
+
+
+<script src="scripts/cssinline.js"></script>
+<!-- <script src="scripts/builder-scripts.js"></script>-->
+
+<!-- Spectrum -->
+<script src="scripts/spectrum.js"></script>  	
+	
+<script>
+	var maxButtons = 5;
+
+	function addAControl() {
+		var buttonCount = $(".sms-button-form-control-row").children().length + 1;
+		var buttonControl = '<div class="sms-button-config"></div>';			
+		var controlpanel = getButtonConfigCode(buttonCount);
+
+		$(".sms-button-form-control-row").append(buttonControl);
+		$(".sms-button-form-control-row").children().last().attr("id","sms-button-config-"+buttonCount);
+
+		$("#sms-button-config-"+buttonCount).append(controlpanel);
+		if($("#form-copy-style").is(":checked")) {
+			$("#form-copy-style").trigger("change");
+		}
+
+		checkDisabled();
+
+		// Write the output so it can be copied
+		updateTheOutput();			
+	}
+
+	function removeAControl() {
+		$(".sms-button-form-control-row").children().last().remove();			
+
+		checkDisabled();
+
+		// Write the output so it can be copied
+		updateTheOutput();				
+	}
+
+	// Add a button
+	$("#addAButton").click(function() {
+		var buttonCount = $(".sms-button-row").children().length + 1;
+
+		// The Button Shell
+		var buttonHTML = '<div class="sms-button sms-color-intranet-blue sms-text-light">\
+							<a href="http://google.com" title="Go To A Location">\
+							<span class="sms-button-text sms-text-big font-weight-normal isEditable">Button Text</span></a>\
+							</div>';		
+
+		$(".sms-button-row").append(buttonHTML);
+		$(".sms-button-row").children().last().attr("id","sms-button-"+buttonCount);
+
+		addAControl();
+
+		$("#customColorConfigurables-button-"+buttonCount).hide();
+		$("#form-custom-color-button-"+buttonCount).spectrum({
+			change: function(aColor) {
+				'use strict';
+				processCustomColors();
+				//displayBoxOutput();
+			},
+			showInput: true,
+			showInitial: true,
+			showPalette: true,
+			palette: [ ], 
+			preferredFormat: "hex",
+			clickoutFiresChange: true
+		});
+
+		processCustomColors();
+
+	});
+
+	// Remove a button
+	$("#removeAButton").click(function() {
+		$(".sms-button-row").children().last().remove();
+		removeAControl();
+	});
+
+	// Change button colors 
+	$(document).on("change", ".button-color-dropdown", { passive: true }, function() {
+
+		if($("#form-copy-style").is(":checked")) {
+			var newColor = $("#form-color-button-1 option:selected").val();
+
+			$("#sms-button-1").removeClass(function (index, className) {
+					return(className.match (/(^|\s)sms-color-\S+/g) || []).join(' ');
+				}).addClass(newColor);
+			copyButtonOne();
+
+		} else {
+
+			var colorstr = "";
+			var colorarr;
+			$("select option:selected").each(function() {
+				colorstr += $(this).val() + "|";
+			});
+			colorarr = colorstr.split("|");
+			$(".sms-button").removeClass(function (index, className) {
+					return(className.match (/(^|\s)sms-color-\S+/g) || []).join(' ');
+			});
+
+			for (var i = 0; i < colorarr.length; i++) {
+				$("#sms-button-"+(i+1)).addClass(colorarr[i]);	
+			}
+		}
+
+		processCustomColors();
+
+
+	});
+
+	// Change text colors 
+	$(document).on("change", ".button-textcolor-radio", { passive: true }, function() {
+		if($("#form-copy-style").is(":checked")) {
+			var newTextColor = $(".button-textcolor-radio[id$='button-1']:checked").val();
+			$("#sms-button-1").removeClass("sms-text-light sms-text-dark").addClass(newTextColor);
+			copyButtonOne();
+
+		} else {	
+
+			var textcolorstr = "";
+			var textcolorarr;
+			$(".button-textcolor-radio:checked").each(function() {
+				textcolorstr += $(this).val() + "|";
+			});
+
+			textcolorarr = textcolorstr.split("|");
+			$(".sms-button").removeClass("sms-text-light sms-text-dark")
+
+			for (var i = 0; i < textcolorarr.length; i++) {
+				$("#sms-button-"+(i+1)).addClass(textcolorarr[i]);	
+			}
+		}
+
+		// Write the output so it can be copied
+		updateTheOutput();			
+
+	});		
+
+	// Change Shadow 
+	$(document).on("change", "input[id*='-shadow']", { passive: true }, function() {
+
+		// Are we copying styles?
+		if($("#form-copy-style").is(":checked")) {
+			// Yes, match control 1
+
+			if ($("#form-button-1-shadow-0").is(":checked")) {
+				$("#sms-button-1").addClass("sms-shadow");
+			} else {
+				$("#sms-button-1").removeClass("sms-shadow");
+			}
+			copyButtonOne();
+
+		} else {
+			// Nope, on yer own
+
+			var shadowstr = "";
+			var shadowarr;
+			$("input[id*='-shadow']").each(function() {
+				if ($(this).is(':checked')) {
+					shadowstr += "sms-shadow";
+				}
+				shadowstr += "|";
+
+			});
+
+			shadowarr = shadowstr.split("|");
+			$(".sms-button").removeClass("sms-shadow")
+
+			for (var i = 0; i < shadowarr.length; i++) {
+				$("#sms-button-"+(i+1)).addClass(shadowarr[i]);	
+			}
+		}
+
+		// Write the output so it can be copied
+		updateTheOutput();			
+	});	
+
+	// Disable other styles if copy ticked
+	$(document).on("change", "#form-copy-style", { passive: true }, function() {
+		if ($("#form-copy-style").is(":checked")) {
+			// Disable all color dropdowns and then reenable dropdown 1
+			$(".button-color-dropdown").prop("disabled", true);
+			$("#form-color-button-1").prop("disabled", false);
+
+			// Disable all text color radios and then reenable radio 1
+			$(".button-textcolor-radio").prop("disabled", true);
+			$("#form-text-color-0-button-1").prop("disabled", false);
+			$("#form-text-color-1-button-1").prop("disabled", false);	
+
+			// Disable all shadow checks and then reenable shadow 1
+			$("input[value='sms-shadow']").prop("disabled", true);
+			$("#form-button-1-shadow-0").prop("disabled", false);
+
+			// Disable all custom color ticks, slide up all spectrum controls, and the reenable check 1
+			$(".customColorToggle").prop("disabled", true);
+			$(".configurable").slideUp(200);
+			$("#form-custom-color-toggle-0-button-1").prop("disabled", false);
+
+			copyButtonOne();
+
+		} else {
+			$('.sms-button-config :disabled').prop("disabled", false);
+			if ($("#form-custom-color-toggle-0-button-1").is(":checked")) {
+				$(".configurable").slideDown(200);
+			}
+		}
+
+		// Write the output so it can be copied
+		updateTheOutput();			
+	});
+
+	// Don't follow a hyperlink when clicking
+	$(document).on("click", ".sms-button a", { passive: true}, function(e) {
+		e.preventDefault();
+	});		
+
+	// Copy all button 1 classes to other button classes
+	function copyButtonOne() {
+		var numbButtons = $(".sms-button-row").children().length;
+		var button1Classes = $("#sms-button-1").attr("class");
+		var copiedColor = $("#sms-button-1").attr('class').match(/sms-color-\S+/g);
+		var copiedCustomColor = $("#sms-button-1").css("background-color");
+
+		for (var i = 2; i <= numbButtons; i++) {
+			$("#sms-button-"+i).attr("class", button1Classes);
+
+			// If the custom color is ticked on 1, copy it over
+			if ($("#sms-button-1").hasClass("sms-custom-color")) {
+				$("#sms-button-"+i).addClass("sms-custom-color").css("background-color", copiedCustomColor);
+				$("#form-custom-color-toggle-0-button-"+i).prop("checked", true);
+				$("#form-custom-color-button-"+i).spectrum("set", copiedCustomColor);
+			} else {
+				$("#sms-button-"+i).removeClass("sms-custom-color").css("background-color","");
+				$("#form-custom-color-toggle-0-button-"+i).prop("checked", false);					
+			}
+		}
+
+		// Go through the layout options and when finding a matching one, add selected to that option
+		$(".button-color-dropdown:not(#form-color-button-1) option").each(function(){
+			$(this).removeAttr("selected");
+			if ($(this).attr("value") == copiedColor) {
+				$(this).prop("selected",true);
+			}
+		});	
+	}
+
+	// Set the title
+	$(document).on("change", "input[id*='url-title-value']", { passive: true }, function() {
+		var newTitleStr ="";
+		var newTitleArr;
+		$("input[id*='url-title-value']").each(function() {
+			newTitleStr += $(this).val().trim() + "|";
+		});
+
+		newTitleArr = newTitleStr.split("|");
+		for (var i = 0; i < newTitleArr.length; i++) {
+			$("#sms-button-"+(i+1)).children("a").removeAttr("title").attr("title",(newTitleArr[i]));	
+		}
+
+		// Write the output so it can be copied
+		updateTheOutput();
+	});
+
+	// Stop submitting
+	$("form").submit(function(e) {
+		e.preventDefault();
+	})
+
+	// Disable the add button
+	function addDisabled() {		
+		if ($(".sms-button-row").children().length > (maxButtons-1)) {
+			$("#addAButton").attr("disabled","disabled");
+		} else {
+			$("#addAButton").removeAttr("disabled");
+			$(".copyStyleConfs").slideDown();
+		}
+	}
+
+	// Disable the remove button
+	function removeDisabled() {
+		if ($(".sms-button-row").children().length < 2) {
+			$("#removeAButton").attr("disabled","disabled");
+			$(".copyStyleConfs").slideUp();
+			$("#form-copy-style").attr("checked", false);
+		} else {
+			$("#removeAButton").removeAttr("disabled");
+		}
+
+	}	
+
+	// Check if a button should be disabled
+	function checkDisabled() {
+		addDisabled();
+		removeDisabled();
+	}
+
+	function getButtonConfigCode(theButtonNumber) {
+		var newButtonNumber = "" + theButtonNumber;
+		var formOpen = '<form class="form-vertical" id="form-button-ButtonNumber">';
+		var formClose = '</form>'
+		var colorControl = '\
+			<fieldset>\
+			<div class="form-group">\
+				<label class="control-label" for="form-color-button-ButtonNumber">Button Colour</label>\
+				<div class="col">\
+					<select id="form-color-button-ButtonNumber" name="form-color-button-ButtonNumber" class="form-control button-color-dropdown">\
+						<optgroup label="Brand Book Colour Palette" class="sms-text-dark">\
+							<option value="sms-color-teal" class="sms-color-teal sms-text-light">Teal</option>\
+							<option value="sms-color-dark-teal" class="sms-color-dark-teal sms-text-light" selected>Dark Teal</option>\
+							<option value="sms-color-aa-teal" class="sms-color-aa-teal sms-text-light">AA Dark Teal</option>\
+							<option value="sms-color-denim-blue" class="sms-color-denim-blue sms-text-light">Denim Blue</option>\
+							<option value="sms-color-azure-blue" class="sms-color-azure-blue sms-text-light">Azure Blue</option>\
+							<option value="sms-color-aa-azure-blue" class="sms-color-aa-azure-blue sms-text-light">AA Azure Blue</option>\
+							<option value="sms-color-lavendar" class="sms-color-lavendar sms-text-light">Lavendar</option>\
+							<option value="sms-color-dark-lavendar" class="sms-color-dark-lavendar sms-text-light">Dark Lavendar</option>\
+							<option value="sms-color-aa-dark-lavendar" class="sms-color-aa-dark-lavendar sms-text-light">AA Dark Lavendar</option>\
+							<option value="sms-color-fresh-peach" class="sms-color-fresh-peach sms-text-light">Fresh Peach</option>\
+							<option value="sms-color-ripe-peach" class="sms-color-ripe-peach sms-text-light">Ripe Peach</option>\
+							<option value="sms-color-aa-dark-peach" class="sms-color-aa-dark-peach sms-text-light">AA Dark Peach</option>\
+							<option value="sms-color-lemonade-yellow" class="sms-color-lemonade-yellow sms-text-dark">Lemonade Yellow</option>\
+							<option value="sms-color-sunshine-yellow" class="sms-color-sunshine-yellow sms-text-dark">Sunshine Yellow</option>\
+							<option value="sms-color-minty-green" class="sms-color-minty-green sms-text-dark">Minty Green</option>\
+							<option value="sms-color-spearmint" class="sms-color-spearmint sms-text-light">Spearmint</option>\
+							<option value="sms-color-aa-green" class="sms-color-aa-green sms-text-light">AA Green</option>\
+							<option value="sms-color-aqua" class="sms-color-aqua sms-text-light">Aqua</option>\
+							<option value="sms-color-deep-aqua" class="sms-color-deep-aqua sms-text-light">Deep Aqua</option>\
+							<option value="sms-color-aa-aqua" class="sms-color-aa-aqua sms-text-light">AA Aqua</option>\
+							<option value="sms-color-powder-mauve" class="sms-color-powder-mauve sms-text-light">Powder Mauve</option>\
+							<option value="sms-color-mauve" class="sms-color-mauve sms-text-light">Mauve</option>\
+							<option value="sms-color-aa-mauve" class="sms-color-aa-mauve sms-text-light">AA Mauve</option>\
+							<option value="sms-color-flamingo" class="sms-text-light sms-color-flamingo">Flamingo</option>\
+							<option value="sms-color-bubblegum" class="sms-text-light sms-color-bubblegum">Bubblegum</option>\
+							<option value="sms-color-aa-pink" class="sms-color-aa-pink sms-text-light">AA Pink</option>\
+							<option value="sms-color-apricot" class="sms-text-light sms-color-apricot">Apricot</option>\
+							<option value="sms-color-goldie" class="sms-text-light sms-color-goldie">Goldie</option>\
+						</optgroup>\
+						<optgroup label="Brand Book B&W" class="sms-text-dark">\
+							<option value="sms-color-black" class="sms-text-light sms-color-black">Black</option>\
+							<option value="sms-color-charcoal" class="sms-text-light sms-color-charcoal">Charcoal</option>\
+							<option value="sms-color-grey1" class="sms-text-light sms-color-grey1">Grey 1</option>\
+							<option value="sms-color-grey2" class="sms-text-light sms-color-grey2">Grey 2</option>\
+							<option value="sms-color-grey3" class="sms-text-light sms-color-grey3">Grey 3</option>\
+							<option value="sms-color-grey4" class="sms-text-dark sms-color-grey2">Grey 4</option>\
+							<option value="sms-color-grey5" class="sms-text-dark sms-color-grey5">Grey 5</option>\
+						</optgroup>\
+						<optgroup label="TAFE Intranet Colours" class="sms-text-dark">\
+							<option value="sms-color-intranet-blue" class="sms-text-light sms-color-intranet-blue" selected>Intranet Blue</option>\
+							<option value="sms-color-intranet-purple" class="sms-text-light sms-color-intranet-purple">Intranet Purple</option>\
+							<option value="sms-color-intranet-turquoise" class="sms-text-light sms-color-intranet-turquoise">Intranet Turquoise</option>\
+							<option value="sms-color-intranet-ochre" class="sms-text-light sms-color-intranet-ochre">Intranet Ochre</option>\
+						</optgroup>\
+						<optgroup label="SMS R2 Mockup Colours" class="sms-text-dark">\
+							<option value="sms-color-smsmock-blue" class="sms-text-light sms-color-smsmock-blue">SMS Blue</option>\
+							<option value="sms-color-smsmock-green" class="sms-text-light sms-color-smsmock-green">SMS Green</option>\
+							<option value="sms-color-smsmock-grey" class="sms-text-light sms-color-smsmock-grey">SMS Grey</option>\
+							<option value="sms-color-smsmock-orange" class="sms-text-light sms-color-smsmock-orange">SMS Orange</option>\
+							<option value="sms-color-smsmock-pink" class="sms-text-light sms-color-smsmock-pink">SMS Pink</option>\
+							<option value="sms-color-smsmock-purple" class="sms-text-light sms-color-smsmock-purple">SMS Purple</option>\
+							<option value="sms-color-smsmock-turquoise" class="sms-text-light sms-color-smsmock-turquoise">SMS Turquoise</option>\
+							<option value="sms-color-smsmock-yellow" class="sms-text-dark sms-color-smsmock-yellow">SMS Yellow</option>\
+						</optgroup>\
+					</select>\
+				</div>\
+			</div>\
+			</fieldset>\
+		</form>';
+
+		var customColorControl = '\
+			<div class="form-group">\
+				<label class="control-label" for="form-custom-color-toggle-0-button-ButtonNumber">Use a Custom Colour</label>\
+				<div>\
+					<div class="checkbox">\
+						<label for="form-custom-color-toggle-0-button-ButtonNumber">\
+							<input type="checkbox" name="form-custom-color-toggle-0-button-ButtonNumber" id="form-custom-color-toggle-0-button-ButtonNumber" value="customColorConfigurables-button-ButtonNumber" class="customColorToggle">\
+							Yes\
+						</label>\
+					</div>\
+				</div>\
+			</div>\
+			\
+			<div id="customColorConfigurables-button-ButtonNumber" class="configurable">\
+				<div class="form-group">\
+					<label class="control-label" for="form-custom-color-button-ButtonNumber">Custom Colour</label>\
+					<div>\
+						<input type="text" id="form-custom-color-button-ButtonNumber" class="spectrum-selector" value="#ca0" />\
+					</div>\
+				</div>\
+			</div>';
+
+		var textColorControl = '\
+			<div class="form-group">\
+				<label class="control-label" for="form-text-color-button-ButtonNumber">Text Color</label>\
+				<div>\
+					<div class="radio">\
+						<label for="form-text-color-0-button-ButtonNumber">\
+							<input type="radio" name="form-text-color-button-ButtonNumber" id="form-text-color-0-button-ButtonNumber" value="sms-text-light" checked="checked" class="button-textcolor-radio">\
+							Light\
+						</label>\
+						<label for="sms-form-tile-text-color-ButtonNumber">\
+							<input type="radio" name="form-text-color-button-ButtonNumber" id="form-text-color-1-button-ButtonNumber" value="sms-text-dark" class="button-textcolor-radio">\
+							Dark\
+						</label>\
+					</div>\
+				</div>\
+			</div>';
+
+		var shadowControl = '\
+			<div class="form-group">\
+				<label class="control-label" for="form-button-ButtonNumber-shadow">Drop Shadow</label>\
+				<div>\
+					<div class="checkbox">\
+						<label for="form-button-ButtonNumber-shadow-0">\
+							<input type="checkbox" name="form-button-ButtonNumber-shadow" id="form-button-ButtonNumber-shadow-0" value="sms-shadow">\
+							Yes\
+						</label>\
+					</div>\
+				</div>\
+			</div>';
+
+		var titleControl = '\
+			<div class="form-group">\
+				<label class="control-label" for="form-button-ButtonNumber-url-title-value">URL Title</label>\
+				<div>\
+					<input id="form-button-ButtonNumber-url-title-value" name="form-button-ButtonNumber-url-title-value" type="text" value="Go To A Location" class="form-control input-md">\
+					<span class="help-block">What do you want the tool tip to say?</span>\
+				</div>\
+			</div>';
+
+		theControl = formOpen + colorControl + customColorControl + textColorControl + shadowControl + titleControl + formClose;
+		theControl = theControl.replaceAll("ButtonNumber", newButtonNumber);
+
+		return theControl;
+	}
+
+	// Stupid string .replace only does the first
+	String.prototype.replaceAll = function(search, replacement) {
+		var target = this;
+		return target.replace(new RegExp(search, 'g'), replacement);
+	};
+
+	// Can ya edit or not
+	function toggleEditable() {
+		'use strict';			
+		var btnText = $("#btnEditable").text();
+
+		if (btnText.startsWith("Turn On")) {
+			btnText = btnText.replace("Turn On", "Turn Off");
+			$(".isEditable").attr('contenteditable',true);
+			$(".change-number-buttons button, #btnEditLink").prop("disabled", true);
+
+		} else {
+			btnText = btnText.replace("Turn Off", "Turn On");
+			$("[contenteditable='true']").removeAttr('contenteditable');
+			$(".change-number-buttons button, #btnEditLink").prop("disabled", false);
+
+			// Bug with hyperlinks not going back to pointer
+			$("a[contenteditable]").css({"cursor":"pointer"});
+		}
+
+		$(".isEditable").toggleClass("showEditable");
+		$('[class=""]').removeAttr('class'); // Hack to remove empty class attributes. Doesn't affect code, just make less ugly
+
+		$("#btnEditable").toggleClass("btn-danger").toggleClass("btn-success").text(btnText);
+
+		updateTheOutput();
+
+	}
+
+	// Change the hyperlinks
+	$('#btnEditLink').click(function() {
+		'use strict';			
+		var btnText = $(this).text();
+
+		if (btnText.startsWith("Edit")) {
+			btnText = btnText.replace("Edit", "Stop Editing");
+			$('.sms-button a[href]').after(function() {
+				var theLink = $(this).attr("href");
+				return '<input class="form-control hyperlink-edit" value="' +theLink.trim() + '" type="text">';
+			});
+			$(".change-number-buttons button, #btnEditable").prop("disabled", true);
+
+		} else {
+			btnText = btnText.replace("Stop Editing", "Edit");
+			$('.hyperlink-edit').remove();
+			$(".change-number-buttons button, #btnEditable").prop("disabled", false);
+
+		}
+
+		$("#btnEditLink").toggleClass("btn-danger").toggleClass("btn-success").text(btnText);
+
+		updateTheOutput();
+
+	});
+
+	// Update Hyperlinks when changed
+	$(document).on('change', '.hyperlink-edit', function() {
+
+		var newHyperlink = $(this).val();
+		$(this).prev('a[href]').attr("href", newHyperlink);
+
+
+		// Write the output so it can be copied
+		updateTheOutput();			
+
+	});		
+
+	// Totes borrowed from https://codepen.io/shaikmaqsood/pen/XmydxJ/
+	function copyToClipboard(element) {
+		'use strict';
+		var $temp = $("<input>");
+		$("body").append($temp);
+		$temp.val($(element).text().trim()).select();
+		document.execCommand("copy");
+		$temp.remove();
+	}	
+
+	function runInlineConverter() {
+		'use strict';			
+
+		computedStyleToInlineStyle(document.querySelector("#wrapper .sms-button-row"), {
+			recursive: true,
+			properties: ["background-color", "box-shadow", "-moz-box-shadow", "-webkit-box-shadow", "box-sizing", "-moz-box-siding", "-webkit-box-sizing", "color", "display", "float", "font-weight", "font-size", "line-height", "position", "z-index", "vertical-align", "text-decoration", "border-bottom-left-radius", "border-bottom-right-radius", "border-top-left-radius", "border-top-right-radius", "margin-bottom", "margin-left", "margin-right", "margin-top", "text-align", "width", "height"]
+		});
+
+		// Write the output so it can be copied
+		$("#output").text($("#wrapper").html());
+
+		return;
+	}	
+
+	function updateTheOutput() {
+
+		//$("#wrapper").find('*').removeAttr("style");
+		$("#output").text($("#wrapper").html());
+	}
+
+
+	// Modal Importing
+	$('#myTileBuilderModal').on('shown.bs.modal', function () {
+		'use strict';
+		$('#SMSImportTextarea').focus();
+	});	
+
+	$('#importTile').click(function() {
+		'use strict';
+		var inputTile = "";
+		var tileCheck;
+		var oldWrapper;
+
+		inputTile = $('#myTileBuilderModal').find('#SMSImportTextarea').val();
+		oldWrapper = $("#wrapper").html(); // Save the old tile
+
+
+		$("#wrapper").html(inputTile); // Replace the tile
+
+		tileCheck = $("#wrapper div").hasClass("sms-button");
+
+		// Check if the tile is valid
+		if (!tileCheck) {
+			$("#wrapper").html(oldWrapper); // If not, go back to the old tile
+
+		}
+
+		// Undo any configs that might be open
+		$(":checkbox").removeAttr("checked");
+
+
+		// Check if there's a dropshadow
+		// Need to do this for childrenish
+
+		var impShadowStr ="";
+		var impShadowArr;
+		var impColorStr = "";
+		var impColorArr;
+		var impTextColStr = "";
+		var impTextColArr;
+		var impTitleStr = "";
+		var impTitleArr;
+
+		var buttonCount = $(".sms-button-row").children().length;
+		var controlCount = $(".sms-button-form-control-row").children().length;
+		var diff = buttonCount - controlCount;
+
+		if (diff > 0) {
+			// More buttons than controls
+			for (var i = 0; i < diff; i++) {
+
+				// Add another control
+				addAControl();
+			}
+		}
+
+		if (diff < 0) {
+			diff = diff*-1;
+			// More controls than buttons
+			for (var i = 0; i < diff; i++) {
+				// Add another control
+				removeAControl();
+			}
+		}		
+
+
+		// Record the buttons into strings
+		$(".sms-button").each(function() {
+			if ($(this).hasClass("sms-shadow")) {
+				impShadowStr += "true|";
+			} else {
+				impShadowStr += "false|";
+			}
+
+			impColorStr += $(this).attr('class').match(/sms-color-\S+/g);
+			impColorStr += "|";
+
+			if ($(this).hasClass("sms-text-light")) {
+				impTextColStr += "true|";
+			} else {
+				impTextColStr += "false|";
+			}
+
+			impTitleStr += $(this).find("a").attr("title");
+			impTitleStr += "|";
+		});
+
+		// Build the arrays
+		impShadowArr  = impShadowStr.slice(0,-1).split("|");
+		impColorArr   = impColorStr.slice(0,-1).split("|");
+		impTextColArr = impTextColStr.slice(0,-1).split("|");
+		impTitleArr   = impTitleStr.slice(0,-1).split("|");
+
+		// Set the shadows
+		for (var i = 0; i < impShadowArr.length; i++) {
+			var isChecked;
+			if (impShadowArr[i] == "true") {
+				isChecked = true;
+			} else {
+				isChecked = false;
+			}
+
+			$("#form-button-"+(i+1)+"-shadow-0").prop("checked",isChecked);	
+		}
+
+		// Clear out any selected colors
+		$(".button-color-dropdown option").removeAttr("selected");
+
+		// Set the colors
+		for (var i = 0; i < impColorArr.length; i++) {
+			$("#form-color-button-"+(i+1)+" option").each(function(){
+				if ($(this).attr("value") == impColorArr[i]) {
+					$(this).prop("selected",true);
+				}
+			});
+		}	
+
+		// Set the Light vs Dark
+		for (var i = 0; i < impTextColArr.length; i++) {			
+			var isLTChecked;
+			if (impTextColArr[i] == "true") {
+				isLTChecked = true;			
+			} else {
+				isLTChecked = false;
+			}
+
+			$("#form-text-color-0-button-"+(i+1)).prop("checked",isLTChecked);
+			$("#form-text-color-1-button-"+(i+1)).prop("checked",(!isLTChecked));
+		}
+
+		// Set the Titles
+		for (var i = 0; i < impTitleArr.length; i++) {
+			$("#form-button-"+(i+1)+"-url-title-value").val(impTitleArr[i]);
+		}
+
+		updateTheOutput();		
+		$('#myTileBuilderModal').modal('hide');
+	});
+
+	$(document).ready(function() {			
+		$(".configurable").hide();	
+	});
+
+	$(document).on("change",".customColorToggle",function() {
+
+		// Grab the checkbox's value to build a selector (for the appropriate control), then slide toggle that selector
+		var aSelector = "#"+$(this).val();
+		$(aSelector).slideToggle(200);
+
+		// Change the selector to disable the appropriate color dropdown box
+		aSelector = aSelector.replace("customColorConfigurables","form-color");
+		$(aSelector).toggleDisabled();
+
+		// Change the selector again to target the button and toggle the custom color class
+		aSelector = aSelector.replace("form-color","sms");
+		$(aSelector).toggleClass("sms-custom-color");
+
+		processCustomColors();
+	});
+
+
+	$("#form-custom-color-button-1").spectrum({
+		change: function() {
+			'use strict';
+			processCustomColors();
+		},
+		showInput: true,
+		showInitial: true,
+		showPalette: true,
+		palette: [ ], 
+		preferredFormat: "hex",
+		clickoutFiresChange: true
+	});
+
+	(function($) {
+		$.fn.toggleDisabled = function() {
+			return this.each(function() {
+				this.disabled = !this.disabled;
+			});
+		};
+	})(jQuery);
+
+
+	function processCustomColors() {
+
+		if($("#form-copy-style").is(":checked")) {
+			var newColor = $("#form-custom-color-button-1").spectrum("get").toString();
+			$("#sms-button-1").css("background-color", newColor);
+			copyButtonOne();
+
+		} else {
+
+			var useColArr;
+			var useColStr = "";
+
+			// Record the buttons into strings
+			$(".sms-button").each(function() {
+				if ($(this).hasClass("sms-custom-color")) {
+					useColStr += "true|";
+				} else {
+					useColStr += "false|";
+				}
+			});
+
+			useColArr = useColStr.slice(0,-1).split("|");
+
+
+			for (var i = 0; i < useColArr.length; i++) {
+				var j = i + 1;
+				if (useColArr[i] == "true") {
+
+					var custColor = $("#form-custom-color-button-"+j).spectrum("get").toString();
+					$("#sms-button-"+j).css("background-color", custColor);
+
+				} else {
+					$("#sms-button-"+j).css("background-color", "");
+				}
+
+			}
+
+
+		}
+
+		updateTheOutput();
+	}	
+
+	/*
+	function checkCustomColor(buttonNumber) {
+		if ($("#form-custom-color-toggle-0-button-" + buttonNumber).is(":checked")) {
+			$("#sms-button-"+buttonNumber).addClass("sms-custom-color");
+
+			if ($("#form-copy-style").is(":checked")) {
+				var btn1Custom = 
+			}
+			$("#sms-button-"+buttonNumber).css
+		}
+	}*/
+
+</script>
+  </body>
+</html>

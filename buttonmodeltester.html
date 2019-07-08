@@ -1,0 +1,81 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Box Model Tester</title>
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" type="text/css" rel="stylesheet">   
+    <link href="css/smstile-framework.css" type="text/css" rel="stylesheet">
+    <!-- <link href="css/smstile-framework.min.css" type="text/css" rel="stylesheet"> -->
+    <link href="css/custom.css" type="text/css" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">	
+</head>
+
+<body id="button-builder">
+
+<button class="func-save-file1">Click</button>
+	
+<script 
+	src="https://code.jquery.com/jquery-2.2.4.min.js" 
+	integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" 
+	crossorigin="anonymous"></script>
+
+<script 
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" 
+	integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" 
+	crossorigin="anonymous"></script>
+	
+<script src="scripts/commonfunctions.js"></script>
+<script src="scripts/classes/buttonclass.js"></script>
+<script src="scripts/classes/buttonrowclass.js"></script>	
+
+<script>
+
+	var theModel = ButtonRow.new();
+	
+	theModel.addButton();
+	theModel.button(0).buttonText("This is my button");
+	theModel.addBtn("Hello");
+	theModel.button(1).color("sms-color-intranet-purple").url("http://google.com").urlTitle("No reception").dropShadow(true);
+	theModel.addBtn("Ack");
+	theModel.btn(2).textColor("dark").color("apricot").dropShadow(true).hasCustomColor(true).customColor("#9a8d7f");
+	theModel.copyToAll(1);
+	theModel.btn(0).hasCustomColor(false).btnTxt("What now?").newWindow(true).textColor("dark").dropShadow(false).hasCustom(true).customColor("#a99c8e");
+	
+
+	
+	//document.write(theModel.getHTML());
+
+	var theJSON = theModel.getJSON();
+	
+	console.log( theJSON );
+
+	var aTest = ButtonRow.newFromJSON(theJSON);
+	console.log(aTest);
+	
+	aTest.btn(2).btnTxt("This is a dream!");
+	document.write(aTest.getHTML());
+	
+	theModel = aTest;
+	
+	
+// Untested - should create a json file of the box and download file.
+$( ".func-save-file1" ).click( function() {
+	"use strict";
+	
+	var jsonData = theModel.getJSON();
+	console.log(jsonData);
+	var jsonPretty = JSON.stringify(JSON.parse(jsonData), null, '\t');
+	console.log(jsonPretty);
+	var blob = new Blob( [ jsonPretty ], { type: "application/octet-stream" });
+	var url = URL.createObjectURL( blob );
+	var filename = "buttons  " + getDatestamp() + ".json";
+	
+	$( this ).after( '<a id="templink" download="' + filename + '" href="' + url + '"></a>' );
+	$( "#templink" )[0].click();
+	$( "#templink" ).remove();
+});	
+
+</script>
+	
+</body>
+</html>

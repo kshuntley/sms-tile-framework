@@ -1,0 +1,92 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Box Model Tester</title>
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" type="text/css" rel="stylesheet">   
+    <link href="css/smstile-framework.css" type="text/css" rel="stylesheet">
+    <!-- <link href="css/smstile-framework.min.css" type="text/css" rel="stylesheet"> -->
+    <link href="css/custom.css" type="text/css" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">	
+</head>
+
+<body id="box-builder">
+
+<button class="func-save-file">Click</button>
+<a class="func-save-file" href="#">Click</a>
+
+<div id="wrapper"></div>
+	
+<script 
+	src="https://code.jquery.com/jquery-2.2.4.min.js" 
+	integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" 
+	crossorigin="anonymous"></script>
+
+<script 
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" 
+	integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" 
+	crossorigin="anonymous"></script>
+	
+<script src="scripts/commonfunctions.js"></script>
+<script src="scripts/classes/boxclass.js"></script>
+<script src="scripts/classes/rowclass.js"></script>	
+
+<script>
+
+	var newBox = Box.new();
+	newBox.color("aa-pink")
+		.colour("sms-color-intranet-purple")
+		.customColour("#ff5a3f")
+		.hasCustomColour(false)
+		.textColor("sms-text-dark")
+		.textColour("sms-text-light")
+		.dropShadow(true);
+	
+	//if (newBox.hasDropShadow()) console.log("I gotsa drop shadow");
+
+	
+	newBox.addRow("header");
+	newBox.addRow("artefact");
+	newBox.addRow("artefact");
+	
+	//console.log(newBox.getRow(1));	
+	//console.log(newBox.getRow(2));
+	newBox.getRow(2).summaryParagraph("What? What?").iconClass("fa-video-camera");
+	newBox.getRow(1).artefactTitle("This thing");
+	
+	newBox.addRow("header");
+	newBox.moveRow(3,2);
+	newBox.getRow(2).columnHeadings("This is a | Test");
+	newBox.getRow(3).artefactSubTitle("My word is my bond!");
+
+	newBox.addRow("multiple");
+	newBox.getRow(4).addMultipleTuple("WI - How to Mow Lawns and Influence Children | 13kb | http://www.google.com |");
+	
+	newBox.addRow("threeicon");
+	newBox.addRow("fouricon");
+	newBox.addRow("twoicon");
+	newBox.moveRow(6,2);
+	newBox.getRow(2).summaryParagraph("").trymeIconArray(2,"fa-ambulance");
+	
+	newBox.getRow(2).trymeLinkTitleArray(2, "Why Bother?");
+	
+	//console.log(newBox);
+	
+	//document.write(newBox.getHTML());
+	
+	var theJSON = newBox.getJSON();
+	
+	//console.log(theJSON);
+	
+	//console.log( theJSON.slice(1100,1168) );
+
+	var theModel = Box.newFromJSON(theJSON);
+	
+	updateDisplay();
+	
+	
+
+</script>
+	
+</body>
+</html>
